@@ -1,6 +1,7 @@
 export_paths:
   - .env
   - content
+  - app/Console
   - app/Listeners/FormListener.php
   - app/Providers/EventServiceProvider.php
   - config/filesystems.php
