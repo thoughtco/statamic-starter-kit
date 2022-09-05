@@ -1,0 +1,160 @@
+sections:
+  panel_settings:
+    display: 'Panel settings'
+    fields:
+      -
+        handle: button_text
+        field:
+          input_type: text
+          antlers: false
+          display: 'Button text'
+          type: text
+          icon: text
+          listable: true
+          validate:
+            - required
+      -
+        handle: introduction
+        field:
+          always_show_set_button: false
+          buttons:
+            - h2
+            - h3
+            - bold
+            - italic
+            - unorderedlist
+            - orderedlist
+            - removeformat
+            - quote
+            - anchor
+            - image
+          save_html: true
+          toolbar_mode: fixed
+          link_noopener: false
+          link_noreferrer: false
+          target_blank: false
+          reading_time: false
+          fullscreen: true
+          allow_source: true
+          display: Introduction
+          type: bard
+          icon: bard
+          listable: true
+          validate:
+            - required
+      -
+        handle: cookie_groups
+        field:
+          collapse: false
+          sets:
+            new_set:
+              display: 'New Set'
+              fields:
+                -
+                  handle: title
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Title
+                    type: text
+                    icon: text
+                    listable: hidden
+                -
+                  handle: slug
+                  field:
+                    generate: true
+                    display: Slug
+                    type: slug
+                    icon: slug
+                    listable: hidden
+                -
+                  handle: description
+                  field:
+                    antlers: false
+                    display: Description
+                    type: textarea
+                    icon: textarea
+                    listable: hidden
+                -
+                  handle: show_toggle
+                  field:
+                    display: 'Show toggle'
+                    type: toggle
+                    icon: toggle
+                    listable: hidden
+          display: 'Cookie groups'
+          type: replicator
+          icon: replicator
+          listable: true
+          validate:
+            - required
+  cookie_table:
+    display: 'Cookie table'
+    fields:
+      -
+        handle: cookie_table
+        field:
+          collapse: false
+          sets:
+            new_set:
+              display: 'New Set'
+              fields:
+                -
+                  handle: title
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Title
+                    type: text
+                    icon: text
+                    listable: hidden
+                    validate:
+                      - required
+                -
+                  handle: cookie
+                  field:
+                    collapse: false
+                    sets:
+                      new_set:
+                        display: 'New Set'
+                        fields:
+                          -
+                            handle: name
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: Name
+                              type: text
+                              icon: text
+                              listable: hidden
+                              validate:
+                                - required
+                          -
+                            handle: length
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: Length
+                              type: text
+                              icon: text
+                              listable: hidden
+                              validate:
+                                - required
+                          -
+                            handle: purpose
+                            field:
+                              antlers: false
+                              display: Purpose
+                              type: textarea
+                              icon: textarea
+                              listable: hidden
+                              validate:
+                                - required
+                    display: Cookies
+                    type: replicator
+                    icon: replicator
+                    listable: hidden
+          display: 'Cookie table'
+          type: replicator
+          icon: replicator
+          listable: hidden

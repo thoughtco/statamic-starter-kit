@@ -5,6 +5,7 @@ export_paths:
   - app/Listeners/FormListener.php
   - app/Providers/EventServiceProvider.php
   - config/filesystems.php
+  - config/iconamic.php
   - config/statamic/antlers.php
   - config/statamic/assets.php
   - config/statamic/cp.php
@@ -14,7 +15,7 @@ export_paths:
   - resources/blueprints
   - resources/fieldsets
   - resources/forms
-  - resources/users/roles.yaml
+  - resources/users
   - resources/views
   - users
 dependencies:
@@ -26,5 +27,6 @@ dependencies:
   drewm/mailchimp-api: ^2.5
   mitydigital/iconamic: ^1.0
   mitydigital/sitemapamic: ^2.3
+  thoughtco/statamic-cookiepanel: ^1.0
   thoughtco/statamic-minify: ^1.1
   thoughtco/statamic-redirects: ^1.1
