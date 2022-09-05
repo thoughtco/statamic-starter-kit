@@ -34,139 +34,10 @@ sections:
           icon: textarea
           listable: hidden
           instructions_position: above
-          read_only: false
       -
         handle: content
         field:
           always_show_set_button: false
-          sets:
-            button_link:
-              display: 'Button Link'
-              fields:
-                -
-                  handle: link_text
-                  field:
-                    input_type: text
-                    antlers: true
-                    display: 'Link Text'
-                    type: text
-                    icon: text
-                    listable: hidden
-                -
-                  handle: link_to
-                  field:
-                    collections:
-                      - news
-                      - pages
-                      - resources
-                      - jobs
-                    display: 'Link To'
-                    type: link
-                    icon: link
-                    listable: hidden
-            image:
-              display: Image
-              fields:
-                -
-                  handle: image
-                  field:
-                    mode: list
-                    container: assets
-                    folder: news
-                    restrict: false
-                    allow_uploads: true
-                    show_filename: true
-                    max_files: 1
-                    display: Image
-                    type: assets
-                    icon: assets
-                    listable: hidden
-            quote:
-              display: Quote
-              fields:
-                -
-                  handle: quote_by
-                  field:
-                    input_type: text
-                    antlers: true
-                    display: 'Quote By'
-                    type: text
-                    icon: text
-                    listable: hidden
-                -
-                  handle: quote_text
-                  field:
-                    antlers: true
-                    display: 'Quote Text'
-                    type: textarea
-                    icon: textarea
-                    listable: hidden
-            team:
-              display: Team
-              fields:
-                -
-                  handle: member
-                  field:
-                    collapse: false
-                    sets:
-                      member:
-                        display: Member
-                        fields:
-                          -
-                            handle: name
-                            field:
-                              input_type: text
-                              antlers: true
-                              display: Name
-                              type: text
-                              icon: text
-                              listable: hidden
-                              instructions_position: above
-                              validate:
-                                - required
-                          -
-                            handle: bio
-                            field:
-                              antlers: true
-                              display: Bio
-                              type: textarea
-                              icon: textarea
-                              listable: hidden
-                              instructions_position: above
-                          -
-                            handle: image
-                            field:
-                              mode: list
-                              container: assets
-                              folder: news
-                              restrict: false
-                              allow_uploads: true
-                              show_filename: true
-                              max_files: 1
-                              display: Image
-                              type: assets
-                              icon: assets
-                              instructions: '600px square'
-                              listable: hidden
-                              instructions_position: above
-                              validate:
-                                - required
-                    display: Member
-                    type: replicator
-                    icon: replicator
-                    listable: hidden
-                    instructions_position: above
-            video:
-              display: Video
-              fields:
-                -
-                  handle: video
-                  field:
-                    display: Video
-                    type: video
-                    icon: video
-                    listable: hidden
-                    instructions_position: above
           buttons:
             - h3
             - h4
@@ -185,8 +56,6 @@ sections:
           link_collections:
             - news
             - pages
-            - resources
-            - jobs
           reading_time: false
           fullscreen: true
           allow_source: true
@@ -197,6 +66,11 @@ sections:
           icon: bard
           listable: hidden
           instructions_position: above
+          visibility: visible
+          always_save: false
+          previews: true
+          antlers: false
+          remove_empty_nodes: false
   sidebar:
     display: Sidebar
     fields:
@@ -225,30 +99,6 @@ sections:
           inline: false
           columns: 1
           rows: 1
-      -
-        handle: news_categories
-        field:
-          type: terms
-          taxonomies:
-            - news_categories
-          display: Category
-          mode: select
-          listable: hidden
-          max_items: 1
-          create: true
-          validate:
-            - required
-      -
-        handle: author
-        field:
-          max_items: 1
-          mode: select
-          display: Author
-          type: users
-          icon: users
-          listable: hidden
-          validate:
-            - required
   SEO:
     display: SEO
     fields:

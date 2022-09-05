@@ -1,0 +1,60 @@
+title: 'Cookie Panel'
+data:
+  button_text: Cookies
+  introduction: '<h2>Our use of cookies</h2><p>Some cookies are necessary for us to manage how our website behaves while other optional, or non-necessary, cookies help us to analyse website usage. You can Accept All or Reject All optional cookies or control individual cookie types below.</p><p>You can read more in our Cookie Notice</p>'
+  cookie_groups:
+    -
+      title: Functional
+      description: 'These cookies enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions.'
+      show_toggle: false
+      type: new_set
+      enabled: true
+      slug: functional
+    -
+      title: 'Analytics cookies'
+      description: 'Analytical cookies help us to improve our website by collecting and reporting information on its usage.'
+      show_toggle: true
+      type: new_set
+      enabled: true
+      slug: analytics
+    -
+      title: 'Third-Party Cookies'
+      description: 'These cookies are set by a website other than the website you are visiting usually as a result of some embedded content such as a video, a social media share or a like button or a contact map'
+      show_toggle: true
+      type: new_set
+      enabled: true
+      slug: third-party
+  cookie_table:
+    -
+      title: 'Functional cookies'
+      cookie:
+        -
+          name: session
+          length: '2 days'
+          purpose: 'Handle session related activity'
+          type: new_set
+          enabled: true
+      type: new_set
+      enabled: true
+    -
+      title: 'Analytics cookies'
+      cookie:
+        -
+          name: 'Google Analytics'
+          length: '7 days'
+          purpose: 'Allow tracking of website usage'
+          type: new_set
+          enabled: true
+      type: new_set
+      enabled: true
+    -
+      title: 'Third-Party Cookies'
+      cookie:
+        -
+          name: 'Facebook pixel'
+          length: '7 days'
+          purpose: 'Tracks your usage and associates it with your Facebook account'
+          type: new_set
+          enabled: true
+      type: new_set
+      enabled: true

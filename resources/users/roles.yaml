@@ -34,6 +34,7 @@ admin:
     - 'edit social_media globals'
     - 'edit contact globals'
     - 'edit mailing_list globals'
+    - 'edit cookie_panel globals'
     - 'view assets assets'
     - 'upload assets assets'
     - 'edit assets assets'
@@ -52,3 +53,4 @@ admin:
     - 'view newsletter form submissions'
     - 'delete newsletter form submissions'
     - 'view seotamic tool'
+    - 'resolve duplicate ids'
