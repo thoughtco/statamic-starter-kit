@@ -1,0 +1,93 @@
+sections:
+  mailing_lists:
+    display: 'Mailing Lists'
+    fields:
+      -
+        handle: provider
+        field:
+          options:
+            mailchimp: MailChimp
+            campaign_monitor: 'Campaign Monitor'
+          multiple: false
+          max_items: 1
+          clearable: false
+          searchable: true
+          taggable: false
+          push_tags: false
+          cast_booleans: false
+          display: Provider
+          type: select
+          icon: select
+          listable: hidden
+          instructions_position: above
+      -
+        handle: mailchimp_api_key
+        field:
+          input_type: text
+          antlers: false
+          display: 'Mailchimp API Key'
+          type: text
+          icon: text
+          instructions: 'The API Key is available via https://mailchimp.com/help/about-api-keys/'
+          listable: hidden
+          instructions_position: above
+          if:
+            provider: 'equals mailchimp'
+          width: 50
+      -
+        handle: mailchimp_audience_id
+        field:
+          input_type: text
+          antlers: false
+          display: 'Mailchimp Audience ID'
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          if:
+            provider: 'equals mailchimp'
+          instructions: 'More information on finding your Audience ID can be found at https://mailchimp.com/help/find-audience-id/'
+          width: 50
+      -
+        handle: cm_api_key
+        field:
+          input_type: text
+          antlers: false
+          display: 'API Key'
+          type: text
+          icon: text
+          instructions: 'More information on how to find the API Key can be found at https://help.campaignmonitor.com/api-keys'
+          listable: hidden
+          instructions_position: above
+          if:
+            provider: 'equals campaign_monitor'
+      -
+        handle: cm_client_id
+        field:
+          input_type: text
+          antlers: false
+          display: 'Client ID'
+          type: text
+          icon: text
+          instructions: 'More information on the Client ID can be found at https://help.campaignmonitor.com/api-keys'
+          width: 50
+          listable: hidden
+          instructions_position: above
+          if:
+            provider: 'equals campaign_monitor'
+      -
+        handle: cm_list_id
+        field:
+          input_type: text
+          antlers: false
+          display: 'List ID'
+          type: text
+          icon: text
+          width: 50
+          listable: hidden
+          instructions_position: above
+          if:
+            provider: 'equals campaign_monitor'
+          instructions: 'Found in the settings page for the list.'
+          visibility: visible
+          always_save: false

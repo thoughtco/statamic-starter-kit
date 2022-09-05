@@ -1,0 +1,49 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: name
+        field:
+          placeholder: 'Enter your name'
+          input_type: text
+          antlers: true
+          display: 'Your Name'
+          type: text
+          icon: text
+          listable: true
+          validate:
+            - required
+          instructions_position: above
+          visibility: visible
+          always_save: false
+      -
+        handle: email
+        field:
+          placeholder: 'Enter your email address'
+          input_type: email
+          antlers: true
+          display: 'Your Email'
+          type: text
+          icon: text
+          listable: true
+          validate:
+            - required
+          instructions_position: above
+          visibility: visible
+          always_save: false
+      -
+        handle: message
+        field:
+          antlers: true
+          display: 'Your message'
+          type: textarea
+          icon: textarea
+          instructions: 'Enter your message'
+          listable: false
+          validate:
+            - required
+          placeholder: 'Enter your message'
+          instructions_position: above
+          visibility: visible
+          always_save: false

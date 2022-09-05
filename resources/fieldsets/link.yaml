@@ -1,0 +1,54 @@
+title: Link
+fields:
+  -
+    handle: link
+    field:
+      display: Link
+      type: section
+      icon: section
+      instructions: 'Leave Link To blank if this is not required.'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+  -
+    handle: link_to
+    field:
+      collections:
+        - pages
+        - news
+      container: assets
+      display: 'Link To'
+      type: link
+      icon: link
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+  -
+    handle: link_text
+    field:
+      input_type: text
+      antlers: false
+      default: 'Read More'
+      display: 'Link Text'
+      type: text
+      icon: text
+      width: 50
+      listable: true
+      instructions_position: above
+      visibility: visible
+      always_save: false
+  -
+    handle: new_window
+    field:
+      default: false
+      display: 'New Window'
+      type: toggle
+      icon: toggle
+      instructions: 'Would you like to open the link in a new window?'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false

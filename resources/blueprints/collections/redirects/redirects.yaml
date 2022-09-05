@@ -1,0 +1,49 @@
+title: Redirects
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+          display: From
+          instructions_position: above
+          listable: hidden
+          input_type: text
+          antlers: false
+      -
+        handle: to
+        field:
+          input_type: text
+          antlers: false
+          display: To
+          type: text
+          icon: text
+          listable: hidden
+          validate:
+            - required
+      -
+        handle: code
+        field:
+          options:
+            301: Permanent
+            302: Temporary
+          multiple: false
+          clearable: false
+          searchable: true
+          taggable: false
+          push_tags: false
+          cast_booleans: false
+          display: Type
+          type: select
+          icon: select
+          listable: hidden
+          validate:
+            - required
+  sidebar:
+    display: Sidebar
+    fields: {  }

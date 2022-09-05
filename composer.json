@@ -1,0 +1,9 @@
+{
+    "name": "thoughtco/statamic-starter-kit",
+    "extra": {
+        "statamic": {
+            "name": "Statamic Starter Lit",
+            "description": "ThoughtCo Statamic Starter Kit"
+        }
+    }
+}

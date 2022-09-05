@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en">
+<head>
+
+	<!-- seo -->
+    {{ seotamic }}
+		
+	<!-- base settings -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+    <base href="{{ site:url }}" />
+	
+	<!-- css -->
+	
+	{{# anything else that should only be in production #}}
+	{{ if environment == 'production' }}
+	{{ /if }}
+	
+</head>
+<body data-csrf="{{ csrf_token }}">
+		
+    {{ template_content }}
+
+	{{# anything else that should only be in production #}}
+	{{ if environment != 'production' }}
+
+    {{ /if }}
+
+	<!-- footer scripts -->
+	
+</body>
+</html>

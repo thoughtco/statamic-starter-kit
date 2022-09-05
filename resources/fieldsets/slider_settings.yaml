@@ -1,0 +1,49 @@
+title: 'Slider Settings'
+fields:
+  -
+    handle: slider_settings
+    field:
+      display: Settings
+      type: section
+      icon: section
+      listable: hidden
+      instructions_position: above
+  -
+    handle: slider_effect
+    field:
+      options:
+        slide: Slide
+        fade: Fade
+      multiple: false
+      max_items: 1
+      clearable: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      default: slide
+      display: 'Slider Effect'
+      type: select
+      icon: select
+      instructions: 'Would you like the slides to cross fade or slide from right to left.'
+      width: 50
+      listable: hidden
+      instructions_position: above
+      validate:
+        - required
+  -
+    handle: time_delay
+    field:
+      min: 1000
+      max: 10000
+      step: 1000
+      default: 5000
+      prepend: Faster
+      append: Slower
+      display: 'Time Delay'
+      type: range
+      icon: range
+      instructions: 'How long you want a slide to be visible for'
+      width: 50
+      listable: hidden
+      instructions_position: above
