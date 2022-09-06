@@ -28,6 +28,5 @@ dependencies:
   drewm/mailchimp-api: ^2.5
   mitydigital/iconamic: ^1.0
   mitydigital/sitemapamic: ^2.3
-  thoughtco/statamic-cookiepanel: ^1.0
   thoughtco/statamic-minify: ^1.1
   thoughtco/statamic-redirects: ^1.1
