@@ -71,47 +71,51 @@ There are two fieldsets setup in the default build:
 - **Link:** contains an url field, a text field and a toggle for a new window
 - **Slider Settings:** Contains Slider Effect and Time Delay and should be used on sliders with the relevant data attribute for the slider. The data attributes are available in swiper-setup.js
 
-Globals
-    - [ ] There are 4 globals setup
-        - [ ] Contact: 
-            - [ ] Basic fields for main points of contact
-            - [ ] Google API Key: Every site should have a separate API key. If you’re unsure of where to do this, let Ryan or I know.
-        - [ ] Mailing List:
-            - [ ] Choose provider (currently Campaign Monitor or MailChimp)
-            - [ ] Fill in the API Details as requested.
-            - [ ] This then hooks into the Newsletter form and sends the information to the relevant provider.
-            - [ ] Please test this is working to the relevant list.
-        - [ ] Social Media:
-            - [ ] The social media handles associated with the website.
-        - [ ] Cookie Panel:
-            - [ ] Contains settings relevant to the Cookie panel. This may not be relevant to the site you’re on, so if it’s not, please remove so as not to confuse the client.
+### Globals
+There are 4 globals setup
+- **Contact:**
+  - Basic fields for main points of contact
+  - Google API Key: Every site should have a separate API key. If you’re unsure of where to do this, let Ryan or I know.
+- **Mailing List:**
+  - Choose provider (currently Campaign Monitor or MailChimp)
+  - Fill in the API Details as requested.
+  - This then hooks into the Newsletter form and sends the information to the relevant provider.
+  - Please test this is working to the relevant list.
+- **Social Media:**
+  - The social media handles associated with the website.
+- **Cookie Panel:**
+  - Contains settings relevant to the Cookie panel. This may not be relevant to the site you’re on, so if it’s not, please remove so as not to confuse the client.
 
-Newsletters
-    - [ ] There’s now a new global in place allowing you to choose where you want the newsletter signup to go and also requires to you enter api keys / list ids .etc.
+### Newsletters
+There’s now a new global in place allowing you to choose where you want the newsletter signup to go and also requires to you enter api keys / list ids .etc.
 
-Collections
-    - [ ] May need mounted to relevant page entry if a new one is added. The news collection needs to mounted to the relevant news page.
+### Collections
+May need mounted to relevant page entry if a new one is added. The news collection needs to mounted to the relevant news page.
 
-Users
-    - [ ] Admin role, need to add permissions to it if collections etc are added.
+### Users
+Admin role, need to add permissions to it if collections etc are added.
 
-Glide
-    - [ ] DPR
-        - [ ] Every glide tag should carry a dpr=“2” tag and the width and height should be the dimensions that are output on the screen.
-        - [ ] DPR will double these dimensions for retina displays.
-    - [ ] Format
-        - [ ] Should be set to webp
-        - [ ] Webp is a modern image format that provides superior lossless and lossy compression for images on the web.
-    - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ] More information on glide is available at https://statamic.dev/tags/glide
+### Glide
+- DPR
+  - Every glide tag should carry a dpr=“2” tag and the width and height should be the dimensions that are output on the screen.
+  - DPR will double these dimensions for retina displays.
+- Format
+  - Should be set to webp
+  - Webp is a modern image format that provides superior lossless and lossy compression for images on the web.
 
-Forms
-    - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ] The form will initially need added in Statamic Forms. Once added it can be output using the following:
-{{ form:form_handle in=“form_handle” data-ajaxform=“true” data-customerror="true" }}
-    - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ] Data-ajaxform=“1” submits the form over XHR. 
-        - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ] To run this you need to use the Git repo, Codex/Statamic/Forms … namely forms.js and FormErrors.js. 
-        - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ] There should be a <div class=“success”> with the success message in it, and form fields should be wrapped in a <div class=“fields”>. Errors will be output either inside a <div class=“errors”> or a <span class=“error”> after each form field, whichever you prefer.
-    - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ]     - [ ] Remove data-ajaxform will submit the form by a POST redirect. 
-        - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ] Again, success / error messages will need to be output.
-    - [ ]     - [ ]     - [ ] Outputting Forms
-        - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ]         - [ ] With the probable exception of a newsletter form, you add the form fields to the html using the forms partial within Thought Co Github Codex Repo. 
-            - [ ] Some HTML may need to be modified but it should give you everything you need out of the box.
+More information on glide is available at https://statamic.dev/tags/glide
+
+### Forms
+The form will initially need added in Statamic Forms. Once added it can be output using the following:
+``{{ form:form_handle in=“form_handle” data-ajaxform=“true” data-customerror="true" }}``
+
+**``data-ajaxform=“1”`` submits the form over `XHR`.**
+- To run this you need to use the Git repo, Codex/Statamic/Forms … namely forms.js and FormErrors.js. 
+- There should be a <div class=“success”> with the success message in it, and form fields should be wrapped in a <div class=“fields”>. Errors will be output either inside a <div class=“errors”> or a <span class=“error”> after each form field, whichever you prefer.
+
+**Remove ``data-ajaxform`` will submit the form by a ``POST`` redirect.**
+- Again, success / error messages will need to be output.
+  
+**Outputting Forms**
+With the probable exception of a newsletter form, you add the form fields to the html using the forms partial within Thought Co Github Codex Repo. 
+Some HTML may need to be modified but it should give you everything you need out of the box.
