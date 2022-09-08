@@ -16,7 +16,6 @@ fields:
     field:
       collections:
         - pages
-        - news
       container: assets
       display: 'Link To'
       type: link
