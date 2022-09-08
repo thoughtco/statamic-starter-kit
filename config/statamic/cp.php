@@ -40,7 +40,7 @@ return [
     'widgets' => [
         [
             'type' => 'collection',
-            'collection' => 'news',
+            'collection' => 'pages',
             'width' => 100
         ],
     ],
