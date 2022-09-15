@@ -1,0 +1,86 @@
+title: Video
+fields:
+  -
+    handle: video_type
+    field:
+      options:
+        3rd-party: 'Youtube / Vimeo'
+        local: Local
+      default: 3rd-party
+      display: 'Video Type'
+      type: button_group
+      icon: button_group
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+  -
+    handle: video_url
+    field:
+      display: 'Video URL'
+      type: video
+      icon: video
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+      if:
+        video_type: 'equals 3rd-party'
+  -
+    handle: mp4
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      max_files: 1
+      display: MP4
+      type: assets
+      icon: assets
+      instructions: 'Upload an MP4 version of your video'
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+      if:
+        video_type: 'equals local'
+  -
+    handle: webm
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      max_files: 1
+      display: 'Upload a WEBm version of your video'
+      type: assets
+      icon: assets
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+      if:
+        video_type: 'equals local'
+  -
+    handle: poster_image
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      max_files: 1
+      display: 'Poster Image'
+      type: assets
+      icon: assets
+      instructions: 'The image that shows on top of your uploaded image. Leave blank to not display.'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+      if:
+        video_type: 'equals local'
