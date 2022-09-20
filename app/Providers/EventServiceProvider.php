@@ -9,6 +9,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use Statamic\Events;
 use Statamic\Events\EntrySaved;
+use Statamic\Events\FormSubmitted;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -22,10 +23,10 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         FormSubmitted::class => [
-            \Listeners\FormListener::class,
+            \App\Listeners\FormListener::class,
         ],
         EntrySaved::class => [
-            Listeners\EntryListener::class,
+            \App\Listeners\EntryListener::class,
         ],                       
     ];
 
