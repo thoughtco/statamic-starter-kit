@@ -16,8 +16,8 @@ sections:
           collapse: true
           previews: true
           sets:
-            new_set:
-              display: 'New Set'
+            '':
+              display: null
               fields: {  }
           display: 'Page Builder'
           type: replicator
