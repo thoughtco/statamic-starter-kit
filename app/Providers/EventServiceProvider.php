@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Event;
 use Statamic\Events;
 use Statamic\Events\EntrySaved;
 use Statamic\Events\FormSubmitted;
+use Statamic\Events\NavTreeSaved;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         EntrySaved::class => [
             \App\Listeners\EntryListener::class,
         ],                       
+        NavTreeSaved::class => [
+            \App\Listeners\NavListener::class,
+        ],                     
     ];
 
     /**
