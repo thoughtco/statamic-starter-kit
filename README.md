@@ -119,3 +119,7 @@ The form will initially need added in Statamic Forms. Once added it can be outpu
 **Outputting Forms**
 With the probable exception of a newsletter form, you add the form fields to the html using the forms partial within Thought Co Github Codex Repo. 
 Some HTML may need to be modified but it should give you everything you need out of the box.
+
+**Captcha**
+All forms should use the Captcha add on (installed). Full details are at https://statamic.com/addons/aryeh-raber/captcha.
+We'll be using Turnstile in Cloudflare so let Ryan or Andi know when you need the keys.
