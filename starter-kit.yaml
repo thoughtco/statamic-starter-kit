@@ -7,9 +7,10 @@ export_paths:
   - app/Listeners/NavListener.php
   - app/Providers/EventServiceProvider.php
   - config/filesystems.php
+  - config/captcha.php
   - config/iconamic.php
   - config/seotamic.php
-  - config/captcha.php
+  - config/statamic-cp-resources.php
   - config/statamic/antlers.php
   - config/statamic/assets.php
   - config/statamic/cp.php
@@ -32,6 +33,7 @@ dependencies:
   drewm/mailchimp-api: ^2.5
   mitydigital/iconamic: ^1.0
   mitydigital/sitemapamic: ^2.3
+  steadfast-collective/statamic-cp-resources: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
   thoughtco/statamic-minify: ^1.2
   thoughtco/statamic-redirects: ^1.1
