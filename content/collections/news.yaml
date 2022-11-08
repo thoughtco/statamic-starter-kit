@@ -8,3 +8,6 @@ sort_dir: desc
 date_behavior:
   past: public
   future: private
+inject:
+  seo:
+    title: '@seo:title'
