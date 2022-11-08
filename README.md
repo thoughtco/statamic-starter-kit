@@ -123,3 +123,8 @@ Some HTML may need to be modified but it should give you everything you need out
 **Captcha**
 All forms should use the Captcha add on (installed). Full details are at https://statamic.com/addons/aryeh-raber/captcha.
 We'll be using Turnstile in Cloudflare so let Ryan or Andi know when you need the keys.
+
+**Additional Image Information**
+We use the BlurHash addon to create a blurred version of the image and then when the image has loaded the main image is brought in.
+See https://packagist.org/packages/thoughtco/statamic-blurhash for more information on image blurring. Front End should deal with the 
+transformation from the blurred image to the live image.
