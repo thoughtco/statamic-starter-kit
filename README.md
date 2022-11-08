@@ -17,10 +17,13 @@ By default the following packages are added:
 - Read the documentation. Any collections / taxonomies not generating viewable pages should be added to the config so they are ignored 
 - This allows the generation of sitemaps and can be configured using the Sitemapamic config file
 
-**SEOTamic:**
-- Allows the Search Engine Management of each entry and can be configured using the SEOTamic config file
-- Read the documentation. Any collection / taxonomies not generating viewable pages should be added to the config so they are ignored.
-- Any ignored collections, may need the SEO tab removed directly from the blueprint. 
+**SEOPro:**
+- Allows the Search Engine Management of each entry and can be configured using the statamic/seo-pro.php config file
+- Allows the production of sitemap.xml
+- Read the documentation at https://statamic.com/addons/statamic/seo-pro/docs
+- Make sure any collections that don't need SEO have that disabled on a sitewide basis.
+- Look at adding a default image.
+- If we're not using the assets container and are using a different container, this will need changed in the config file. 
   
 **Duplicator:**
 - Allows the user to duplicate entries in the control panel
