@@ -99,6 +99,12 @@ May need mounted to relevant page entry if a new one is added. The news collecti
 Admin role, need to add permissions to it if collections etc are added.
 
 ### Glide
+Depending on the site it may be useful to use Glide Presets. The plus point on this is that is generates the various image sizes on upload meaning that the page load time drops further. The downside is, when you upload an image it creates a version of the image for each preset so disk space can get further clogged. So use presets on a per site basis.
+
+#### Presets
+More information on presets can be found at https://statamic.dev/image-manipulation#presets
+
+### General Glide Use
 - DPR
   - Every glide tag should carry a dpr=“2” tag and the width and height should be the dimensions that are output on the screen.
   - DPR will double these dimensions for retina displays.
@@ -106,7 +112,7 @@ Admin role, need to add permissions to it if collections etc are added.
   - Should be set to webp
   - Webp is a modern image format that provides superior lossless and lossy compression for images on the web.
 
-More information on glide is available at https://statamic.dev/tags/glide
+More information on Glide is available at https://statamic.dev/tags/glide
 
 ### Forms
 The form will initially need added in Statamic Forms. Once added it can be output using the following:
