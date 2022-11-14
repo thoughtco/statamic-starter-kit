@@ -6,8 +6,9 @@ export_paths:
   - app/Listeners/FormListener.php
   - app/Listeners/NavListener.php
   - app/Providers/EventServiceProvider.php
-  - config/filesystems.php
+  - config/blurhash.php
   - config/captcha.php
+  - config/filesystems.php
   - config/iconamic.php
   - config/seotamic.php
   - config/statamic-cp-resources.php
@@ -32,9 +33,10 @@ dependencies:
   doublethreedigital/duplicator: ^2.3
   drewm/mailchimp-api: ^2.5
   mitydigital/iconamic: ^1.0
-  mitydigital/sitemapamic: ^2.3
+  mitydigital/sitemapamic: ^2.3.3
   statamic/seo-pro: ^3.1
   steadfast-collective/statamic-cp-resources: ^1.0
+  thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
   thoughtco/statamic-minify: ^1.2
   thoughtco/statamic-redirects: ^1.1
