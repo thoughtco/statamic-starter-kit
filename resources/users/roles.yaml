@@ -54,3 +54,5 @@ admin:
     - 'delete newsletter form submissions'
     - 'view seotamic tool'
     - 'resolve duplicate ids'
+    - 'assign user groups'
+    - 'assign roles'
