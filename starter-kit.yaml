@@ -30,10 +30,9 @@ dependencies:
   aryehraber/statamic-captcha: ^1.9
   bashy/laravel-campaignmonitor: ^6.0
   coconutcraig/laravel-postmark: ^3.0
-  doublethreedigital/duplicator: ^2.3
   drewm/mailchimp-api: ^2.5
   mitydigital/iconamic: ^1.0
-  mitydigital/sitemapamic: ^2.3.3
+  mitydigital/sitemapamic: ^2.3.4
   statamic/seo-pro: ^3.1
   steadfast-collective/statamic-cp-resources: ^1.0
   thoughtco/statamic-blurhash: ^1.0
