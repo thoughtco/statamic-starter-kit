@@ -30,7 +30,7 @@ By default the following packages are added:
 - Required on all sites 
 
 **Social Links:**
-- Some sites have news items which have sharing icons on them. This add-on generates the links for you so all you need to do is drop in the antlers tag. 
+- Some sites have articles (news / events .etc) which have sharing icons on them. This add-on generates the links for you so all you need to do is drop in the antlers tag. Documentation is a https://statamic.com/addons/aerni/social-links. 
 
 **Iconamic:**
 - Some sites have SVG icons that the user needs to be able to choose from. This add-on is an SVG icon picker field type and tag. 
