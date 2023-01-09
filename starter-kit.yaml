@@ -26,7 +26,7 @@ export_paths:
   - resources/views
   - users
 dependencies:
-  aerni/social-links: ^2.3
+  aerni/social-links: ^3.0.1
   aryehraber/statamic-captcha: ^1.9
   bashy/laravel-campaignmonitor: ^6.0
   coconutcraig/laravel-postmark: ^3.0
