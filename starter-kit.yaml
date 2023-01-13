@@ -33,7 +33,6 @@ dependencies:
   drewm/mailchimp-api: ^2.5
   league/flysystem-aws-s3-v3: ^3.0
   mitydigital/iconamic: ^1.0
-  mitydigital/sitemapamic: ^2.3.4
   statamic/seo-pro: ^3.1
   steadfast-collective/statamic-cp-resources: ^1.0
   thoughtco/statamic-blurhash: ^1.0
