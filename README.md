@@ -13,10 +13,6 @@ One installed update the .env:
 
 By default the following packages are added:
 
-**Sitemapamic:**
-- Read the documentation. Any collections / taxonomies not generating viewable pages should be added to the config so they are ignored 
-- This allows the generation of sitemaps and can be configured using the Sitemapamic config file
-
 **SEOPro:**
 - Allows the Search Engine Management of each entry and can be configured using the statamic/seo-pro.php config file
 - Allows the production of sitemap.xml
