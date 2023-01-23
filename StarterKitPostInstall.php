@@ -18,7 +18,7 @@ class StarterKitPostInstall
 
         $appURL = $console->ask('What is the app url?');
 
-		$appKey = \Illuminate\Support\Facades\Artisan::call('key:generate')
+		$appKey = \Illuminate\Support\Facades\Artisan::call('key:generate');
 
         $env = app('files')->get(base_path('.env.example'));
         $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
