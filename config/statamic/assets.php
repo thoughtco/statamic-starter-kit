@@ -67,10 +67,23 @@ return [
         */
 
         'presets' => [
-            // 'small' => ['w' => 200, 'h' => 200, 'q' => 75, 'fit' => 'crop'],
+            // 'hero' => ['w' => 1912, 'h' => 1107, 'dpr' => 2, 'format' => 'webp', 'fit' => 'crop_focal'],
         ],
 
     ],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Generate Image Manipulation Presets on Upload
+    |--------------------------------------------------------------------------
+    |
+    | By default, presets will be automatically generated on upload, ensuring
+    | the cached images are available when they are first used. You may opt
+    | out of this behavior here and have the presets generated on demand.
+    |
+    */
+
+    'generate_presets_on_upload' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +96,7 @@ return [
     |
     */
 
-    'auto_crop' => true,
+    'auto_crop' => false,
 
     /*
     |--------------------------------------------------------------------------

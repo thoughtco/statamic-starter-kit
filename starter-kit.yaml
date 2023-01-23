@@ -10,7 +10,6 @@ export_paths:
   - config/captcha.php
   - config/filesystems.php
   - config/iconamic.php
-  - config/seotamic.php
   - config/statamic-cp-resources.php
   - config/statamic/antlers.php
   - config/statamic/assets.php
@@ -26,15 +25,15 @@ export_paths:
   - resources/views
   - users
 dependencies:
-  aerni/social-links: ^3.0.1
+  aerni/social-links: ^3.0
   aryehraber/statamic-captcha: ^1.9
   bashy/laravel-campaignmonitor: ^6.0
   coconutcraig/laravel-postmark: ^3.0
   drewm/mailchimp-api: ^2.5
   league/flysystem-aws-s3-v3: ^3.0
-  mitydigital/iconamic: ^1.0
+  mitydigital/iconamic: ^1.1
   statamic/seo-pro: ^3.1
-  steadfast-collective/statamic-cp-resources: ^1.0
+  steadfast-collective/statamic-cp-resources: ^2.0
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
   thoughtco/statamic-minify: ^1.2
