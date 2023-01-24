@@ -22,17 +22,24 @@ class StarterKitPostInstall
         $env = str_replace('APP_URL=', "APP_URL=\"{$appURL}\"", $env);
         $env = str_replace('APP_KEY=', "APP_KEY=\"{$originalAppKey}\"", $env);
 
+        // output to console
+        $console->info('<info>[✓]</info> Generate env');
         app('files')->put(base_path('.env'), $env);
+
+        // success of starter kit installed
+        $console->info('<info>[✓]</info> Starter kit installed!');
 
         // delete starter kit .env
         app('files')->delete(base_path('.env.thoughtco'));
+        $console->info('<info>[✓]</info> .env.thoughtco deleted');
 
         // delete .env.example
         app('files')->delete(base_path('.env.example'));
+        $console->info('<info>[✓]</info> .env.example deleted');
 
         // delete composer.json.bak
         app('files')->delete(base_path('composer.json.bak'));
+        $console->info('<info>[✓]</info> composer.json.bak deleted');
 
-        $console->info('<info>[✓]</info> Starter kit installed!');
     }
 }
