@@ -56,7 +56,7 @@ class StarterKitPostInstall
         Artisan::call('statamic:glide:clear');
         $console->info('<info>[✓]</info> statamic glide cache cleared');
 
-        Statamic::call('statamic:stache:clear');
+        Artisan::call('statamic:stache:clear');
         $console->info('<info>[✓]</info> statamic stache cleared');
 
         Artisan::call('route:clear');
