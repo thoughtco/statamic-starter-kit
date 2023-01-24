@@ -49,5 +49,11 @@ class StarterKitPostInstall
         app('files')->deleteDirectory(public_path('js'));
         $console->info('<info>[✓]</info> js folder deleted');
 
+        // to be super sure we're clear on everything
+        // we don't need to do all of this stuff below,
+        // but just trying to head off some issues
+        Artisan::command('glide:clear', function () {
+            $console->info("Glide cache cleared");
+        });
     }
 }
