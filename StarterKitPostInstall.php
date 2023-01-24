@@ -63,7 +63,7 @@ class StarterKitPostInstall
         $console->info('<info>[✓]</info> laravel routes cleared');
 
         Artisan::call('config:clear');
-        $console->info('<info>[✓]</info> laravel cache cleared');
+        $console->info('<info>[✓]</info> laravel config cleared');
 
         Artisan::call('cache:clear');
         $console->info('<info>[✓]</info> laravel cache cleared');
