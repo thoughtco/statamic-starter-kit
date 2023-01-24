@@ -38,15 +38,15 @@ class StarterKitPostInstall
         $console->info('<info>[✓]</info> composer.json.bak deleted');
 
         // delete public/css
-        app('public')->delete(base_path('css'));
+        app('files')->deleteDirectory(public_path('css'));
         $console->info('<info>[✓]</info> css folder deleted');
 
         // delete public/img
-        app('public')->delete(base_path('img'));
+        app('files')->deleteDirectory(public_path('img'));
         $console->info('<info>[✓]</info> img folder deleted');
 
         // delete public/js
-        app('public')->delete(base_path('js'));
+        app('files')->deleteDirectory(public_path('js'));
         $console->info('<info>[✓]</info> js folder deleted');
 
     }
