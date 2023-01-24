@@ -33,13 +33,21 @@ class StarterKitPostInstall
         app('files')->delete(base_path('.env.thoughtco'));
         $console->info('<info>[✓]</info> .env.thoughtco deleted');
 
-        // delete .env.example
-        app('files')->delete(base_path('.env.example'));
-        $console->info('<info>[✓]</info> .env.example deleted');
-
         // delete composer.json.bak
         app('files')->delete(base_path('composer.json.bak'));
         $console->info('<info>[✓]</info> composer.json.bak deleted');
+
+        // delete public/css
+        app('public')->delete(base_path('css'));
+        $console->info('<info>[✓]</info> css folder deleted');
+
+        // delete public/img
+        app('public')->delete(base_path('img'));
+        $console->info('<info>[✓]</info> img folder deleted');
+
+        // delete public/js
+        app('public')->delete(base_path('js'));
+        $console->info('<info>[✓]</info> js folder deleted');
 
     }
 }
