@@ -7,9 +7,7 @@ On the blank Statamic install, SSH in and run `php please starter-kit:install th
 - **Clear Site:** Yes in most cases as it will generally be a blank slate you’re running from
 - **Super Admin:** No, users are already setup for TC Staff.
 
-One installed update the .env:
-- Update ``APP_NAME`` in env
-- Update ``APP_URL`` in env or else you’ll get 404
+One installed enter values in the prompt to update the APP_NAME, APP_KEY and APP_URL in the .env file.
 
 By default the following packages are added:
 
@@ -20,10 +18,6 @@ By default the following packages are added:
 - Make sure any collections that don't need SEO have that disabled on a sitewide basis.
 - Look at adding a default image.
 - If we're not using the assets container and are using a different container, this will need changed in the config file. 
-  
-**Duplicator:**
-- Allows the user to duplicate entries in the control panel
-- Required on all sites 
 
 **Social Links:**
 - Some sites have articles (news / events .etc) which have sharing icons on them. This add-on generates the links for you so all you need to do is drop in the antlers tag. Documentation is a https://statamic.com/addons/aerni/social-links. 
@@ -52,9 +46,6 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
         - Create the sender signature.
         - Video: https://loom.com/share/f11fb8314ba74f66be033b049e433fa3
         - Add the API Key to POSTMARK_TOKEN
-
-### Body Tag
-- Add  data-csrf="{{ csrf_token }}" on layout.antlers.html, if it’s not already there.
 
 ### Blueprints
 
@@ -102,7 +93,7 @@ More information on presets can be found at https://statamic.dev/image-manipulat
 
 ### General Glide Use
 - DPR
-  - Every glide tag should carry a dpr=“2” tag and the width and height should be the dimensions that are output on the screen.
+  - Every glide tag should carry a `dpr="2"` tag and the width and height should be the dimensions that are output on the screen.
   - DPR will double these dimensions for retina displays.
 - Format
   - Should be set to webp
@@ -112,13 +103,13 @@ More information on Glide is available at https://statamic.dev/tags/glide
 
 ### Forms
 The form will initially need added in Statamic Forms. Once added it can be output using the following:
-``{{ form:form_handle in=“form_handle” data-ajaxform=“true” data-customerror="true" }}``
+``{{ form:form_handle in="form_handle" data-ajaxform="true" data-customerror="true" }}``
 
 **``data-ajaxform=“1”`` submits the form over `XHR`.**
 - To run this you need to use the Git repo, Codex/Statamic/Forms … namely forms.js and FormErrors.js. 
-- There should be a <div class=“success”> with the success message in it, and form fields should be wrapped in a <div class=“fields”>. Errors will be output either inside a <div class=“errors”> or a <span class=“error”> after each form field, whichever you prefer.
+- There should be a `<div class="success">` with the success message in it, and form fields should be wrapped in a `<div class="fields">`. Errors will be output either inside a `<div class="errors">` or a `<span class="error">` after each form field, whichever you prefer.
 
-**Remove ``data-ajaxform`` will submit the form by a ``POST`` redirect.**
+**Removing ``data-ajaxform`` will submit the form by a ``POST`` redirect.**
 - Again, success / error messages will need to be output.
   
 **Outputting Forms**
