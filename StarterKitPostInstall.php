@@ -8,6 +8,9 @@ class StarterKitPostInstall
 {
     public function handle($console)
     {
+
+        $originalAppUrl = env('APP_URL');
+
         $appName = $console->ask('What should be your app name?');
         $appName = preg_replace('/([\'|\"|#])/m', '', $appName);
 
@@ -18,7 +21,7 @@ class StarterKitPostInstall
         $env = app('files')->get(base_path('.env.example'));
         $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
         $env = str_replace('APP_URL=', "APP_URL=\"{$appURL}\"", $env);
-        $env = str_replace('APP_KEY=', "APP_KEY=\"{$appKey}\"", $env);
+        $env = str_replace('APP_URL=', "APP_URL=\"{$appKey}\"", $env);
 
         app('files')->put(base_path('.env'), $env);
 
