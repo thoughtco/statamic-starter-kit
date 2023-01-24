@@ -53,7 +53,7 @@ class StarterKitPostInstall
         // to be super sure we're clear on everything
         // we don't need to do all of this stuff below,
         // but just trying to head off some issues
-        Statamic::call('statamic:glide:clear');
+        Artisan::call('statamic:glide:clear');
         $console->info('<info>[✓]</info> statamic glide cache cleared');
 
         Statamic::call('statamic:stache:clear');
