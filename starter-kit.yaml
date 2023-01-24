@@ -1,5 +1,6 @@
 export_paths:
   - .env
+  - .editorconfig
   - content
   - app/Console
   - app/Listeners/EntryListener.php
