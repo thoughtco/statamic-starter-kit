@@ -53,7 +53,11 @@ class StarterKitPostInstall
         // to be super sure we're clear on everything
         // we don't need to do all of this stuff below,
         // but just trying to head off some issues
-        Artisan::call('glide:clear');
+        Artisan::call('cache:clear');
+        $console->info('<info>[✓]</info> laravel cache cleared');
+
+        Statamic::call('glide:clear');
         $console->info('<info>[✓]</info> glide cache cleared');
+
     }
 }
