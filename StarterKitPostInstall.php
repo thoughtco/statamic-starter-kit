@@ -24,6 +24,15 @@ class StarterKitPostInstall
 
         app('files')->put(base_path('.env'), $env);
 
+        // delete starter kit .env
+        app('files')->get(base_path('.env.thoughtco'));
+
+        // delete .env.example
+        app('files')->get(base_path('.env.example'));
+
+        // delete composer.json.bak
+        app('files')->get(base_path('composer.json.bak'));
+
         $console->info('<info>[✓]</info> Starter kit installed!');
     }
 }
