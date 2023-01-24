@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -23,11 +24,11 @@ class StarterKitPostInstall
         $env = str_replace('APP_KEY=', "APP_KEY=\"{$originalAppKey}\"", $env);
 
         // output to console
-        $console->info('<info>[✓]</info> Generate env');
+        $console->info('<info>[✓]</info> generate env');
         app('files')->put(base_path('.env'), $env);
 
         // success of starter kit installed
-        $console->info('<info>[✓]</info> Starter kit installed!');
+        $console->info('<info>[✓]</info> starter kit installed!');
 
         // delete starter kit .env
         app('files')->delete(base_path('.env.thoughtco'));
@@ -52,8 +53,7 @@ class StarterKitPostInstall
         // to be super sure we're clear on everything
         // we don't need to do all of this stuff below,
         // but just trying to head off some issues
-        Artisan::command('glide:clear', function () {
-            $console->info("Glide cache cleared");
-        });
+        Artisan::call('glide:clear');
+        $console->info('<info>[✓]</info> glide cache cleared');
     }
 }
