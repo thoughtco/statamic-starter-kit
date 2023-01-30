@@ -1,3 +1,9 @@
 name: Logan
 super: true
 id: 8fe5f5bd-55c6-4f98-862a-ff38f31edd83
+password_hash: $2y$10$opdLhUrrkz6PkPjWlxp6c.YKU9mJ7hBKvtSAs2OmCdaAc4GIrRdiC
+preferences:
+  collections:
+    news:
+      columns:
+        - title
