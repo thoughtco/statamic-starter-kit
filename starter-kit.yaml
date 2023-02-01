@@ -19,6 +19,7 @@ export_paths:
   - config/statamic/seo-pro.php
   - config/statamic/sites.php
   - config/thoughtco/minify.php
+  - config/thoughtco/site.php
   - resources/blueprints
   - resources/fieldsets
   - resources/forms
@@ -33,7 +34,7 @@ dependencies:
   drewm/mailchimp-api: ^2.5
   league/flysystem-aws-s3-v3: ^3.0
   mitydigital/iconamic: ^1.1
-  statamic/seo-pro: ^3.1
+  statamic/seo-pro: '4.0.*'
   steadfast-collective/statamic-cp-resources: ^2.0
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
