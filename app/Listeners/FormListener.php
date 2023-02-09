@@ -2,8 +2,6 @@
 
 namespace App\Listeners;
 
-use \DrewM\MailChimp\MailChimp;
-
 use Statamic\Events\FormSubmitted;
 use Statamic\Facades\Entry;
 use Statamic\Facades\GlobalSet;
@@ -13,17 +11,10 @@ use Statamic\Support\Str;
 
     CAMPAIGN MONITOR
         + Install https://packagist.org/packages/bashy/laravel-campaignmonitor
-        + ENV Requires:
-            -> CAMPAIGNMONITOR_LIST_ID
-            -> CAMPAIGNMONITOR_API_KEY
-            -> CAMPAIGNMONITOR_CLIENT_ID
         + For custom fields, see add function on https://github.com/campaignmonitor/createsend-php/blob/master/csrest_subscribers.php
 
     MAILCHIMP
-        + Install https://packagist.org/packages/drewm/mailchimp-api
-        + ENV Requires:
-            -> MAILCHIMP_API
-            -> MAILCHIMP_AUDIENCE
+        + Install https://packagist.org/packages/mailchimp/marketing
 
 */
 
@@ -40,8 +31,8 @@ class FormListener
             case 'newsletter':
 
                 // what provider as we using?
-                $provider = GlobalSet::findByHandle('settings')->in('default')->get('provider');
-                
+                $provider = GlobalSet::findByHandle('mailing_list')->in('default')->get('provider');
+                                
                 if ($provider != ''){
                 
                     // pass email address, name, service type
@@ -90,10 +81,14 @@ class FormListener
 
                 $result = false;
         
-                if ($apiKey = GlobalSet::findByHandle('settings')->in('default')->get('mailchimp_api_key') != '' && $audienceID = GlobalSet::findByHandle('settings')->in('default')->get('mailchimp_audience_id') != '') {        
+                if (GlobalSet::findByHandle('mailing_list')->in('default')->get('mailchimp_api_key') != '' && GlobalSet::findByHandle('mailing_list')->in('default')->get('mailchimp_audience_id') != '') {        
                     
-                    // setup MailChimp instance
-                    $mailChimp = new MailChimp($apiKey);
+                    $apiKey = GlobalSet::findByHandle('mailing_list')->in('default')->get('mailchimp_api_key');
+                    
+                    $audienceID = GlobalSet::findByHandle('mailing_list')->in('default')->get('mailchimp_audience_id');
+                                        
+                    // // setup MailChimp instance
+                    // $mailChimp = new MailChimp($apiKey);
                 
                     if ($name != '') {
             
@@ -109,20 +104,41 @@ class FormListener
                     } else {
                         $mergeFields = [];
                     }
-                                
-                    // subscriber hash
-                    $subscriberHash = md5(strtolower($email));            
+                    
+                    $mailchimp = new \MailchimpMarketing\ApiClient();
+                    $mailchimp->setConfig([
+                      'apiKey' => $apiKey,
+                      'server' => 'us9'
+                    ]);
+                    
+                    $subscriberHash = md5(strtolower($email));      
+
+                    $emailExists = $mailchimp->lists->getListMember($audienceID, $subscriberHash);
+
+                    // if we have an id returned
+                    // they have already subscribed so we should
+                    // re-subscribe them
+                    if (isset($emailExists->id)){
+
+                        $result = $mailchimp->lists->updateListMember($audienceID, $subscriberHash,
+                            [
+                                "email_address" => $email,
+                                "status" => "subscribed",
+                                "merge_fields" => $mergeFields
+                            ]
+                        );
+                        
+                    // otherwise they are a new subscriber
+                    } else {
+                        
+                        $result = $mailchimp->lists->addListMember($audienceID, [
+                            "email_address" => $email,
+                            "status" => "subscribed",
+                            "merge_fields" => $mergeFields
+                        ]);
+                        
+                    }
                                                                                 
-                    // post to mailchimp
-                    $result = $mailChimp->put(
-                        'lists/'.$audienceID.'/members/'.$subscriberHash, 
-                        [
-                            'email_address' => $email,
-                            'merge_fields' => (object)$mergeFields,
-                            'status' => 'subscribed'
-                        ]
-                    );
-                                        
                 }
                 
                 return $result;
