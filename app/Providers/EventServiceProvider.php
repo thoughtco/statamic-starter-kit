@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Event;
 use Statamic\Events;
 use Statamic\Events\EntrySaved;
 use Statamic\Events\FormSubmitted;
+use Statamic\Events\GlobalSetSaved;
 use Statamic\Events\NavTreeSaved;
 
 class EventServiceProvider extends ServiceProvider
@@ -23,14 +24,17 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        FormSubmitted::class => [
-            \App\Listeners\FormListener::class,
-        ],
         EntrySaved::class => [
             \App\Listeners\EntryListener::class,
         ],                       
+        FormSubmitted::class => [
+            \App\Listeners\FormListener::class,
+        ],
+        GlobalSetSaved::class => [
+            \App\Listeners\GlobalSavedListener::class,
+        ],
         NavTreeSaved::class => [
-            \App\Listeners\NavListener::class,
+            \App\Listeners\NavTreeListener::class,
         ],                     
     ];
 
