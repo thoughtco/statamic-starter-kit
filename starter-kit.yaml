@@ -5,7 +5,8 @@ export_paths:
   - app/Console
   - app/Listeners/EntryListener.php
   - app/Listeners/FormListener.php
-  - app/Listeners/NavListener.php
+  - app/Listeners/GlobalSavedListener.php
+  - app/Listeners/NavTreeListener.php
   - app/Providers/EventServiceProvider.php
   - config/blurhash.php
   - config/captcha.php
