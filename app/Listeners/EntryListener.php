@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Statamic\Events\EntrySaved;
 use Statamic\Facades\Entry;
 
@@ -16,26 +17,23 @@ class EntryListener
         switch ($event->entry->collection()->handle()){
                         
             case 'news':
-
-                $this->clearPagesWithPanels(['news']);
-                $this->clearPagesWithPanels(['article_select']); 
-                
+                $this->clearPagesWithPanels(['news', 'article_select']); 
             break;
 
         }
 
-        Cache::forget('entry_'.$event->entry->id());
+        $this->clearCacheAndWarmUrl($event->entry);
     } 
     
     // clear any pages with the given handles
-    private function clearPagesWithPanels($panelHandles = [], $collectionHandle = 'pages', $fieldHandle = 'panels')
+    private function clearEntriesWithPanels($panelHandles = [], $collectionHandle = 'pages', $fieldHandle = 'panels')
     {
         Entry::query()
             ->where('collection', $collectionHandle)
             ->get(['id', $fieldHandle])
             ->each(function($page) use ($fieldHandle, $panelHandles) {
                 if ($this->hasPanel($page->get($fieldHandle, []), $panelHandles)) {
-                    Cache::forget('entry_'.$page->id());
+                    $this->clearCacheAndWarmUrl($page);
                 }
             });        
     }
@@ -47,6 +45,16 @@ class EntryListener
             ->pluck('type')
             ->intersect($panelHandles)
             ->count() > 0;    
+    }
+    
+    // clear cache and warm a URL again
+    private function clearCacheAndWarmUrl($entry)
+    {
+        Cache::forget('entry_'.$entry->id());
+        
+        if ($uri = $entry->uri()) {
+            Http::get(url($uri));
+        }
     }
 }
 
