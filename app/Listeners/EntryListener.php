@@ -17,7 +17,7 @@ class EntryListener
         switch ($event->entry->collection()->handle()){
                         
             case 'news':
-                $this->clearPagesWithPanels(['news', 'article_select']); 
+                $this->clearEntriesWithPanels(['news', 'article_select']); 
             break;
 
         }
