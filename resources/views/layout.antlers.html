@@ -21,7 +21,7 @@
 		
     {{ template_content }}
 
-	{{# anything else that should only be in production #}}
+	{{# anything else that should only be on staging #}}
 	{{ if environment != 'production' }}
 
     {{ /if }}
