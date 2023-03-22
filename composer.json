@@ -2,8 +2,8 @@
     "name": "thoughtco/statamic-starter-kit",
     "extra": {
         "statamic": {
-            "name": "Statamic Starter Lit",
-            "description": "ThoughtCo Statamic Starter Kit"
+            "name": "TC Statamic Starter Kit",
+            "description": "TC Statamic Starter Kit"
         }
     }
 }
