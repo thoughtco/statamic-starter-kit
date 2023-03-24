@@ -7,16 +7,16 @@ use Statamic\Events\NavTreeSaved;
 
 class NavTreeListener
 {
-    public function handle(NavTreeListener $event)
+    public function handle(NavTreeSaved $event)
     {
         // what nav are we wanting to clear?
         switch ($event->tree->handle()) {
-            
+
             case 'main';
                 Cache::forget('main_nav');
-            break;    
-            
+            break;
+
         }
-        
+
     }
 }
