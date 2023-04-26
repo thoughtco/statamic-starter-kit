@@ -2,8 +2,6 @@
 
 namespace App\Listeners;
 
-// use \DrewM\MailChimp\MailChimp;
-
 use Statamic\Events\FormSubmitted;
 use Statamic\Facades\Entry;
 use Statamic\Facades\GlobalSet;
@@ -13,17 +11,12 @@ use Statamic\Support\Str;
 
     CAMPAIGN MONITOR
         + Install https://packagist.org/packages/bashy/laravel-campaignmonitor
-        + ENV Requires:
-            -> CAMPAIGNMONITOR_LIST_ID
-            -> CAMPAIGNMONITOR_API_KEY
-            -> CAMPAIGNMONITOR_CLIENT_ID
+        + Set variables in Mailing List Global
         + For custom fields, see add function on https://github.com/campaignmonitor/createsend-php/blob/master/csrest_subscribers.php
 
     MAILCHIMP
-        + Install https://packagist.org/packages/drewm/mailchimp-api
-        + ENV Requires:
-            -> MAILCHIMP_API
-            -> MAILCHIMP_AUDIENCE
+        + Install https://packagist.org/packages/mailchimp/marketing
+        + Set variables in Mailing List Global
 
 */
 
@@ -92,13 +85,14 @@ class FormListener
         
                 if (GlobalSet::findByHandle('mailing_list')->in('default')->get('mailchimp_api_key') != '' && GlobalSet::findByHandle('mailing_list')->in('default')->get('mailchimp_audience_id') != '') {        
                     
+                    // set the api key
                     $apiKey = GlobalSet::findByHandle('mailing_list')->in('default')->get('mailchimp_api_key');
                     
+                    // set the audience id
                     $audienceID = GlobalSet::findByHandle('mailing_list')->in('default')->get('mailchimp_audience_id');
-                                        
-                    // // setup MailChimp instance
-                    // $mailChimp = new MailChimp($apiKey);
-                
+                                          
+                    // if we have a name
+                    // add it to the merge fields              
                     if ($name != '') {
             
                         // separate out firstname and lastname
@@ -123,6 +117,7 @@ class FormListener
                       'server' => $mailchimpServer
                     ]);
                     
+                    // md5 hash the subscriber email
                     $subscriberHash = md5(strtolower($email));      
 
                     // setListMember adds and updates members
