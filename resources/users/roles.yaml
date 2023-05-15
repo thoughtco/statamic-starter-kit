@@ -56,3 +56,5 @@ admin:
     - 'resolve duplicate ids'
     - 'assign user groups'
     - 'assign roles'
+  preferences:
+    locale: en
