@@ -11,12 +11,12 @@ class NavTreeListener
     {
         // what nav are we wanting to clear?
         switch ($event->tree->handle()) {
-
+            
             case 'main';
                 Cache::forget('main_nav');
-            break;
-
+            break;    
+            
         }
-
+        
     }
 }
