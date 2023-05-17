@@ -32,7 +32,7 @@ class GlobalSavedListener
         if (isset($global->data()['latitude']) === false){
             
             // get google api key
-            $googleApiKey = GlobalSet::findByHandle('contact')->in('default')->get('api_key');
+            $googleApiKey = env('GOOGLE_API', '');
                                                                                                          
 		    // get lat/long on basis of postcode	
 		    $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.urlencode($global->data()['address']).'&sensor=false&key='.$googleApiKey);

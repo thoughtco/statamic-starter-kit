@@ -1,87 +1,106 @@
-sections:
+tabs:
   main:
     display: Main
-    fields:
+    sections:
       -
-        handle: email_and_phone_contact_details
-        field:
-          display: 'Email & Phone Contact Details'
-          type: section
-          icon: section
-          instructions: 'If not required, leave blank.'
-          listable: hidden
-          instructions_position: above
-          visibility: visible
-          always_save: false
-      -
-        handle: email_address
-        field:
-          input_type: email
-          antlers: false
-          display: 'Email Address'
-          type: text
-          icon: text
-          listable: hidden
-          instructions_position: above
-          validate:
-            - email
-          width: 50
-          visibility: visible
-          always_save: false
-      -
-        handle: phone_number
-        field:
-          input_type: text
-          antlers: false
-          display: 'Phone Number'
-          type: text
-          icon: text
-          listable: hidden
-          instructions_position: above
-          width: 50
-          visibility: visible
-          always_save: false
-      -
-        handle: postal_details
-        field:
-          display: 'Postal Details'
-          type: section
-          icon: section
-          instructions: 'If not required, leave blank'
-          listable: hidden
-          instructions_position: above
-          visibility: visible
-          always_save: false
-      -
-        handle: address
-        field:
-          antlers: true
-          display: Address
-          type: textarea
-          icon: textarea
-          listable: hidden
-          instructions_position: above
-      -
-        handle: google_maps
-        field:
-          display: 'Google Maps'
-          type: section
-          icon: section
-          instructions: 'The api key required to display maps.'
-          listable: hidden
-          instructions_position: above
-          visibility: visible
-          always_save: false
-      -
-        handle: api_key
-        field:
-          input_type: text
-          antlers: false
-          display: 'API Key'
-          type: text
-          icon: text
-          instructions: 'Google Maps API Key'
-          listable: hidden
-          instructions_position: above
-          visibility: read_only
-          always_save: false
+        fields:
+          -
+            handle: email_and_phone_contact_details
+            field:
+              display: 'Email & Phone Contact Details'
+              type: section
+              icon: section
+              instructions: 'If not required, leave blank.'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              always_save: false
+          -
+            handle: email_address
+            field:
+              input_type: email
+              antlers: false
+              display: 'Email Address'
+              type: text
+              icon: text
+              listable: hidden
+              instructions_position: above
+              validate:
+                - email
+              width: 50
+              visibility: visible
+              always_save: false
+          -
+            handle: phone_number
+            field:
+              input_type: text
+              antlers: false
+              display: 'Phone Number'
+              type: text
+              icon: text
+              listable: hidden
+              instructions_position: above
+              width: 50
+              visibility: visible
+              always_save: false
+          -
+            handle: postal_details
+            field:
+              display: 'Postal Details'
+              type: section
+              icon: section
+              instructions: 'If not required, leave blank'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              always_save: false
+          -
+            handle: address
+            field:
+              antlers: true
+              display: Address
+              type: textarea
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+          -
+            handle: coordinates
+            field:
+              display: Co-ordinates
+              type: section
+              icon: section
+              instructions: |-
+                Leave blank if not required.
+                Statamic attempts to retrieve latitude and longitude from the address and postcode above. 
+                If the co-ordinates retrieved are wrong, you can enter your own co-ordinates in the latitude and longitude field.
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              always_save: false
+              hide_display: false
+          -
+            handle: latitude
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Latitude
+              icon: text
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+          -
+            handle: longitude
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Longitude
+              icon: text
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
