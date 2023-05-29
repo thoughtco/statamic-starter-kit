@@ -33,7 +33,7 @@ dependencies:
   coconutcraig/laravel-postmark: ^3.0
   league/flysystem-aws-s3-v3: ^3.0
   mailchimp/marketing: ^3.0
-  statamic/seo-pro: '5.0.*'
+  statamic/seo-pro: '5.*'
   steadfast-collective/statamic-cp-resources: ^2.0
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
