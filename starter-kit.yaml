@@ -31,7 +31,6 @@ dependencies:
   aryehraber/statamic-captcha: ^1.9
   bashy/laravel-campaignmonitor: ^6.0
   coconutcraig/laravel-postmark: ^3.0
-  league/flysystem-aws-s3-v3: ^3.0
   mailchimp/marketing: ^3.0
   statamic/seo-pro: '5.*'
   steadfast-collective/statamic-cp-resources: ^2.0
