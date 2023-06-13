@@ -1,66 +1,72 @@
 title: Page
-sections:
+tabs:
   main:
     display: Main
-    fields:
+    sections:
       -
-        handle: title
-        field:
-          type: text
-          required: true
-          validate:
-            - required
-      -
-        handle: panels
-        field:
-          collapse: true
-          previews: true
-          sets:
-            '':
-              display: null
-              fields: {  }
-          display: 'Page Builder'
-          type: replicator
-          icon: replicator
-          instructions: 'Build your page using various pre-defined content panels.'
-          listable: hidden
-          instructions_position: above
-          visibility: visible
-          always_save: false
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: panels
+            field:
+              collapse: true
+              previews: true
+              sets:
+                '':
+                  display: null
+                  fields: {  }
+              display: 'Page Builder'
+              type: replicator
+              icon: replicator
+              instructions: 'Build your page using various pre-defined content panels.'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              always_save: false
   sidebar:
     display: Sidebar
-    fields:
+    sections:
       -
-        handle: slug
-        field:
-          type: slug
-          localizable: true
-      -
-        handle: parent
-        field:
-          type: entries
-          collections:
-            - pages
-          max_items: 1
-          listable: false
-          localizable: true
-      -
-        handle: template
-        field:
-          default: default
-          display: Template
-          type: hidden
-          icon: hidden
-          listable: hidden
-          instructions_position: above
-          visibility: visible
-          always_save: false
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true
+          -
+            handle: template
+            field:
+              default: default
+              display: Template
+              type: hidden
+              icon: hidden
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              always_save: false
   SEO:
     display: SEO
-    fields:
+    sections:
       -
-        handle: seo
-        field:
-          type: seo_pro
-          listable: false
-          display: SEO
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
