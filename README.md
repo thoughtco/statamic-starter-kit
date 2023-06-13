@@ -34,6 +34,10 @@ By default the following packages are added:
 - Not needed on every site, so isn’t brought into the layout via Antlers.
 - Full output information is available at https://packagist.org/packages/thoughtco/statamic-cookiepanel
 
+### ENV Variables
+- GOOGLE_API: the api key to be used across the site. Information on how to obtain a key is found at https://www.loom.com/share/1e8a12938d6c459b8750c4a876680293?sid=60bfdbac-044d-4d46-97a7-442fadfa02e8.
+- PANEL_CACHE: Set to true to enable panel caching in default.tpl. False disables it. For the site going live, this should be set to true.
+
 ### Postmark
 We don’t use our own servers to send emails from, we rely on Postmark for delivery with the added bonus of we get visibility on deliverability .etc.
 
@@ -62,7 +66,6 @@ There are two fieldsets setup in the default build:
 There are 4 globals setup
 - **Contact:**
   - Basic fields for main points of contact
-  - Google API Key: Every site should have a separate API key. If you’re unsure of where to do this, let Ryan or I know.
 - **Mailing List:**
   - Choose provider (currently Campaign Monitor or MailChimp)
   - Fill in the API Details as requested.
@@ -115,7 +118,7 @@ Some HTML may need to be modified but it should give you everything you need out
 
 **Captcha**
 All forms should use the Captcha add on (installed). Full details are at https://statamic.com/addons/aryeh-raber/captcha.
-We'll be using Turnstile in Cloudflare so let Ryan or Andi know when you need the keys.
+We're currently using hCaptcha to provide this and information on obtaining the relevant keys is available at https://www.loom.com/share/b31acabe6e0f492cb90d0193f3ffb4dd?sid=5eafb894-ccf8-463e-a8ad-10ccd147f76c
 
 **Additional Image Information**
 We use the BlurHash addon to create a blurred version of the image and then when the image has loaded the main image is brought in.

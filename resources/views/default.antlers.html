@@ -1,5 +1,17 @@
-{{# cache key="sm:entry_{id}" #}}
-{{ panels }}
-{{ partial src="_panels/{type}" }}
-{{ /panels }}
-{{# /cache #}}
+{{ if config.thoughtco.site.cache.panels }}
+	{{ if (get | count) < 1 }}
+		{{ cache key="entry_{id}" }}
+			{{ panels }}
+				{{ partial src="_panels/{type}" }}
+			{{ /panels }}
+		{{ /cache }}
+	{{ else }}
+		{{ panels }}
+			{{ partial src="_panels/{type}" }}
+		{{ /panels }}
+	{{ /if }}
+{{ else }}
+	{{ panels }}
+		{{ partial src="_panels/{type}" }}
+	{{ /panels }}
+{{ /if }}
