@@ -1,6 +1,7 @@
 title: News
 template: news/show
 layout: layout
+mount: 0805a00b-4ece-4de7-a1df-887463f4c530
 revisions: false
 route: '{mount}/{year}/{month}/{slug}'
 date: true
@@ -8,6 +9,11 @@ sort_dir: desc
 date_behavior:
   past: public
   future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
 inject:
   seo:
     title: '@seo:title'

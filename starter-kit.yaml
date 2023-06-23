@@ -1,6 +1,7 @@
 export_paths:
   - .env.thoughtco
   - .editorconfig
+  - README.md
   - content
   - app/Console
   - app/Listeners/EntryListener.php

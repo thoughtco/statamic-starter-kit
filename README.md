@@ -59,8 +59,21 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
 
 ### Fieldsets
 There are two fieldsets setup in the default build:
-- **Link:** contains an url field, a text field and a toggle for a new window
-- **Slider Settings:** Contains Slider Effect and Time Delay and should be used on sliders with the relevant data attribute for the slider. The data attributes are available in swiper-setup.js
+- **Link Blocks:** a replicator that will output a elements based on the information passed from each link block. 
+
+```
+{{ link_blocks }}
+  {{ partial:_partials/snippets/links class="your classes" }}
+{{/link_blocks }}
+```
+
+will output something similar to:
+
+```<a href="https://www.thoughtcollective.com" rel="noopener" target="_blank" title="Title Attribute Text=" aria-label="Aria Label Text" class="your classes"></a>```
+
+If you don't need any classes, simply leave the attribute out. Any classes should be specified directly in the html and not left to the client to input.
+
+- **Slider Settings:** Contains Slider Effect, Time Delay and pagination and should be used on sliders with the relevant data attribute for the slider. The data attributes are available in swiper-setup.js.
 
 ### Globals
 There are 4 globals setup

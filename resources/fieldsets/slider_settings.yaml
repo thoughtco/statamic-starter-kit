@@ -26,7 +26,7 @@ fields:
       type: select
       icon: select
       instructions: 'Would you like the slides to cross fade or slide from right to left.'
-      width: 50
+      width: 33
       listable: hidden
       instructions_position: above
       validate:
@@ -44,6 +44,18 @@ fields:
       type: range
       icon: range
       instructions: 'How long you want a slide to be visible for'
-      width: 50
+      width: 33
       listable: hidden
       instructions_position: above
+  -
+    handle: show_pagination
+    field:
+      default: false
+      type: toggle
+      display: 'Show Pagination'
+      icon: toggle
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
