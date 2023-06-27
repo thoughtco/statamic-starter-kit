@@ -3,13 +3,8 @@ tabs:
     display: 'Social Media'
     sections:
       -
+        display: 'Social Media Links'
         fields:
-          -
-            handle: section_social
-            field:
-              type: section
-              listable: hidden
-              display: 'Social media links'
           -
             handle: social_media
             field:
