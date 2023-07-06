@@ -73,7 +73,7 @@ will output something similar to:
 
 If you don't need any classes, simply leave the attribute out. Any classes should be specified directly in the html and not left to the client to input.
 
-- **Video:** A series of fields that will allow the output of a 3rd party or local video using the code below. This should be use for all video output.
+- **Video:** A series of fields that will allow the output of a 3rd party or local video using the code below. This should be used for all video output.
 
 ```
   {{ partial:_partials/snippets/video video_type="{video_type}" }}
