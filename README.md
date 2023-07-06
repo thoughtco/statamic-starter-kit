@@ -58,7 +58,7 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
     - It allows the panel to be re-used in different areas of the website if necessary.
 
 ### Fieldsets
-There are two fieldsets setup in the default build:
+There are three fieldsets setup in the default build:
 - **Link Blocks:** a replicator that will output a elements based on the information passed from each link block. 
 
 ```
@@ -72,6 +72,12 @@ will output something similar to:
 ```<a href="https://www.thoughtcollective.com" rel="noopener" target="_blank" title="Title Attribute Text=" aria-label="Aria Label Text" class="your classes"></a>```
 
 If you don't need any classes, simply leave the attribute out. Any classes should be specified directly in the html and not left to the client to input.
+
+- **Video:** A series of fields that will allow the output of a 3rd party or local video using the code below. This should be use for all video output.
+
+```
+  {{ partial:_partials/snippets/video video_type="{video_type}" }}
+```
 
 - **Slider Settings:** Contains Slider Effect, Time Delay and pagination and should be used on sliders with the relevant data attribute for the slider. The data attributes are available in swiper-setup.js.
 
