@@ -15,18 +15,6 @@ fields:
       visibility: visible
       always_save: false
   -
-    handle: video_url
-    field:
-      display: 'Video URL'
-      type: video
-      icon: video
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      always_save: false
-      if:
-        video_type: 'equals 3rd-party'
-  -
     handle: settings
     field:
       display: Settings
@@ -36,8 +24,7 @@ fields:
       instructions_position: above
       visibility: visible
       always_save: false
-      if:
-        video_type: 'equals local'
+      hide_display: false
   -
     handle: show_controls
     field:
@@ -50,8 +37,7 @@ fields:
       instructions_position: above
       visibility: visible
       always_save: false
-      if:
-        video_type: 'equals local'
+      hide_display: false
   -
     handle: loop
     field:
@@ -64,8 +50,7 @@ fields:
       instructions_position: above
       visibility: visible
       always_save: false
-      if:
-        video_type: 'equals local'
+      hide_display: false
   -
     handle: mute
     field:
@@ -78,8 +63,7 @@ fields:
       instructions_position: above
       visibility: visible
       always_save: false
-      if:
-        video_type: 'equals local'
+      hide_display: false
   -
     handle: autoplay
     field:
@@ -92,8 +76,19 @@ fields:
       instructions_position: above
       visibility: visible
       always_save: false
+      hide_display: false
+  -
+    handle: video_url
+    field:
+      display: 'Video URL'
+      type: video
+      icon: video
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
       if:
-        video_type: 'equals local'
+        video_type: 'equals 3rd-party'
   -
     handle: files
     field:
