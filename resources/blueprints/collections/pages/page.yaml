@@ -18,9 +18,16 @@ tabs:
               collapse: true
               previews: true
               sets:
-                '':
-                  display: null
-                  fields: {  }
+                main:
+                  display: Main
+                  instructions: null
+                  icon: null
+                  sets:
+                    new_set:
+                      display: 'New Set'
+                      instructions: null
+                      icon: null
+                      fields: {  }
               display: 'Page Builder'
               type: replicator
               icon: replicator
@@ -29,6 +36,8 @@ tabs:
               instructions_position: above
               visibility: visible
               always_save: false
+              fullscreen: true
+              hide_display: false
   sidebar:
     display: Sidebar
     sections:
