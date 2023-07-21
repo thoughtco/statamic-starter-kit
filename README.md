@@ -48,6 +48,9 @@ By default the following packages are added:
 - Allows the inclusion of any videos generated on for clients. If you generate a video on Loom it should be added here and the client pointed to this page.
 
 
+**Static Cache Manager**
+- Clear specific paths in your static cache.
+
 ### ENV Variables
 - GOOGLE_API: the api key to be used across the site. Information on how to obtain a key is found at https://www.loom.com/share/1e8a12938d6c459b8750c4a876680293?sid=60bfdbac-044d-4d46-97a7-442fadfa02e8.
 - PANEL_CACHE: Set to true to enable panel caching in default.tpl. False disables it. For the site going live, this should be set to true.
