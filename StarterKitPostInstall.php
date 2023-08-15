@@ -22,7 +22,10 @@ class StarterKitPostInstall
         $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
         $env = str_replace('APP_URL=', "APP_URL=\"{$appURL}\"", $env);
         $env = str_replace('APP_KEY=', "APP_KEY=\"{$originalAppKey}\"", $env);
-        $env .= '\r\n# do we want to cache the default.tpl panels\nTC_PANEL_CACHE=false';
+        $env .= '
+        # do we want to cache the default.tpl panels
+        TC_PANEL_CACHE=false
+        ';
 
         // output to console
         $console->info('<info>[✓]</info> generate env');
