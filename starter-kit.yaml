@@ -33,7 +33,7 @@ dependencies:
   bashy/laravel-campaignmonitor: ^6.0
   coconutcraig/laravel-postmark: ^3.0
   duncanmcclean/static-cache-manager": ^3.1
-  mailchimp/marketing: ^3.0,
+  mailchimp/marketing: ^3.0
   statamic/seo-pro: 5.*
   steadfast-collective/statamic-cp-resources: ^2.0
   thoughtco/statamic-blurhash: ^1.0
