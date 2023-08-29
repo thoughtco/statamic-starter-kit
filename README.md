@@ -64,6 +64,9 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
         - Create the sender signature.
         - Video: https://loom.com/share/f11fb8314ba74f66be033b049e433fa3
         - Add the API Key to POSTMARK_TOKEN
+        
+### MailChimp
+We use the Statamic Rad Pack Add on to process MailChimp subscribers (https://statamic.com/addons/rad-pack/mailchimp)
 
 ### Blueprints
 
@@ -103,7 +106,7 @@ There are 4 globals setup
 - **Contact:**
   - Basic fields for main points of contact
 - **Mailing List:**
-  - Choose provider (currently Campaign Monitor or MailChimp)
+  - Choose provider (currently Campaign Monitor)
   - Fill in the API Details as requested.
   - This then hooks into the Newsletter form and sends the information to the relevant provider.
   - Please test this is working to the relevant list.
