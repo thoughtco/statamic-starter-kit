@@ -34,7 +34,7 @@ dependencies:
   bashy/laravel-campaignmonitor: ^6.0
   coconutcraig/laravel-postmark: ^3.0
   statamic-rad-pack/mailchimp: ^4.1
-  statamic/seo-pro: '5.*'
+  statamic/seo-pro: 5.*
   steadfast-collective/statamic-cp-resources: ^2.0
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
