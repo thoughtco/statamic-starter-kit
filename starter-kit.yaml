@@ -12,6 +12,7 @@ export_paths:
   - config/blurhash.php
   - config/captcha.php
   - config/filesystems.php
+  - config/mailchimp.php
   - config/statamic-cp-resources.php
   - config/statamic/antlers.php
   - config/statamic/assets.php
@@ -32,7 +33,7 @@ dependencies:
   aryehraber/statamic-captcha: ^1.9
   bashy/laravel-campaignmonitor: ^6.0
   coconutcraig/laravel-postmark: ^3.0
-  mailchimp/marketing: ^3.0
+  statamic-rad-pack/mailchimp: ^4.1
   statamic/seo-pro: '5.*'
   steadfast-collective/statamic-cp-resources: ^2.0
   thoughtco/statamic-blurhash: ^1.0
