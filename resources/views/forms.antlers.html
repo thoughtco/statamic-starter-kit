@@ -1,0 +1,22 @@
+{{ form:create in="contact" id="test-form" }}
+
+    <legend>Send us a message</legend>
+
+    <div class="message">
+        <h2>Thank you for your query.</h2>
+        <p>A member of our team will be in touch as soon as possible.</p>
+    </div>
+
+    {{ fields }}
+
+        <h4>{{ display }}</h4>
+
+        {{ partial src="_partials/forms/fields/{type}" }}
+
+    {{ /fields }}
+
+    {{ captcha }}
+
+    <button type="submit" class="link">Send Message</button>
+
+{{ /form:create }}

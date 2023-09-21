@@ -65,6 +65,9 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
         - Video: https://loom.com/share/f11fb8314ba74f66be033b049e433fa3
         - Add the API Key to POSTMARK_TOKEN
         
+### Campaign Monitor
+We use the Statamic Rad Pack Add on to process Campaign Monitor subscribers (https://github.com/statamic-rad-pack/campaign-monitor)
+
 ### MailChimp
 We use the Statamic Rad Pack Add on to process MailChimp subscribers (https://statamic.com/addons/rad-pack/mailchimp)
 
@@ -105,11 +108,6 @@ If you don't need any classes, simply leave the attribute out. Any classes shoul
 There are 4 globals setup
 - **Contact:**
   - Basic fields for main points of contact
-- **Mailing List:**
-  - Choose provider (currently Campaign Monitor)
-  - Fill in the API Details as requested.
-  - This then hooks into the Newsletter form and sends the information to the relevant provider.
-  - Please test this is working to the relevant list.
 - **Social Media:**
   - The social media handles associated with the website.
 - **Cookie Panel:**
