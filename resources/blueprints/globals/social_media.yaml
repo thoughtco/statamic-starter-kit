@@ -133,26 +133,6 @@ tabs:
                           field:
                             type: hidden
                             default: 'https://www.pinterest.com/'
-                    twitter:
-                      display: Twitter
-                      instructions: null
-                      icon: social-twitter
-                      fields:
-                        -
-                          handle: handle
-                          field:
-                            input_type: text
-                            type: text
-                            localizable: true
-                            listable: hidden
-                            prepend: 'https://www.twitter.com/'
-                            display: Handle
-                            validate: required
-                        -
-                          handle: prefix
-                          field:
-                            type: hidden
-                            default: 'https://www.twitter.com/'
                     vimeo:
                       display: Vimeo
                       instructions: null
@@ -173,6 +153,36 @@ tabs:
                           field:
                             type: hidden
                             default: 'https://www.vimeo.com/'
+                    x:
+                      display: X
+                      instructions: null
+                      icon: social-twitter
+                      fields:
+                        -
+                          handle: handle
+                          field:
+                            input_type: text
+                            type: text
+                            localizable: true
+                            listable: hidden
+                            prepend: 'https://www.x.com/'
+                            display: Handle
+                            validate: required
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            antlers: false
+                            hide_display: false
+                        -
+                          handle: prefix
+                          field:
+                            type: hidden
+                            default: 'https://www.x.com/'
+                            instructions_position: above
+                            listable: hidden
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
                     youtube:
                       display: YouTube
                       instructions: null
@@ -203,3 +213,4 @@ tabs:
               previews: true
               fullscreen: true
               hide_display: false
+              replicator_preview: true
