@@ -82,12 +82,12 @@ We use the Statamic Rad Pack Add on to process MailChimp subscribers (https://st
 
 ### Fieldsets
 There are three fieldsets setup in the default build:
-- **Link Blocks:** a replicator that will output a elements based on the information passed from each link block. 
+- **Button:** a link fieldset that will output a elements based on the information passed from each button. If more links are needed in a row, then the button fieldtype should be added to a replicator.
 
 ```
-{{ link_blocks }}
+{{ button }}
   {{ partial:_partials/snippets/links class="your classes" }}
-{{/link_blocks }}
+{{/button }}
 ```
 
 will output something similar to:
