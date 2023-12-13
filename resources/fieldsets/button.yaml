@@ -1,6 +1,17 @@
 title: Button
 fields:
   -
+    handle: link
+    field:
+      type: section
+      display: Link
+      icon: section
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
     handle: link_type
     field:
       options:
@@ -12,11 +23,9 @@ fields:
         asset: Asset
       type: button_group
       localizable: true
-      default: entry
       listable: false
       display: 'Link type'
       replicator_preview: false
-      width: 66
       instructions_position: above
       visibility: visible
       always_save: false
@@ -26,7 +35,6 @@ fields:
     field:
       type: toggle
       localizable: true
-      width: 33
       listable: false
       display: 'Open in new window'
       replicator_preview: false
@@ -34,6 +42,8 @@ fields:
       visibility: visible
       default: false
       hide_display: false
+      if:
+        link_type: '!== null'
   -
     handle: entry
     field:
@@ -47,8 +57,14 @@ fields:
       replicator_preview: false
       validate:
         - 'required_if:{this}.link_type,entry'
+      instructions_position: above
+      visibility: visible
+      create: true
+      collections:
+        - pages
+      hide_display: false
       if:
-        link_type: entry
+        link_type: 'equals entry'
   -
     handle: url
     field:
@@ -131,14 +147,14 @@ fields:
       if:
         link_type: 'equals asset'
   -
-    handle: attr_title
+    handle: link_text
     field:
       placeholder: 'Learn more'
       input_type: text
       type: text
       localizable: true
       listable: false
-      display: 'Attribute Title'
+      display: Text
       width: 50
       replicator_preview: false
       instructions_position: above

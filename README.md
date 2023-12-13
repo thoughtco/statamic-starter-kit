@@ -85,9 +85,9 @@ There are three fieldsets setup in the default build:
 - **Button:** a link fieldset that will output a elements based on the information passed from each button. If more links are needed in a row, then the button fieldtype should be added to a replicator.
 
 ```
-{{ button }}
+{{ if link_type }}
   {{ partial:_partials/snippets/links class="your classes" }}
-{{/button }}
+{{/if }}
 ```
 
 will output something similar to:
