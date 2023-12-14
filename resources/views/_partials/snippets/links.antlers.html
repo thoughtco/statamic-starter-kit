@@ -1,14 +1,18 @@
-<a {{ switch(
-    (link_type == 'entry') => 'href="{{ entry:url }}"',
-    (link_type == 'url') => 'href="{{ url }}"',
-    (link_type == 'email') => 'href="mailto:{{ email | obfuscate_email }}"',
-    (link_type == 'tel') => 'href="tel:{{ tel }}"',
-    (link_type == 'sms') => 'href="sms:{{ sms }}"',
-    (link_type == 'asset') => 'href="{{ asset }}" download',
-    () => 'href="{{ url }}"'
-)}}
-{{ target_blank ?= 'rel="noopener" target="_blank"' }}
-{{ attr_title ?= 'title="{{ link_text }}"' }}
-{{ attr_aria ?= 'aria-label="{{ attr_aria }}"' }}
-{{ class ?= 'class="{{ class }}"' }}
->{{ link_text }}</a>
+{{ if link_type != 'none'}}
+
+    <a {{ switch(
+        (link_type == 'entry') => 'href="{{ entry:url }}"',
+        (link_type == 'url') => 'href="{{ url }}"',
+        (link_type == 'email') => 'href="mailto:{{ email | obfuscate_email }}"',
+        (link_type == 'tel') => 'href="tel:{{ tel }}"',
+        (link_type == 'sms') => 'href="sms:{{ sms }}"',
+        (link_type == 'asset') => 'href="{{ asset }}" download',
+        () => 'href="{{ url }}"'
+    )}}
+    {{ target_blank ?= 'rel="noopener" target="_blank"' }}
+    {{ attr_title ?= 'title="{{ link_text }}"' }}
+    {{ attr_aria ?= 'aria-label="{{ attr_aria }}"' }}
+    {{ class ?= 'class="{{ class }}"' }}
+    >{{ link_text }}</a>
+
+{{ /if }}
