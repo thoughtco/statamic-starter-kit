@@ -15,6 +15,7 @@ fields:
     handle: link_type
     field:
       options:
+        none: None
         entry: Entry
         url: URL
         email: Email
@@ -30,6 +31,8 @@ fields:
       visibility: visible
       always_save: false
       hide_display: false
+      instructions: 'Choose an image type.'
+      default: none
   -
     handle: target_blank
     field:
@@ -43,7 +46,7 @@ fields:
       default: false
       hide_display: false
       if:
-        link_type: '!== null'
+        link_type: '!== none'
   -
     handle: entry
     field:
@@ -161,6 +164,8 @@ fields:
       visibility: visible
       antlers: false
       hide_display: false
+      if:
+        link_type: '!== none'
   -
     handle: attr_aria
     field:
@@ -176,3 +181,5 @@ fields:
       visibility: visible
       antlers: false
       hide_display: false
+      if:
+        link_type: '!== none'
