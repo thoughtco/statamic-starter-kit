@@ -4,6 +4,7 @@ export_paths:
   - README.md
   - content
   - app/Console
+  - app/Caching/CacheInvalidator.php
   - app/Listeners/EntryListener.php
   - app/Listeners/FormListener.php
   - app/Listeners/GlobalSavedListener.php
