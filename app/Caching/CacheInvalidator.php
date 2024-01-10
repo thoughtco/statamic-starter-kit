@@ -27,7 +27,7 @@ class CacheInvalidator extends DefaultInvalidator
         } else if ($item instanceof Nav) {
             $urls = $this->clearCacheForNav($item);
         } else if ($item instanceof Term) {
-            $urls = $this->clearCacheForNav($item);
+            $urls = $this->clearCacheForTerm($item);
         }
 
         if ($urls) {
