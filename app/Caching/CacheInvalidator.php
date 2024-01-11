@@ -2,11 +2,15 @@
 
 namespace App\Caching;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Statamic\Contracts\Entries\Entry;
 use Statamic\Contracts\Globals\GlobalSet;
 use Statamic\Contracts\Structures\Nav;
+use Statamic\Contracts\Structures\NavTree;
 use Statamic\Contracts\Taxonomies\Term;
+use Statamic\Facades;
+use Statamic\Statamic;
 use Statamic\StaticCaching\DefaultInvalidator;
 
 class CacheInvalidator extends DefaultInvalidator
@@ -19,33 +23,49 @@ class CacheInvalidator extends DefaultInvalidator
 
         $urls = false;
 
-        // all the logic from your example here...
         if ($item instanceof Entry) {
             $urls = $this->clearCacheForEntry($item);
+
+            if ($url = $item->url()) {
+                $urls->push($url);
+            }
         } else if ($item instanceof GlobalSet) {
             $urls = $this->clearCacheForGlobal($item);
         } else if ($item instanceof Nav) {
             $urls = $this->clearCacheForNav($item);
+        } else if ($item instanceof CollectionTree) {
+            $urls = $this->clearCacheForCollectionTree($item);
+        } else if ($item instanceof NavTree) {
+            $urls = $this->clearCacheForNavTree($item);
         } else if ($item instanceof Term) {
             $urls = $this->clearCacheForTerm($item);
         }
 
-        if ($urls) {
-            $this->cacher->invalidateUrls($urls);
+        if ($urls instanceof Collection) {
+            $this->cacher->invalidateUrls($urls->all());
         }
     }
 
-    private function clearCacheForEntry($entry)
+    private function clearCacheForEntry($entry): ?Collection
     {
         switch ($entry->collection())
         {
             case 'news':
-                return $this->clearEntriesWithPanels(['news', 'article_select']);
+                return $this->clearEntriesWithPanels(['news_listing', 'featured_news']);
+            break;
+
+            case 'artists':
+                return $this->clearEntriesWithPanels(['artists_listing', 'air_slider', 'discipline_listing', 'previous_air'])
+                    ->merge(collect($entry->sets)->map(function ($set) use ($entry) {
+                        return $entry->url().'/'.Statamic::modify($set->title)->modify('slugify');
+                    }));
             break;
         }
+
+        return collect();
     }
 
-    private function clearCacheForGlobal($global)
+    private function clearCacheForGlobal($global): ?Collection
     {
         switch ($global->handle())
         {
@@ -54,57 +74,87 @@ class CacheInvalidator extends DefaultInvalidator
                 // or flush all (when its something that appears on all pages)
                 $this->cacher->flush();
 
-                return false;
+                return null;
             break;
         }
 
-        return false;
+        return null;
     }
 
-    private function clearCacheForNav($nav)
+    private function clearCacheForNav($nav): ?Collection
     {
-        // navs should always be cached as they are painfully slow
-        Cache::forget('nav::'.$nav->handle());
+        return null;
+    }
 
+    private function clearCacheForCollectionTree($nav): ?Collection
+    {
         switch ($nav->handle())
         {
-            case 'settings':
+            case 'artists':
+
+                // cache keys
+                Cache::forget('nav::main');
+                Cache::forget('nav::side');
+
                 // either return a set of urls
                 // or flush all (when its a nav that appears on all pages)
                 $this->cacher->flush();
 
-                return false;
+                return null;
             break;
         }
 
-        return false;
+        return null;
     }
 
-    private function clearCacheForTerm($term)
+    private function clearCacheForNavTree($nav): ?Collection
+    {
+        // navs should always be cached as they are painfully slow
+        Cache::forget('nav::'.$nav->handle());
+
+        // cache keys
+        Cache::forget('nav::main');
+        Cache::forget('nav::side');
+
+        switch ($nav->handle())
+        {
+            case 'main':
+                // either return a set of urls
+                // or flush all (when its a nav that appears on all pages)
+                $this->cacher->flush();
+
+                return null;
+            break;
+        }
+
+        return null;
+    }
+
+    private function clearCacheForTerm($term): ?Collection
     {
         switch ($term->taxonomyHandle())
         {
             //
         }
 
-        return false;
+        return null;
     }
 
     // clear any pages with the given handles
-    private function clearEntriesWithPanels($panelHandles = [], $collectionHandle = 'pages', $fieldHandle = 'panels')
+    private function clearEntriesWithPanels($panelHandles = [], $collectionHandle = 'pages', $fieldHandle = 'panels'): Collection
     {
-        return Entry::query()
+        return Facades\Entry::query()
             ->where('collection', $collectionHandle)
+            ->get()
             ->filter(function($page) use ($fieldHandle, $panelHandles) {
-                return this->hasPanel($page->get($fieldHandle, []), $panelHandles);
+                return $this->hasPanel($page->get($fieldHandle, []), $panelHandles);
             })
-            ->map()
-            ->url
-            ->all();
+            ->map
+            ->url();
     }
 
     // check whether an entry has any of the $panelHandles passed
-    private function hasPanel($panels, $panelHandles = [])
+    private function hasPanel($panels, $panelHandles = []): bool
     {
         return collect($panels)
             ->pluck('type')
