@@ -6,12 +6,7 @@ use App\Listeners;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 use Statamic\Events;
-use Statamic\Events\EntrySaved;
-use Statamic\Events\FormSubmitted;
-use Statamic\Events\GlobalSetSaved;
-use Statamic\Events\NavTreeSaved;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -24,18 +19,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        EntrySaved::class => [
-            \App\Listeners\EntryListener::class,
-        ],                       
-        FormSubmitted::class => [
-            \App\Listeners\FormListener::class,
+        Events\FormSubmitted::class => [
+            Listeners\FormListener::class,
         ],
-        GlobalSetSaved::class => [
-            \App\Listeners\GlobalSavedListener::class,
+        Events\GlobalSetSaved::class => [
+            Listeners\GlobalSavedListener::class,
         ],
-        NavTreeSaved::class => [
-            \App\Listeners\NavTreeListener::class,
-        ],                     
+        Events\UrlInvalidated::class => [
+            Listeners\RecacheUrl::class,
+        ],
     ];
 
     /**

@@ -3,11 +3,9 @@ export_paths:
   - .editorconfig
   - README.md
   - content
+  - app/Caching
   - app/Console
-  - app/Listeners/EntryListener.php
-  - app/Listeners/FormListener.php
-  - app/Listeners/GlobalSavedListener.php
-  - app/Listeners/NavTreeListener.php
+  - app/Listeners
   - app/Providers/EventServiceProvider.php
   - config/blurhash.php
   - config/captcha.php
@@ -18,6 +16,7 @@ export_paths:
   - config/statamic/editions.php
   - config/statamic/seo-pro.php
   - config/statamic/sites.php
+  - config/statamic/static_caching.php
   - config/thoughtco/client-dashboard.php
   - config/thoughtco/minify.php
   - config/thoughtco/site.php
@@ -31,9 +30,10 @@ dependencies:
   aerni/social-links: ^3.0
   aryehraber/statamic-captcha: ^1.9
   coconutcraig/laravel-postmark: ^3.0
+  mitydigital/statamic-scheduled-cache-invalidator: ^1.0
   statamic/seo-pro: '5.*'
+  thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
-  thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-minify: ^1.2
   thoughtco/statamic-redirects: ^1.1
