@@ -43,6 +43,15 @@ class CacheInvalidator extends DefaultInvalidator
 
         if ($urls instanceof Collection) {
             $this->cacher->invalidateUrls($urls->all());
+
+            // sometimes if you clear artisan cache, the static cache is out of sync
+            // this gets around that
+            $urls->each(function ($url) {
+                $file = $this->cacher->getFilePath($url);
+                if (file_exists($file)) {
+                    unlink($file);
+                }
+            });
         }
     }
 
