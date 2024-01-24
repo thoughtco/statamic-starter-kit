@@ -21,10 +21,14 @@ export_paths:
   - config/thoughtco/minify.php
   - config/thoughtco/site.php
   - resources/blueprints
+  - resources/css/site.css
+  - resources/views/cutup
   - resources/fieldsets
   - resources/forms
+  - resources/js/site.js
   - resources/users
   - resources/views
+  - routes/web.php
   - users
 dependencies:
   aerni/social-links: ^3.0
@@ -32,8 +36,7 @@ dependencies:
   coconutcraig/laravel-postmark: ^3.0
   mitydigital/statamic-scheduled-cache-invalidator: ^1.0
   statamic/seo-pro: '5.*'
-  thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
-  thoughtco/statamic-minify: ^1.2
+  thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-redirects: ^1.1
