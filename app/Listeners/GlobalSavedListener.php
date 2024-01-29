@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Spatie\Geocoder\Facades\Geocoder;
 use Statamic\Events\GlobalSetSaved;
 
 class GlobalSavedListener
@@ -27,20 +28,13 @@ class GlobalSavedListener
         // if we don't have latitude passed
         if (isset($global->data()['latitude']) === false){
 
-            // get google api key
-            $googleApiKey = env('GOOGLE_API', '');
-
-		    // get lat/long on basis of postcode
-		    $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.urlencode($global->data()['address']).'&sensor=false&key='.$googleApiKey);
-
-            // decode google return
-		    $output = json_decode($geocode);
+            $location = Geocoder::getCoordinatesForAddress($global->data()['address']);
 
 		    // if we have results
-		    if (isset($output->results) && sizeof($output->results) > 0){
+		    if ($location['accuracy'] != 'result_not_found'){
 
-                $global->set('latitude', $output->results[0]->geometry->location->lat);
-                $global->set('longitude', $output->results[0]->geometry->location->lng);
+                $global->set('latitude', $location['lat']);
+                $global->set('longitude', $location['lng']);
                 $global->save();
 
             }
