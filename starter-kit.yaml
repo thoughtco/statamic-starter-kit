@@ -10,6 +10,7 @@ export_paths:
   - config/blurhash.php
   - config/captcha.php
   - config/filesystems.php
+  - config/geocoder.php
   - config/statamic/antlers.php
   - config/statamic/assets.php
   - config/statamic/cp.php
@@ -35,6 +36,7 @@ dependencies:
   aryehraber/statamic-captcha: ^1.9
   coconutcraig/laravel-postmark: ^3.0
   mitydigital/statamic-scheduled-cache-invalidator: ^1.0
+  spatie/geocoder: ^3.15
   statamic/seo-pro: '5.*'
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
