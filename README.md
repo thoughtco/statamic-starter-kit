@@ -52,8 +52,7 @@ By default the following packages are added:
 - Clear specific paths in your static cache.
 
 ### ENV Variables
-- GOOGLE_API: the api key to be used across the site. Information on how to obtain a key is found at https://www.loom.com/share/1e8a12938d6c459b8750c4a876680293?sid=60bfdbac-044d-4d46-97a7-442fadfa02e8.
-- PANEL_CACHE: Set to true to enable panel caching in default.tpl. False disables it. For the site going live, this should be set to true.
+- GOOGLE_MAPS_GEOCODING_API_KEY: the api key to be used across the site. Information on how to obtain a key is found at https://www.loom.com/share/1e8a12938d6c459b8750c4a876680293?sid=60bfdbac-044d-4d46-97a7-442fadfa02e8.
 
 ### Postmark
 We don’t use our own servers to send emails from, we rely on Postmark for delivery with the added bonus of we get visibility on deliverability .etc.
@@ -65,12 +64,6 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
         - Video: https://loom.com/share/f11fb8314ba74f66be033b049e433fa3
         - Add the API Key to POSTMARK_TOKEN
         
-### Campaign Monitor
-We use the Statamic Rad Pack Add on to process Campaign Monitor subscribers (https://github.com/statamic-rad-pack/campaign-monitor)
-
-### MailChimp
-We use the Statamic Rad Pack Add on to process MailChimp subscribers (https://statamic.com/addons/rad-pack/mailchimp)
-
 ### Blueprints
 
 #### Panels in fieldsets
