@@ -31,7 +31,7 @@ fields:
       visibility: visible
       always_save: false
       hide_display: false
-      instructions: 'Choose an image type.'
+      instructions: 'Choose a link type.'
       default: none
   -
     handle: target_blank
