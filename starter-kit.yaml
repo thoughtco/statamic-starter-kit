@@ -6,6 +6,7 @@ export_paths:
   - app/Caching
   - app/Console
   - app/Listeners
+  - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
   - config/blurhash.php
   - config/captcha.php
