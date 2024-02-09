@@ -1,6 +1,7 @@
 export_paths:
   - .env.thoughtco
   - .editorconfig
+  - package.json
   - README.md
   - content
   - app/Caching
