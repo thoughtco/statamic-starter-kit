@@ -43,3 +43,4 @@ dependencies:
   thoughtco/statamic-cookiepanel: ^1.0
   thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-redirects: ^1.1
+  thoughtco/statamic-stop-forum-spam: ^1.0
