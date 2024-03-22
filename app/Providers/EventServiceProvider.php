@@ -19,12 +19,38 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        Events\CollectionTreeDeleted::class => [
+            [Listeners\TreeListener::class, 'deleted'],
+        ],
+
+        Events\CollectionTreeSaved::class => [
+            [Listeners\TreeListener::class, 'saved'],
+        ],
+
+        Events\EntryCreated::class => [
+            [Listeners\EntryListener::class, 'created'],
+        ],
+        Events\EntrySaved::class => [
+            [Listeners\EntryListener::class, 'saved'],
+        ],
+
         Events\FormSubmitted::class => [
             Listeners\FormListener::class,
         ],
+
         Events\GlobalSetSaved::class => [
-            Listeners\GlobalSavedListener::class,
+            [Listeners\GlobalListener::class, 'saved'],
         ],
+
+        Events\NavTreeDeleted::class => [
+            [Listeners\TreeListener::class, 'deleted'],
+        ],
+
+        Events\NavTreeSaved::class => [
+            [Listeners\TreeListener::class, 'saved'],
+        ],
+
         Events\UrlInvalidated::class => [
             Listeners\RecacheUrl::class,
         ],

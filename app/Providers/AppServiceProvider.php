@@ -2,19 +2,16 @@
 
 namespace App\Providers;
 
-use App\Caching\CacheInvalidator;
+use App\Caching\StaticWarmExtras;
 use Illuminate\Support\ServiceProvider;
-use Statamic\StaticCaching\Cacher;
+use Statamic\Console\Commands\StaticWarm;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function boot()
     {
-        $this->app->bind(CacheInvalidator::class, function ($app) {
-            return new CacheInvalidator(
-                $app[Cacher::class],
-                $app['config']['statamic.static_caching.invalidation.rules']
-            );
+        StaticWarm::hook('additional', function ($urls, $next) {
+            return $next($urls->merge(StaticWarmExtras::handle()));
         });
     }
 }
