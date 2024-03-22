@@ -31,6 +31,11 @@ class EventServiceProvider extends ServiceProvider
         Events\EntryCreated::class => [
             [Listeners\EntryListener::class, 'created'],
         ],
+
+        Events\EntryDeleted::class => [
+            [Listeners\EntryListener::class, 'deleted'],
+        ],
+
         Events\EntrySaved::class => [
             [Listeners\EntryListener::class, 'saved'],
         ],

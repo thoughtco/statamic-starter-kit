@@ -21,6 +21,20 @@ class EntryListener
         // }
     }
 
+    public function deleted(Events\EntryDeleted $event)
+    {
+        // you may want to invalidate any pages containing a partial
+        // eg latest_news, when a new entry is added, assuming the
+        // item could be displayed. Think it out.
+        //
+        // switch ($event->entry->collection()?->handle())
+        // {
+        //     case 'news':
+        //         Tracker::invalidate(['partials:_panels/latest_news']);
+        //     break;
+        // }
+    }
+
     public function saved(Events\EntrySaved $event)
     {
         // pages will be automatically re-cached based on entry save/delete
