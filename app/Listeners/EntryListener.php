@@ -24,8 +24,8 @@ class EntryListener
     public function deleted(Events\EntryDeleted $event)
     {
         // you may want to invalidate any pages containing a partial
-        // eg latest_news, when a new entry is added, assuming the
-        // item could be displayed. Think it out.
+        // eg latest_news, when an entry is deleted, assuming the
+        // item was being displayed. Think it out.
         //
         // switch ($event->entry->collection()?->handle())
         // {
