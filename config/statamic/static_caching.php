@@ -77,7 +77,7 @@ return [
 
     'invalidation' => [
 
-        'class' => \App\Caching\CacheInvalidator::class,
+        'class' => null,
 
         'rules' => [
             //
@@ -111,6 +111,7 @@ return [
     'replacers' => [
         \Statamic\StaticCaching\Replacers\CsrfTokenReplacer::class,
         \Statamic\StaticCaching\Replacers\NoCacheReplacer::class,
+        \Thoughtco\Minify\Replacers\MinifyReplacer::class,
     ],
 
     /*

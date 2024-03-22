@@ -3,8 +3,9 @@
 return [
     'file_types' => ['css', 'js'],
     'ignore_urls' => [
-        '/^\/(plausible)\/.*(js)/', 
-        '/\/(livewire)\/.*(js)/', 
+        '/\/(livewire)\/.*(js)/',
+        '/\/(min)\/.*(css|js)/',
+        '/^\/(plausible)\/.*(js)/',
     ],
     'minify_enabled' => function(){
         return isset($_GET['no_min']) == false;
