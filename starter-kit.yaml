@@ -42,7 +42,8 @@ dependencies:
   statamic/seo-pro: '5.*'
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cache-tracker: ^0.1
-  thoughtco/statamic-cookiepanel: ^1.0
+  thoughtco/statamic-cookiepanel: ^2.0
   thoughtco/statamic-cp-resources: ^1.0
+  thoughtco/statamic-minify: ^2.0
   thoughtco/statamic-redirects: ^1.1
   thoughtco/statamic-stop-forum-spam: ^1.0
