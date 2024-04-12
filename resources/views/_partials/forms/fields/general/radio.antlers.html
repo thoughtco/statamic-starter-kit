@@ -1,9 +1,21 @@
-{{ foreach:options as="value|label" }}
-    <label>
-        <input type="radio" name="{{ handle }}" value="{{ value }}"{{ old === value ?= " checked" }}{{ if validate|contains:required }} required{{ /if }}>
-        {{ label }}
-    </label>
-    {{ unless inline }}
-        <br>
-    {{ /unless }}
-{{ /foreach:options }}
+<fieldset
+    :aria-invalid="form.invalid('{{ handle }}')"
+    class="flex {{ inline ? 'gap-x-4' : 'flex-col gap-y-2' }}"
+    id="{{ handle }}"
+    {{ instructions_position == 'below' ?= 'aria-describedBy="{handle}-instructions"' }}
+>
+    {{ foreach:options as="value|label" }}
+        <label class="inline-flex items-center">
+            <input
+                x-model="form.{{ handle }}"
+                @change="form.validate('{{ handle }}')"
+                class="mr-2 border-neutral text-primary focus-visible:border-primary focus-visible:ring-inset focus-visible:ring-primary motion-safe:transition"
+                type="radio"
+                name="{{ handle }}"
+                value="{{ value }}"
+                {{ (old === value) ?= 'checked' }}
+            >
+            {{ trans :key="label" }}
+        </label>
+    {{ /foreach:options }}
+</fieldset>
