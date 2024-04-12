@@ -1,0 +1,17 @@
+<div class="input mb-4 bg-[rgba(77,172,233,0.2)] h-[78px] leading-[78px] w-full pl-6 pr-[6px] rounded-[50px]">
+
+	<input
+		x-model="form.{{ handle }}"
+		@change="form.validate('{{ handle }}')"
+		:aria-invalid="form.invalid('{{ handle }}')"
+		{{ if input_type != 'hidden' }}class="{{ if inputClass }}{{ inputClass }}{{ /if }}"{{ /if }}
+		name="{{ handle }}"
+		type="{{ input_type ?? 'text' }}"
+		{{ placeholder ?= 'placeholder="{placeholder}"' }}
+		{{ instructions_position == 'below' ?= 'aria-describedBy="{handle}-instructions"' }}
+		{{ character_limit ?= 'maxlength="{character_limit}"' }}
+		{{ old ?= 'value="{old}"' }}
+	/>
+	<span class="error-message" x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></span>
+
+</div>
