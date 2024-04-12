@@ -1,1 +1,13 @@
-<input type="text" name="{{ handle }}"{{ if placeholder }} placeholder="{{ placeholder }}"{{ /if }}{{ if old }} value="{{ old }}"{{ /if }}{{ if validate|contains:required }} required{{ /if }}{{ if character_limit }} maxlength="{{ character_limit }}"{{ /if }}>
+<input
+	x-model="form.{{ handle }}"
+	@change="form.validate('{{ handle }}')"
+	:aria-invalid="form.invalid('{{ handle }}')"
+	class="w-full rounded border-neutral focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary motion-safe:transition caret-primary"
+	id="{{ handle }}"
+	name="{{ handle }}"
+	type="{{ input_type ?? 'text' }}"
+	{{ placeholder ?= 'placeholder="{placeholder}"' }}
+	{{ instructions_position == 'below' ?= 'aria-describedBy="{handle}-instructions"' }}
+	{{ character_limit ?= 'maxlength="{character_limit}"' }}
+	{{ old ?= 'value="{old}"' }}
+/>
