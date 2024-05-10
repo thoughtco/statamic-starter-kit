@@ -1,0 +1,31 @@
+<div class="input mb-5 bg-[rgba(77,172,233,0.2)] h-[78px] leading-[78px] w-full pl-6 pr-[6px] rounded-[50px] md:mb-4">
+	
+	<label class="form-label-display">{{ display }}</label>
+	
+	{{ if instructions && instructions_position == 'above' }}
+	<p class="form-instructions-above">{{ instructions }}</p>
+	{{ /if }}
+	
+	{{? $error = $errors['data.'.$handle] ?? [] ?}}
+		
+	<input
+		wire:model.blur="data.{{ handle }}"
+		:aria-invalid="{{ error ? 'true' : 'false' }}"
+		{{ if input_type != 'hidden' }}class="{{ if inputClass }}{{ inputClass }}{{ /if }}"{{ /if }}
+		name="{{ handle }}"
+		type="{{ input_type ?? 'text' }}"
+		{{ placeholder ?= 'placeholder="{placeholder}"' }}
+		{{ instructions_position == 'below' ?= 'aria-describedBy="{handle}-instructions"' }}
+		{{ character_limit ?= 'maxlength="{character_limit}"' }}
+		{{ old ?= 'value="{old}"' }}
+	/>
+	
+    {{ if (error | count) }}
+        <span class="error-message">{{ error | join('<br />') }}</span>
+    {{ /if }}
+    
+	{{ if instructions && instructions_position == 'below' }}
+	<p class="form-instructions-below" id="{{ handle }}-instructions">{{ instructions }}</p>
+	{{ /if }}
+
+</div>
