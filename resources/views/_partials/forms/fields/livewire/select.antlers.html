@@ -1,0 +1,44 @@
+<div class="input select relative mb-4">
+   
+	<label class="form-label-display">{{ display }}</label>
+	
+	{{ if instructions && instructions_position == 'above' }}
+	<p class="form-instructions-above">{{ instructions }}</p>
+	{{ /if }}
+
+    {{? $error = $errors['data.'.$handle] ?? []; ?}}
+    
+    <select
+        wire:model.blur="data.{{ handle }}"
+        :aria-invalid="{{ error ? 'true' : 'false' }}"
+        {{ if input_type != 'hidden' }}class="{{ if inputClass }}{{ inputClass }}{{ /if }}"{{ /if }}
+        name="{{ handle }}{{ multiple ?= "[]" }}"
+        {{ instructions_position == 'below' ?= 'aria-describedBy="{handle}-instructions"' }}
+        {{ multiple ?= "multiple" }}
+    >
+        {{ unless multiple }}
+            <option value>{{ trans key="Please select..." }}</option>
+        {{ /unless }}
+        {{ foreach:options as="value|label" }}
+            <option
+                value="{{ value }}"
+                {{ if data[handle] == value }}
+                    selected
+                {{ /if }}
+            >
+                {{ trans :key="label" }}
+            </option>
+        {{ /foreach:options }}
+    </select>
+   
+    <figure class="absolute top-1/2 -translate-y-1/2 right-9"><img src="/assets/images/icons/blue-chevron.svg" alt="Blue chevron"></figure>
+   
+    {{ if (error | count) }}
+        <span class="error-message">{{ error | join('<br />') }}</span>
+    {{ /if }}
+    
+	{{ if instructions && instructions_position == 'below' }}
+	<p class="form-instructions-below" id="{{ handle }}-instructions">{{ instructions }}</p>
+	{{ /if }}
+
+</div> 
