@@ -34,6 +34,7 @@ export_paths:
 dependencies:
   aerni/social-links: ^3.0
   coconutcraig/laravel-postmark: ^3.2
+  duncanmcclean/static-cache-manager: ^4.0
   jonassiewertsen/statamic-livewire: ^3.0
   mitydigital/statamic-scheduled-cache-invalidator: ^2.0
   spatie/geocoder: ^3.15
