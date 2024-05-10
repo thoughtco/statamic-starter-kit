@@ -1,0 +1,39 @@
+<div class="input replicator mb-4" x-data="stripePayment({})">
+			
+	<label>{{ display }}</label>
+	
+	{{ if instructions && instructions_position == 'above' }}
+	<p>{{ instructions }}</p>
+	{{ /if }}
+		
+	{{? 
+		$amount = $price; 
+		
+		if (! ($fixed_price ?? false)) {
+			$fldValue = \Arr::get($data, $participant_field_handle, []);
+			$fldValue = is_array($fldValue) ? count($fldValue) : (int) $fldValue;
+			$amount *= max($fldValue, 1);
+		}
+	?}}
+		
+	<p>You will be charged: <strong>&pound;{{ $amount | format_number(2, '.', '') }}</strong></p>
+	
+	<input type="hidden" x-ref="amount" value="{{ $amount * 100 | floor }}" />
+	
+	<div style="background:gray" x-ref="paymentElement" wire:ignore>
+		<p>Payment form to go here once we know provider.</p>
+	</div>
+	
+	<div x-ref="paymentError" class="error-message" wire:ignore></div>
+	
+	{{? $error = $errors['data.'.$handle] ?? []; ?}}
+
+	{{ if (error | count) }}
+	<span class="error-message">{{ error | join('<br />') }}</span>
+	{{ /if }}
+	
+	{{ if instructions && instructions_position == 'below' }}
+	<p>{{ instructions }}</p>
+	{{ /if }}	
+	
+</div> 
