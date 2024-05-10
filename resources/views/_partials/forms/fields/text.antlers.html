@@ -1,0 +1,5 @@
+<div class="input">
+
+	<input type="{{ if input_type == 'number' }}text{{ else }}{{ input_type ?? 'text' }}{{ /if }}"{{ if input_type == 'number' }} inputmode="numeric" pattern="[0-9]*"{{ /if }} name="{{ handle }}"{{ if placeholder }} placeholder="{{ placeholder }}"{{ /if }}{{ if old }} value="{{ old }}" {{ else }} value="{{ if input_type == 'hidden' and handle == 'product' }}{{ product.title }}{{ /if }}"{{ /if }}{{ if validate|contains:required }} required{{ /if }}{{ if character_limit }} maxlength="{{ character_limit }}"{{ /if }}>
+
+</div> 
