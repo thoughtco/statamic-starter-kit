@@ -1,0 +1,41 @@
+<div class="input mb-5 bg-[rgba(77,172,233,0.2)] h-[78px] leading-[78px] w-full pl-6 pr-[6px] rounded-[50px] md:mb-4">
+	
+	<label class="form-label-display">{{ display }}</label>
+	
+	{{ if instructions && instructions_position == 'above' }}
+	<p class="form-instructions-above">{{ instructions }}</p>
+	{{ /if }}
+    
+    {{? $error = $errors['data.'.$handle] ?? []; ?}}
+
+    {{ foreach:options as="value|label" }}
+        
+        {{? $checked = Arr::get($data, $handle, []); $checked = is_array($checked) && in_array($value, $checked); ?}}
+        
+        <label>
+            <input 
+                wire:model="data.{{ handle }}"
+                :aria-invalid="{{ error ? 'true' : 'false' }}"
+                type="checkbox" 
+                name="{{ handle }}[]" 
+                value="{{ value }}"
+		        {{ instructions_position == 'below' ?= 'aria-describedBy="{handle}-instructions"' }}
+                {{ if input_type != 'hidden' }}class="{{ if inputClass }}{{ inputClass }}{{ /if }}"{{ /if }}
+                {{ if checked }}checked{{ /if }}
+            />
+            {{ label }}
+        </label>
+        {{ unless inline }}
+            <br>
+        {{ /unless }}
+    {{ /foreach:options }}
+    
+    {{ if (error | count) }}
+        <span class="error-message">{{ error | join('<br />') }}</span>
+    {{ /if }}
+    
+	{{ if instructions && instructions_position == 'below' }}
+	<p class="form-instructions-below" id="{{ handle }}-instructions">{{ instructions }}</p>
+	{{ /if }}
+
+</div>

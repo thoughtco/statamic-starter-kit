@@ -2,6 +2,8 @@
 
    <select
        x-model="form.{{ handle }}"
+      {{ if old }}x-init="form.{{ handle }} = '{{ old | sanitize }}'" {{ /if }}
+       {{ if ! old && value }}x-init="form.{{ handle }} = '{{ value | sanitize }}'" {{ /if }}
        @change="form.validate('{{ handle }}')"
        :aria-invalid="form.invalid('{{ handle }}')"
        class="cursor-pointer bg-[rgba(77,172,233,0.2)] h-[78px] leading-[78px] w-full pl-6 pr-[6px] rounded-[50px]"

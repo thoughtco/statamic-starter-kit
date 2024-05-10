@@ -1,0 +1,38 @@
+<div class="input replicator mb-4">
+			
+	<label class="form-label-display">{{ display }}</label>
+	
+	{{ if instructions && instructions_position == 'above' }}
+	<p class="form-instructions-above">{{ instructions }}</p>
+	{{ /if }}
+			
+	{{? 
+		$replicatorCount = max(count(Arr::get($data, $handle, [])), 1);
+		$replicatorHandle = $handle;
+	?}}
+		
+	{{ loop from="1" :to="replicatorCount" }}
+	<div class="replicator-item">
+		{{ fields }}
+			{{ partial src="_partials/forms/fields/livewire/{type}" handle="{{ $replicatorHandle }}.{{ value - 1 }}.{{ handle }}" }}
+		{{ /fields }}
+		
+		<button type="button" wire:click.live="removeFromRepeater('{{ handle }}', {{ value - 1 }})">Remove</button>
+	</div>
+	{{ /loop }}
+		
+	{{ if (max_sets > 1) && (replicatorCount < max_sets) }}
+	<button type="button" wire:click.live="addToRepeater('{{ handle }}')">Add another</button>
+	{{ /if }}
+	
+	{{? $error = $errors['data.'.$handle] ?? []; ?}}
+
+    {{ if (error | count) }}
+        <span class="error-message">{{ error | join('<br />') }}</span>
+    {{ /if }}
+    
+	{{ if instructions && instructions_position == 'below' }}
+	<p class="form-instructions-below" id="{{ handle }}-instructions">{{ instructions }}</p>
+	{{ /if }}
+	
+</div> 
