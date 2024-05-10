@@ -10,15 +10,14 @@ export_paths:
   - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
   - config/blurhash.php
-  - config/captcha.php
   - config/filesystems.php
   - config/geocoder.php
+  - config/statamic-postmark-spamcheck.php
   - config/statamic/antlers.php
   - config/statamic/assets.php
   - config/statamic/cp.php
   - config/statamic/editions.php
   - config/statamic/seo-pro.php
-  - config/statamic/sites.php
   - config/statamic/static_caching.php
   - config/thoughtco/client-dashboard.php
   - config/thoughtco/minify.php
@@ -34,13 +33,13 @@ export_paths:
   - users
 dependencies:
   aerni/social-links: ^3.0
-  aryehraber/statamic-captcha: ^1.9
-  coconutcraig/laravel-postmark: ^3.0
-  mitydigital/statamic-scheduled-cache-invalidator: ^1.0
+  coconutcraig/laravel-postmark: ^3.2
+  jonassiewertsen/statamic-livewire: ^3.0
+  mitydigital/statamic-scheduled-cache-invalidator: ^2.0
   spatie/geocoder: ^3.15
-  statamic/seo-pro: '5.*'
+  statamic/seo-pro: '*'
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
   thoughtco/statamic-cp-resources: ^1.0
-  thoughtco/statamic-redirects: ^1.1
-  thoughtco/statamic-stop-forum-spam: ^1.0
+  thoughtco/statamic-postmark-spamcheck: ^1.0
+  thoughtco/statamic-redirects: ^1.3
