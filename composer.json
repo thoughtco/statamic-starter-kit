@@ -1,9 +1,9 @@
 {
-    "name": "my-vendor-name/statamic-starter-kit",
+    "name": "thoughtco/statamic-starter-kit",
     "extra": {
         "statamic": {
-            "name": "Statamic Starter Kit",
-            "description": "Statamic Starter Kit starter kit"
+            "name": "TC Statamic Starter Kit",
+            "description": "TC Statamic Starter Kit"
         }
     }
 }
