@@ -2,11 +2,10 @@
 
 namespace App\Listeners;
 
-// use \DrewM\MailChimp\MailChimp;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Statamic\Events\FormSubmitted;
-use Statamic\Facades\Entry;
-use Statamic\Facades\GlobalSet;
+use Statamic\Facades\User;
 use Statamic\Support\Str;
 
 /*
@@ -23,12 +22,11 @@ class FormListener
     public function handle(FormSubmitted $event)
     {
 
-        switch ($event->submission->form()->handle())
-        {
+        switch ($event->submission->form()->handle()) {
 
-            default:
+            case 'contact':
 
-                $this->processSomething();
+                $this->processContactForm($event);
 
             break;
 
@@ -37,10 +35,9 @@ class FormListener
     }
 
     // process function
-    public function processSomething(){
+    public function processContactForm($event)
+    {
 
     }
 
 }
-
-?>
