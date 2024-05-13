@@ -42,5 +42,6 @@ dependencies:
   thoughtco/statamic-blurhash: ^1.0
   thoughtco/statamic-cookiepanel: ^1.0
   thoughtco/statamic-cp-resources: ^1.0
+  thoughtco/statamic-minify: ^2.0
   thoughtco/statamic-postmark-spamcheck: ^1.0
   thoughtco/statamic-redirects: ^1.3
