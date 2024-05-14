@@ -9,10 +9,11 @@ class GlobalListener
 {
     public function saved(Events\GlobalSetSaved $event)
     {
-        switch ($event->globals->handle()) {
+        switch ($event->globals->handle())
+        {
             case 'contact':
                 $this->processContact($event->globals->inDefaultSite());
-                break;
+            break;
         }
     }
 
@@ -25,12 +26,17 @@ class GlobalListener
             $location = Geocoder::getCoordinatesForAddress($global->get('address'));
 
             // if we have results
-            if ($location['accuracy'] != 'result_not_found') {
-                $global->set('latitude', $location['lat']);
-                $global->set('longitude', $location['lng']);
+            if ($location['accuracy'] != 'result_not_found'){
+                $global->merge([
+                  'latitude' => $location['lat'],
+                  'longitude' => $location['lng'],
+                ]);
+                  
                 $global->save();
             }
 
         }
     }
 }
+
+?>

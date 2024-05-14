@@ -10,6 +10,8 @@ export_paths:
   - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
   - config/blurhash.php
+  - config/cache.php
+  - config/captcha.php
   - config/filesystems.php
   - config/geocoder.php
   - config/statamic-postmark-spamcheck.php
@@ -22,6 +24,7 @@ export_paths:
   - config/thoughtco/client-dashboard.php
   - config/thoughtco/minify.php
   - config/thoughtco/site.php
+  - config/statamic-scheduled-cache-invalidator.php
   - resources/blueprints
   - resources/css/site.css
   - resources/fieldsets
@@ -40,7 +43,8 @@ dependencies:
   spatie/geocoder: ^3.15
   statamic/seo-pro: '*'
   thoughtco/statamic-blurhash: ^1.0
-  thoughtco/statamic-cookiepanel: ^1.0
+  thoughtco/statamic-cache-tracker: ^0.1
+  thoughtco/statamic-cookiepanel: ^2.0
   thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-minify: ^2.0
   thoughtco/statamic-postmark-spamcheck: ^1.0
