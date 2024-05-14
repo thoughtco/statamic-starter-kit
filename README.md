@@ -124,28 +124,76 @@ May need mounted to relevant page entry if a new one is added. The news collecti
 ### Users
 Admin role, need to add permissions to it if collections etc are added.
 
-### Glide
-Depending on the site it may be useful to use Glide Presets. The plus point on this is that is generates the various image sizes on upload meaning that the page load time drops further. The downside is, when you upload an image it creates a version of the image for each preset so disk space can get further clogged. So use presets on a per site basis.
+### Image Partial
+The generation of the picture element has now been moved into a partial.
+```
+  {{ partial src="_partials/snippets/images" :image="image" cover="false" sizes="(min-width: 1280px) 960px, (min-width: 768px) 50vw, 20vw" lazy="true" }}
+```
 
-#### Presets
-More information on presets can be found at https://statamic.dev/image-manipulation#presets
+The following parameters can be passed:
 
-### General Glide Use
-- DPR
-  - Every glide tag should carry a `dpr="2"` tag and the width and height should be the dimensions that are output on the screen.
-  - DPR will double these dimensions for retina displays.
-- Format
-  - Should be set to webp
-  - Webp is a modern image format that provides superior lossless and lossy compression for images on the web.
+**@param image:** 
+An image URL. (required)
 
-More information on Glide is available at https://statamic.dev/tags/glide
+**@param sizes:** 
+The sizes attribute. Something like `(min-width: 768px) 55vw, 90vw` for example.
 
-  
-**Outputting Forms**
-With the probable exception of a newsletter form, you add the form fields to the html using the forms partial within Thought Co Github Codex Repo. 
-Some HTML may need to be modified but it should give you everything you need out of the box.
+**@param aspect_ratio:** 
+Pass in an aspect ratio to crop the image in a certain way. `16/9` for example or specify a second ratio for larger screens: `1/1 large:1/2`.
+
+**@param skip_ratio_steps:** 
+Integer. Skip 1, 2 or 3 ratio steps to force small screens rendering big images to use mobile cropping instead of `large` cropping.
+
+**@param srcset_from:** 
+The path to a partial with an alternative srcset definition array. Something like `snippets/srcset_full_width` for example.
+
+**@param class:** 
+Add optional CSS classes.
+
+**@param cover:** 
+Boolean. Whether the image should cover the parent. Uses the focus position.
+
+**@param bg:** 
+String. Sets a background color for transparent images.
+
+**@param blur:** 
+Integer. Adds a blur effect to the image. Use values between 0 and 100.
+
+**@param brightness:** 
+String. Adjusts the image brightness. Use values between -100 and +100, where 0 represents no change.
+
+**@param contrast:** 
+String. Adjusts the image contrast. Use values between -100 and +100, where 0 represents no change.
+
+**@param filter:** 
+String. Applies a filter effect to the image. Accepts `greyscale` or `sepia`.
+
+**@param flip:** 
+String. Flips the image. Accepts `v`, `h` and `both`.
+
+**@param gamma:** 
+Float. Adjusts the image gamma. Use values between 0.1 and 9.99.
+
+**@param orient:** 
+String. Rotates the image. Accepts `auto`, `0`, `90`, `180` or `270`.
+
+**@param sharpen:** Integer. Sharpen the image. Use values between 0 and 100.
+
+**@param pixelate:** 
+Integer. Applies a pixelation effect to the image. Use values between 0 and 1000.
+
+**@param lazy:** 
+Boolean. Whether the image should be natively lazy loaded.
+
+**@param quality:** 
+Integer. Set image quality. Defaults to 85.
 
 **Additional Image Information**
 We use the BlurHash addon to create a blurred version of the image and then when the image has loaded the main image is brought in.
 See https://packagist.org/packages/thoughtco/statamic-blurhash for more information on image blurring. Front End should deal with the 
 transformation from the blurred image to the live image.
+
+##Outputting Forms##
+With the probable exception of a newsletter form, you add the form fields to the html using the forms partial within Thought Co Github Codex Repo. 
+Some HTML may need to be modified but it should give you everything you need out of the box. The options of general, livewire and precognition forms are available including integration with Alpine.
+
