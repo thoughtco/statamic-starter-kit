@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use Spatie\Geocoder\Facades\Geocoder;
 use Statamic\Events;
 use Thoughtco\StatamicCacheTracker\Facades\Tracker;
 
@@ -42,7 +41,7 @@ class EntryListener
         // but you may want to do something extra if the publish state of an
         // entry has changed, this could be triggered by the cron job marking
         // an item as published, or unpublished
-
+        //
         // if ($event->entry->isDirty('published')) {
         //     Tracker::invalidate([$event->entry->collection()->handle().':'.$event->entry->id()])
         //
@@ -55,3 +54,5 @@ class EntryListener
         // }
     }
 }
+
+?>
