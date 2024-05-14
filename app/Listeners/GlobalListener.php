@@ -27,8 +27,11 @@ class GlobalListener
 
             // if we have results
             if ($location['accuracy'] != 'result_not_found'){
-                $global->set('latitude', $location['lat']);
-                $global->set('longitude', $location['lng']);
+                $global->merge([
+                  'latitude' => $location['lat'],
+                  'longitude' => $location['lng'],
+                ]);
+                  
                 $global->save();
             }
 

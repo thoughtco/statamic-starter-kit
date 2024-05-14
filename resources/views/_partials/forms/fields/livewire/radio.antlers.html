@@ -1,0 +1,36 @@
+{{ options = $field['options'] }}
+{{ foreach:options as="value|label" }}
+    
+    {{ if ! handle }}
+        {{ handle = $field['handle'] }}
+    {{ /if }}
+    
+    {{ if ! label }}
+        {{ label = $field['label'] }}
+    {{ /if }}
+    
+    {{? $error = $errors['data.'.$handle] ?? [] ?}}
+    
+    <label>
+        <input 
+            wire:model="data.{{ handle }}"
+            :aria-invalid="{{ error ? 'true' : 'false' }}"
+            type="radio" 
+            name="{{ handle }}" 
+            value="{{ value }}"
+            {{ if data[handle] == value }}
+                checked
+            {{ /if }}
+            {{ if input_type != 'hidden' }}class="{{ if inputClass }}{{ inputClass }}{{ /if }}"{{ /if }}
+            {{ instructions_position == 'below' ?= 'aria-describedBy="{handle}-instructions"' }}
+        />
+        {{ label }}
+    </label>
+    {{ unless inline }}
+        <br>
+    {{ /unless }}
+{{ /foreach:options }}
+
+{{ if (error | count) }}
+    <span class="error-message">{{ error | join('<br />') }}</span>
+{{ /if }}
