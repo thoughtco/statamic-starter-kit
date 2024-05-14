@@ -26,3 +26,5 @@ class TreeListener
         // Tracker::invalidate(['partials:_partials/layout/nav']);
     }
 }
+
+?>
