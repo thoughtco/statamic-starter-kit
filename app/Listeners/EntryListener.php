@@ -16,7 +16,7 @@ class EntryListener
         // switch ($event->entry->collection()?->handle())
         // {
         //     case 'news':
-        //         Tracker::invalidate(['partials:_panels/latest_news']);
+        //         Tracker::invalidate(['partial:_panels/latest_news']);
         //     break;
         // }
     }
@@ -30,7 +30,7 @@ class EntryListener
         // switch ($event->entry->collection()?->handle())
         // {
         //     case 'news':
-        //         Tracker::invalidate(['partials:_panels/latest_news']);
+        //         Tracker::invalidate(['partial:_panels/latest_news']);
         //     break;
         // }
     }
@@ -48,7 +48,7 @@ class EntryListener
         //     switch ($event->entry->collection()?->handle())
         //     {
         //         case 'news':
-        //             Tracker::invalidate(['partials:_panels/latest_news']);
+        //             Tracker::invalidate(['partial:_panels/latest_news']);
         //         break;
         //     }
         // }
