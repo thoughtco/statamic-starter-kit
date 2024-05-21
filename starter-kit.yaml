@@ -9,6 +9,7 @@ export_paths:
   - app/Listeners
   - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
+  - bootstrap/providers.php
   - config/blurhash.php
   - config/cache.php
   - config/filesystems.php
