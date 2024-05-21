@@ -14,10 +14,7 @@ class AppServiceProvider extends ServiceProvider
         StaticWarm::hook('additional', function ($urls, $next) {
             return $next($urls->merge(StaticWarmExtras::handle()));
         });
-    }
 
-    public function boot()
-    {
         Fieldtypes\Bard::setDefaultButtons([
             'h2',
             'h3',
