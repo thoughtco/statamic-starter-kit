@@ -42,7 +42,7 @@ dependencies:
   spatie/geocoder: ^3.15
   statamic/seo-pro: '*'
   thoughtco/statamic-blurhash: ^1.0
-  thoughtco/statamic-cache-tracker: ^0.1
+  thoughtco/statamic-cache-tracker: ^0.3
   thoughtco/statamic-cookiepanel: ^2.0
   thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-minify: ^2.0
