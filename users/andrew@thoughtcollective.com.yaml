@@ -1,7 +1,7 @@
 name: 'Andrew Topping'
 super: true
 id: 3ae22021-f055-4b5f-9bb3-31c9b105df8a
-password_hash: $2y$10$xOGfxD2Ee/55uoJfUupKqONmPMVeI1Xg1b0akJ3w/ttznD6WK7JuK
+password_hash: $2y$12$mHAptriXgnTBF96KUMu4f.T1mr9flGpV/2jOMWy4JTzB3pGPR1Uu6
 preferences:
   locale: en
   collections:
