@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Statamic\Events;
-use Thoughtco\StatamicCacheTracker\Facades\Tracker;
+use Thoughtco\StatamicCacheTracker\Jobs\InvalidateTags;
 
 class EntryListener
 {
@@ -16,7 +16,7 @@ class EntryListener
         // switch ($event->entry->collection()?->handle())
         // {
         //     case 'news':
-        //         Tracker::invalidate(['partial:_panels/latest_news']);
+        //         InvalidateTags::dispatch(['partial:_panels/latest_news']);
         //     break;
         // }
     }
@@ -30,7 +30,7 @@ class EntryListener
         // switch ($event->entry->collection()?->handle())
         // {
         //     case 'news':
-        //         Tracker::invalidate(['partial:_panels/latest_news']);
+        //         InvalidateTags::dispatch(['partial:_panels/latest_news']);
         //     break;
         // }
     }
@@ -43,12 +43,12 @@ class EntryListener
         // an item as published, or unpublished
         //
         // if ($event->entry->isDirty('published')) {
-        //     Tracker::invalidate([$event->entry->collection()->handle().':'.$event->entry->id()])
+        //     InvalidateTags::dispatch([$event->entry->collection()->handle().':'.$event->entry->id()])
         //
         //     switch ($event->entry->collection()?->handle())
         //     {
         //         case 'news':
-        //             Tracker::invalidate(['partial:_panels/latest_news']);
+        //             InvalidateTags::dispatch(['partial:_panels/latest_news']);
         //         break;
         //     }
         // }
