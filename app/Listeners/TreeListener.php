@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use Illuminate\Support\Facades\Cache;
 use Statamic\Events;
-use Thoughtco\StatamicCacheTracker\Facades\Tracker;
+use Thoughtco\StatamicCacheTracker\Jobs\InvalidateTags;
 
 class TreeListener
 {
@@ -14,7 +14,7 @@ class TreeListener
         // and we want to invalidate any pages using the nav
         //
         // Cache::forget('nav::'.$nav->handle());
-        // Tracker::invalidate(['partials:_partials/layout/nav']);
+        // InvalidateTags::dispatch(['partials:_partials/layout/nav']);
 
     }
 
@@ -23,7 +23,7 @@ class TreeListener
         // on save we want to forget any cache keys associated with this nav
         //
         // Cache::forget('nav::'.$nav->handle());
-        // Tracker::invalidate(['partials:_partials/layout/nav']);
+        // InvalidateTags::dispatch(['partials:_partials/layout/nav']);
     }
 }
 
