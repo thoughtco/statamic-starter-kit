@@ -19,7 +19,7 @@
                 x-model="form.{{ handle }}"
 	            @change="form.validate('{{ handle }}')"
             {{ elseif driver == 'livewire' }}
-                wire:model.blur="{{ model_prefix }}{{ handle }}"
+                wire:model.blur="{{ handle }}"
 
                 {{?
                     $initAsArray = false;
