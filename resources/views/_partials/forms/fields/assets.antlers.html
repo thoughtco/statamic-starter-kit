@@ -5,6 +5,7 @@
       <input
             type="file"
             name="{{ handle }}{{ if max_files !== 1 }}[]{{ /if }}"
+            id="fld-{{ handle | replace('.', '-') }}"
             {{ if max_files !== 1 }}multiple{{ /if }}
             {{ if driver == 'precognition' }}
                 @change="form.{{ handle }} = $event.target.files{{ if max_files === 1 }}[0]{{ /if }}; form.validate('{{ handle }}')"

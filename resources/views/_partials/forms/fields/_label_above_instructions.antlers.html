@@ -1,8 +1,8 @@
 
     {{ if show_label }}
-    <label for="fld-{{ handle }}">{{ display }}{{ if validate | contains('required') }} *{{ /if }}</label>
+    <label for="fld-{{ handle | replace('.', '-') }}">{{ display }}{{ if validate | contains('required') }} *{{ /if }}</label>
     {{ /if }}
 
 	{{ if instructions && instructions_position == 'above' }}
-	<p class="form-instructions-above" id="fld-{{ handle }}-instructions">{{ instructions }}</p>
+	<p class="form-instructions-above" id="fld-{{ handle | replace('.', '-') }}-instructions">{{ instructions }}</p>
 	{{ /if }}

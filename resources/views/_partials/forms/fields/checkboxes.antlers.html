@@ -9,7 +9,7 @@
 
         <input
             type="checkbox"
-            id="fld-{{ handle }}-{{ $counter }}"
+            id="fld-{{ handle | replace('.', '-') }}-{{ $counter }}"
             name="{{ handle }}{{ if (options | count) > 1 }}[]{{ /if }}"
             value="{{ value }}"
             {{ (old | in_array(value)) ?= 'checked' }}
@@ -36,7 +36,7 @@
 
         <span></span>
 
-        <label for="fld-{{ handle }}-{{ $counter }}">{{ label }}{{ if validate | contains('required') }} *{{ /if }}</label>
+        <label for="fld-{{ handle | replace('.', '-') }}-{{ $counter }}">{{ label }}{{ if validate | contains('required') }} *{{ /if }}</label>
 
     </div>
 

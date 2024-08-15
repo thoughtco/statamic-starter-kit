@@ -3,7 +3,7 @@
     {{ partial src="_partials/forms/fields/_label_above_instructions" }}
 
     <select
-        id="fld-{{ handle }}"
+        id="fld-{{ handle | replace('.', '-') }}"
         name="{{ handle }}{{ multiple ?= "[]" }}"
         {{ if instructions }} aria-describedBy="fld-{{ handle }}-instructions" {{ /if }}
         {{ multiple ?= " multiple" }}

@@ -4,7 +4,7 @@
 
 	<textarea
         id="fld-{{ handle }}"
-        name="{{ handle }}"
+        name="{{ handle | replace('.', '-') }}"
         {{ if instructions }} aria-describedBy="fld-{{ handle }}-instructions" {{ /if }}
         {{ if placeholder }} placeholder="{{ placeholder }}{{ if validate|contains:required }} *{{ /if }}"{{ /if }}
         {{ if character_limit }} maxlength="{{ character_limit }}"{{ /if }}
