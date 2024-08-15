@@ -1,12 +1,12 @@
 
 	{{ if instructions && instructions_position == 'below' }}
-	<p class="form-instructions-below" id="fld-{{ handle | replace('.', '-') }}-instructions">{{ instructions }}</p>
+	<p class="form-instructions-below" id="fld-{{ handle }}-instructions">{{ instructions }}</p>
 	{{ /if }}
 
     {{ if driver == 'precognition' }}
     <span class="error-message" x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></span>
     {{ elseif driver == 'livewire' }}
-    	{{? $error = Arr::get($errors, $handle, []) ?}}
+    	{{? $error = $errors[$model_prefix.$handle] ?? [] ?}}
 		{{ if (error | count) }}
 	<span class="error-message">{{ error | join('<br />') }}</span>
 		{{ /if }}
