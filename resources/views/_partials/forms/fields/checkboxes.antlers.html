@@ -1,0 +1,49 @@
+<div class="input checkbox {{ if inline }}checkbox-inline{{ /if }}">
+
+    {{ partial src="_partials/forms/fields/_label_above_instructions" }}
+
+{{ $counter = 1 }}
+{{ foreach:options as="value|label" }}
+
+    <div class="checkbox-el">
+
+        <input
+            type="checkbox"
+            id="fld-{{ handle }}-{{ $counter }}"
+            name="{{ handle }}{{ if (options | count) > 1 }}[]{{ /if }}"
+            value="{{ value }}"
+            {{ (old | in_array(value)) ?= 'checked' }}
+            {{ if instructions }} aria-describedBy="fld-{{ handle }}-instructions" {{ /if }}
+            {{ if driver == 'precognition' }}
+                :aria-invalid="form.invalid('{{ handle }}')"
+                x-model="form.{{ handle }}"
+	            @change="form.validate('{{ handle }}')"
+            {{ elseif driver == 'livewire' }}
+                wire:model.blur="{{ model_prefix }}{{ handle }}"
+
+                {{?
+                    $initAsArray = false;
+                    if (count($options) > 1 && ! Arr::get($$model_prefix, $handle)) {
+                        $initAsArray = true;
+                    }
+                ?}}
+
+                {{ if initAsArray }}wire:init="$set('{{ model_prefix }}.{{ handle }}', [])"{{ /if }}
+            {{ else }}
+                {{ if validate | contains('required') }} required{{ /if }}
+            {{ /if }}
+        />
+
+        <span></span>
+
+        <label for="fld-{{ handle }}-{{ $counter }}">{{ label }}{{ if validate | contains('required') }} *{{ /if }}</label>
+
+    </div>
+
+    {{ $counter += 1 }}
+
+{{ /foreach:options }}
+
+    {{ partial src="_partials/forms/fields/_errors_below_instructions" }}
+
+</div>
