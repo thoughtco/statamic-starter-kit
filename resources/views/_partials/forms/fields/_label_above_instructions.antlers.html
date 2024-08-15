@@ -1,5 +1,5 @@
 
-    {{ if has_label }}
+    {{ if show_label }}
     <label for="fld-{{ handle }}">{{ display }}{{ if validate | contains('required') }} *{{ /if }}</label>
     {{ /if }}
 
