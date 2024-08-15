@@ -9,7 +9,7 @@
             {{ if driver == 'precognition' }}
                 @change="form.{{ handle }} = $event.target.files{{ if max_files === 1 }}[0]{{ /if }}; form.validate('{{ handle }}')"
             {{ elseif driver == 'livewire' }}
-                wire:model.blur="{{ handle }}"
+                wire:model.blur="{{ model_prefix }}{{ handle }}"
             {{ else }}
                 {{ if validate | contains('required') }} required{{ /if }}
             {{ /if }}
