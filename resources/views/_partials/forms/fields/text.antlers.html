@@ -4,7 +4,7 @@
 
 	<input
         type="{{ input_type ?? 'text' }}"
-        id="fld-{{ handle }}"
+        id="fld-{{ handle | replace('.', '-') }}"
         name="{{ handle }}"
         {{ if placeholder }} placeholder="{{ placeholder }}{{ if validate | contains('required') }} *{{ /if }}"{{ /if }}
         {{ if instructions }}aria-describedBy="fld-{{ handle }}-instructions"{{ /if }}
