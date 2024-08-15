@@ -30,7 +30,7 @@ const MapHandler = (settings, locations) => ({
     },
 
     async initMap() {
-        const el = this.$el.querySelector('#map-display');
+        const el = this.$el.querySelector('.map-display');
 
         if (! el) {
             return;
