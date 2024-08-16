@@ -13,8 +13,7 @@
 		    x-model="form.{{ handle }}"
             x-init="form.{{ handle }} = '{{ old ?? value }}'"
 	  	    @change="form.validate('{{ handle }}')"
-        {{ else }}
-            {{ if driver == 'livewire' }}wire:model.blur="{{ model_prefix }}{{ handle }}"{{ /if }}
+        {{ elseif driver == 'livewire' }}wire:model.blur="{{ model_prefix }}{{ handle }}"
             {{ if old }} value="{{ old }}"{{ /if }}
         {{ else }}
             {{ if (validate | contains('required')) }} required{{ /if }}
