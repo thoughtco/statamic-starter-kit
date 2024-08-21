@@ -19,16 +19,16 @@
                 x-model="form.{{ handle }}"
 	            @change="form.validate('{{ handle }}')"
             {{ elseif driver == 'livewire' }}
-                wire:model.blur="{{ model_prefix }}{{ handle }}"
+                wire:model.blur="{{ if model_prefix }}{{ model_prefix }}.{{ /if }}{{ handle }}"
 
                 {{?
                     $initAsArray = false;
-                    if (count($options) > 1 && ! Arr::get($$model_prefix, $handle)) {
+                    if (isset($model_prefix) && count($options) > 1 && ! Arr::get($$model_prefix, $handle)) {
                         $initAsArray = true;
                     }
                 ?}}
 
-                {{ if initAsArray }}wire:init="$set('{{ model_prefix }}.{{ handle }}', [])"{{ /if }}
+                {{ if initAsArray }}wire:init="$set('{{ if model_prefix }}{{ model_prefix }}.{{ /if }}.{{ handle }}', [])"{{ /if }}
             {{ else }}
                 {{ if validate | contains('required') }} required{{ /if }}
             {{ /if }}
