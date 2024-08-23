@@ -193,7 +193,28 @@ We use the BlurHash addon to create a blurred version of the image and then when
 See https://packagist.org/packages/thoughtco/statamic-blurhash for more information on image blurring. Front End should deal with the 
 transformation from the blurred image to the live image.
 
-##Outputting Forms##
-With the probable exception of a newsletter form, you add the form fields to the html using the forms partial within Thought Co Github Codex Repo. 
-Some HTML may need to be modified but it should give you everything you need out of the box. The options of general, livewire and precognition forms are available including integration with Alpine.
+**Outputting Forms**
+Forms use the concept of a 'driver' (either 'precognition', 'livewire' or blank) so the appropriate code is loaded depending on the context the are used.
 
+The fields loop should now become the below for precognition:
+
+```
+{{ fields }}
+    {{ partial:if_exists src="_partials/forms/fields/{{ type }}" driver="precognition" }}
+{{ /fields }}
+```
+The below for LiveWire (model_prefix is the path to the model we're updating, eg data.):
+
+```
+{{ fields }}
+    {{ partial:if_exists src="_partials/forms/fields/{{ type }}" driver="livewire" model_prefix="data." }}
+{{ /fields }}
+```
+
+If you want to show the labels:
+
+```
+{{ fields }}
+    {{ partial:if_exists src="_partials/forms/fields/{{ type }}" show_label="true" }}
+{{ /fields }}
+```

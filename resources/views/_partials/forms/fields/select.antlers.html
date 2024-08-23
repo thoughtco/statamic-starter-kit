@@ -1,0 +1,31 @@
+<div class="input select">
+
+    {{ partial src="_partials/forms/fields/_label_above_instructions" }}
+
+    <select
+        id="fld-{{ handle | replace('.', '-') }}"
+        name="{{ handle }}{{ multiple ?= "[]" }}"
+        {{ if instructions }} aria-describedBy="fld-{{ handle }}-instructions" {{ /if }}
+        {{ multiple ?= " multiple" }}
+        {{ if driver == 'precognition' }}
+            :aria-invalid="form.invalid('{{ handle }}')"
+		    x-model="form.{{ handle }}"
+            x-init="form.{{ handle }} = '{{ (old ?? value) | sanitize }}'"
+	  	    @change="form.validate('{{ handle }}')"
+        {{ elseif driver == 'livewire' }}
+            wire:model.blur="{{ if model_prefix }}{{ model_prefix }}.{{ /if }}{{ handle }}"
+        {{ else }}
+            {{ if validate | contains('required') }} required{{ /if }}
+        {{ /if }}
+    >
+        {{ unless multiple }}
+            <option value>Please select...</option>
+        {{ /unless }}
+        {{ foreach:options as="value|label" }}
+            <option value="{{ value }}"{{ if (old | in_array(value)) || (old === value) }} selected{{ /if }}>{{ label }}</option>
+        {{ /foreach:options }}
+    </select>
+
+    {{ partial src="_partials/forms/fields/_errors_below_instructions" }}
+
+</div>

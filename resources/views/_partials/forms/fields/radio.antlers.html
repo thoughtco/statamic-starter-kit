@@ -1,0 +1,33 @@
+<div class="input radio">
+
+    {{ partial src="_partials/forms/fields/_label_above_instructions" }}
+
+    {{ foreach:options as="value|label" }}
+        <label>
+            <input
+                type="radio"
+                name="{{ handle }}"
+                value="{{ value }}"
+                {{ old === value ?= " checked" }}
+                {{ if instructions }} aria-describedBy="fld-{{ handle }}-instructions" {{ /if }}
+                {{ if driver == 'precognition' }}
+                    :aria-invalid="form.invalid('{{ handle }}')"
+		            x-model="form.{{ handle }}"
+                    x-init="form.{{ handle }} = '{{ (old ?? value) | sanitize }}'"
+	  	            @change="form.validate('{{ handle }}')"
+                {{ elseif driver == 'livewire' }}
+                    wire:model.blur="{{ model_prefix }}{{ handle }}"
+                {{ else }}
+                    {{ if validate | contains('required') }} required{{ /if }}
+                {{ /if }}
+            >
+            {{ label }}{{ if validate | contains('required') }} *{{ /if }}
+        </label>
+        {{ unless inline }}
+            <br>
+        {{ /unless }}
+    {{ /foreach:options }}
+
+    {{ partial src="_partials/forms/fields/_errors_below_instructions" }}
+
+</div>
