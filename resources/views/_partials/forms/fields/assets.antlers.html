@@ -1,0 +1,22 @@
+<div class="input assets">
+
+    {{ partial src="_partials/forms/fields/_label_above_instructions" }}
+
+      <input
+            type="file"
+            name="{{ handle }}{{ if max_files !== 1 }}[]{{ /if }}"
+            id="fld-{{ handle | replace('.', '-') }}"
+            {{ if max_files !== 1 }}multiple{{ /if }}
+            {{ if driver == 'precognition' }}
+                @change="form.{{ handle }} = $event.target.files{{ if max_files === 1 }}[0]{{ /if }}; form.validate('{{ handle }}')"
+            {{ elseif driver == 'livewire' }}
+                wire:model.blur="{{ if model_prefix }}{{ model_prefix }}.{{ /if }}{{ handle }}"
+            {{ else }}
+                {{ if validate | contains('required') }} required{{ /if }}
+            {{ /if }}
+            {{ if instructions }} aria-describedBy="fld-{{ handle }}-instructions" {{ /if }}
+        />
+
+    {{ partial src="_partials/forms/fields/_errors_below_instructions" }}
+
+</div>

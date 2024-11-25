@@ -1,0 +1,26 @@
+<div class="input">
+
+    {{ partial src="_partials/forms/fields/_label_above_instructions" }}
+
+	<input
+        type="{{ input_type ?? 'text' }}"
+        id="fld-{{ handle | replace('.', '-') }}"
+        name="{{ handle }}"
+        {{ if placeholder }} placeholder="{{ placeholder }}{{ if validate | contains('required') }} *{{ /if }}"{{ /if }}
+        {{ if instructions }}aria-describedBy="fld-{{ handle }}-instructions"{{ /if }}
+        {{ if driver == 'precognition' }}
+            :aria-invalid="form.invalid('{{ handle }}')"
+		    x-model="form.{{ handle }}"
+            x-init="form.{{ handle }} = '{{ old ?? value }}'"
+	  	    @change="form.validate('{{ handle }}')"
+        {{ elseif driver == 'livewire' }}wire:model.blur="{{ if model_prefix }}{{ model_prefix }}.{{ /if }}{{ handle }}"
+            {{ if old }} value="{{ old }}"{{ /if }}
+        {{ else }}
+            {{ if (validate | contains('required')) }} required{{ /if }}
+        {{ /if }}
+        {{ if character_limit }} maxlength="{{ character_limit }}"{{ /if }}
+    />
+
+    {{ partial src="_partials/forms/fields/_errors_below_instructions" }}
+
+</div>
