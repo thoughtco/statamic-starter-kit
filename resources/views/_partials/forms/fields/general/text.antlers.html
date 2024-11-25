@@ -1,5 +1,0 @@
-<div class="input mb-4 bg-[rgba(77,172,233,0.2)] h-[78px] leading-[78px] w-full pl-6 pr-[6px] rounded-[50px]">
-
-    <input type="{{ if input_type == 'number' }}text{{ else }}{{ input_type ?? 'text' }}{{ /if }}"{{ if input_type == 'number' }} inputmode="numeric" pattern="[0-9]*"{{ /if }} name="{{ handle }}"{{ if placeholder }} placeholder="{{ placeholder }}"{{ /if }}{{ if old }} value="{{ old }}" {{ else }} value="{{ if input_type == 'hidden' and handle == 'product' }}{{ product.title }}{{ /if }}"{{ /if }}{{ if validate|contains:required }} required{{ /if }}{{ if character_limit }} maxlength="{{ character_limit }}"{{ /if }} class="text-sm placeholder:text-black lg:text-base lg:leading-[1.125]">
-
-</div>
