@@ -37,12 +37,6 @@ By default the following packages are added:
 - Checks form submission content against Postmarks spam check API
 - Full documentation at https://packagist.org/packages/thoughtco/statamic-postmark-spamcheck
 
-
-**Scheduled Cache Invalidator**
-- A command to help invalidate the cache when scheduled Statamic entries are due to go live.
-- Full documentation at https://packagist.org/packages/mitydigital/statamic-scheduled-cache-invalidator
-
-
 **SEOPro:**
 - Allows the Search Engine Management of each entry and can be configured using the statamic/seo-pro.php config file
 - Allows the production of sitemap.xml
