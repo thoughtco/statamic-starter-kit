@@ -20,6 +20,7 @@ export_paths:
   - config/statamic/cp.php
   - config/statamic/editions.php
   - config/statamic/seo-pro.php
+  - config/statamic/stache.php
   - config/statamic/static_caching.php
   - config/thoughtco/client-dashboard.php
   - config/thoughtco/minify.php
