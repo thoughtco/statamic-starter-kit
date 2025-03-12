@@ -8,7 +8,6 @@ class StarterKitPostInstall
 {
     public function handle($console)
     {
-
         $originalAppName = env('APP_URL');
         $originalAppUrl = env('APP_URL');
         $originalAppKey = env('APP_KEY');
@@ -68,5 +67,7 @@ class StarterKitPostInstall
         Artisan::call('cache:clear');
         $console->info('<info>[✓]</info> laravel cache cleared');
 
+        (new Process('npm i --force'))->start();
+        $console->info('<info>[✓]</info> running npm i --force');
     }
 }
