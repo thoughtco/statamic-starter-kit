@@ -102,6 +102,16 @@ return [
             'path' => storage_path('statamic/static-urls-cache'),
         ],
 
+        'asset_container_contents' => [
+            'driver' => 'file',
+            'path' => storage_path('statamic/asset_container_contents'),
+        ],
+
+        'asset_meta' => [
+            'driver' => 'file',
+            'path' => storage_path('statamic/asset_meta'),
+        ],
+
     ],
 
     /*
