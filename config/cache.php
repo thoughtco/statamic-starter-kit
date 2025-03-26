@@ -104,12 +104,12 @@ return [
 
         'asset_container_contents' => [
             'driver' => 'file',
-            'path' => storage_path('statamic/asset_container_contents'),
+            'path' => storage_path('statamic/asset-container-contents'),
         ],
 
         'asset_meta' => [
             'driver' => 'file',
-            'path' => storage_path('statamic/asset_meta'),
+            'path' => storage_path('statamic/asset-meta'),
         ],
 
     ],
