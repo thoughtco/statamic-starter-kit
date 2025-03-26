@@ -69,7 +69,7 @@ class StarterKitPostInstall
         Artisan::call('cache:clear');
         $console->info('<info>[✓]</info> laravel cache cleared');
 
-        (new Process(['npm'], ['i --force']))->start();
+        (new Process(['npm'], 'i --force'))->start();
         $console->info('<info>[✓]</info> running npm i --force');
     }
 }
