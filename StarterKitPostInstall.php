@@ -11,18 +11,19 @@ class StarterKitPostInstall
         $originalAppName = env('APP_URL');
         $originalAppUrl = env('APP_URL');
         $originalAppKey = env('APP_KEY');
-        $originalRevisionsPath = env('STATAMIC_REVISIONS_PATH');
 
         $appName = $console->ask('What should be your app name?');
         $appName = preg_replace('/([\'|\"|#])/m', '', $appName);
 
         $appURL = $console->ask('What is the app url?');
 
+        $revisionPath = $console->ask('What path do you want to use for revisions?', '/content/revisions');
+
         $env = app('files')->get(base_path('.env.thoughtco'));
         $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
         $env = str_replace('APP_URL=', "APP_URL=\"{$appURL}\"", $env);
         $env = str_replace('APP_KEY=', "APP_KEY=\"{$originalAppKey}\"", $env);
-        $env = str_replace('STATAMIC_REVISIONS_PATH=', "STATAMIC_REVISIONS_PATH=\"{$originalRevisionsPath}\"", $env);
+        $env = str_replace('STATAMIC_REVISIONS_PATH=', "STATAMIC_REVISIONS_PATH=\"{$revisionPath}\"", $env);
 
         // output to console
         $console->info('<info>[✓]</info> generate env');
