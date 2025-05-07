@@ -1,0 +1,2 @@
+<script>hcaptchaReady = function() { window.dispatchEvent(new CustomEvent('hcaptcha-ready')); }</script>
+<script src="https://hcaptcha.com/1/api.js?onload=hcaptchaReady&render=explicit" async defer></script>
