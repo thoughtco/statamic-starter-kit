@@ -38,6 +38,7 @@ export_paths:
   - users
 dependencies:
   aerni/social-links: ^3.0
+  aryehraber/statamic-captcha: ^1.1
   coconutcraig/laravel-postmark: ^3.2
   duncanmcclean/static-cache-manager: ^4.0
   marcorieser/statamic-livewire: ^4.0
