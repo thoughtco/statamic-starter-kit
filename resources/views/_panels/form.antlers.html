@@ -1,0 +1,80 @@
+{{#
+
+    FORM EXAMPLE
+        + REFERENCES HCAPTCHA SO REMOVE IF NOT NEEDED
+
+#}}
+				{{ form:create in="{choose_form|raw}" js="alpine:form" attr:x-ref="form" \x-data='{"h-captcha-response": ""}' }}
+
+					<div
+						x-cloak
+						x-data="formHandler({
+							beforeSubmit: (handler) => {
+							 	let widgetId;
+
+								if (widgetId = handler.$el.closest('form').querySelector('[data-hcaptcha-widget-id]').getAttribute('data-hcaptcha-widget-id')) {
+                    				hcaptcha.execute(widgetId, { async: true })
+										.then(({ response, key }) => {
+											handler.form['h-captcha-response'] = response;
+											handler.submitWithoutInterception();
+										})
+										.catch(err => {
+											handler.form.errors._unspecified = 'Captcha error';
+											hcaptcha.reset(widgetId);
+										});
+								}
+							}
+						})"
+						@hcaptcha-ready.window="
+							let el;
+							if (el = $el.querySelector('.h-captcha')) {
+								let functionId = $id('hcaptchaCallBack');
+								el.setAttribute('data-callback', functionId);
+
+								window[functionId] = () => {
+									// empty function to prevent captcha doing anything
+								}
+
+								hcaptcha.render(el);
+							}
+						"
+					>
+
+						<p class="message" x-show="success">One of our team will be in touch as soon as possible.</p>
+
+						<div class="fields" x-show="! success">
+
+							<div class="hidden">
+								<label class="font-bold">{{ honeypot }} <sup class="text-red-700">*</sup></label>
+								<input class="form-input w-full" type="text" name="{{ honeypot }}" x-model="form.{{ honeypot }}" tabindex="-1" autocomplete="off"/>
+							</div>
+
+							{{ sections }}
+								<fieldset class="md:flex md:justify-between">
+									{{ fields }}
+										{{ if (choose_form | raw)  == "newsletter" }}
+											{{ if first }}
+												{{ $divClass = "input relative before:content-[''] before:block before:absolute before:bottom-1 before:left-0 before:w-full before:h-[1px] before:bg-grey md:w-1/2" }}
+											{{ else }}
+												{{ $divClass = "input mt-[15px] relative before:content-[''] before:block before:absolute before:bottom-1 before:left-0 before:w-full before:h-[1px] before:bg-grey md:mt-0 md:w-1/2 md:ml-[45px]" }}
+											{{ /if }}
+										{{ /if }}
+										{{ partial src="_partials/forms/fields/{type}" :divClass="$divClass" inputClass="text-[1.5625rem] text-midblue placeholder:text-[rgba(0,69,77,0.3)] font-recoleta placeholder:font-recoleta lg:text-[2.5625rem] w-full" }}
+									{{ /fields }}
+								</fieldset>
+							{{ /sections }}
+
+							{{ captcha }}
+							{{ if error:captcha }}
+							  <span class="error-message"{{ error:captcha }}</span>
+							{{ /if }}
+
+							<span class="error-message" x-show="form.errors._unspecified != ''" x-text="form.errors._unspecified"></span>
+
+							<button type="submit" @click.prevent="submit" :disabled="form.processing" :class="{ 'opacity-25 cursor-default': form.processing }" class="relative z-1 button box-content block relative ml-auto mt-[22px] lg:mt-[39px] text-midblue leading-[37px] font-recoleta text-xl w-full max-w-fit pr-[25px] pl-[25px] before:content-[''] before:block before:w-full before:h-[38px] before:rounded-[30px] before:bg-blue before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:-z-1 lg:before:transition-all lg:hover:before:h-[48px] lg:transition-all lg:duration-1000 lg:delay-100 lg:hover:pr-[35px] lg:hover:pl-[35px] lg:before:overflow-hidden lg:before:duration-1000 lg:before:delay-100 lg:mr-0 lg:ml-0">Submit</button>
+
+						</div>
+
+					</div>
+
+				{{ /form:create }}
