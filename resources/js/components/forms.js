@@ -3,16 +3,15 @@ const FormHandler = (params = {}) => ({
     success: false,
     submitted: false,
     form: null,
-    init () {
+    init() {
         this.form = this.$form(
             'post',
             this.$refs.form.getAttribute('action'),
-            JSON.parse(this.$refs.form.getAttribute('x-data'))
-            .form, {
+            JSON.parse(this.$refs.form.getAttribute('x-data')).form,
+            {
                 headers: {
                     'X-CSRF-Token': {
-                        toString: () => this.$refs.form.querySelector('[name="_token"]')
-                            .value,
+                        toString: () => this.$refs.form.querySelector('[name="_token"]').value,
                     }
                 }
             }
@@ -22,11 +21,20 @@ const FormHandler = (params = {}) => ({
             this.form.setErrors(params.errors);
         }
     },
-    submit () {
+    submit() {
+        if (this.params.beforeSubmit ?? false) {
+            this.params.beforeSubmit(this);
+
+            return;
+        }
+
+        this.submitWithoutInterception();
+    },
+    submitWithoutInterception() {
         this.submitted = true
 
         if (this.params.nativeSubmit ?? false) {
-            this.$refs.form.submit();
+            this.$refs.form.requestSubmit();
 
             return;
         }
@@ -46,14 +54,13 @@ const FormHandler = (params = {}) => ({
                     this.params.onSuccess(this);
                 }
             })
-            .then(() => {})
+            .then(() => { })
             .catch(error => {
                 if (this.params.onError) {
                     this.params.onError(this);
                 }
 
-                if (!Object.values(this.form.errors)
-                    .length) {
+                if (! Object.values(this.form.errors).length) {
                     if (error.response?.data?.error) {
                         this.form.errors = error.response.data.error;
                         return;
