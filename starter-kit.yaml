@@ -9,6 +9,7 @@ export_paths:
   - app/Listeners
   - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
+  - bootstrap/app.php
   - bootstrap/providers.php
   - config/blurhash.php
   - config/cache.php
@@ -20,6 +21,7 @@ export_paths:
   - config/statamic/cp.php
   - config/statamic/editions.php
   - config/statamic/seo-pro.php
+  - config/statamic/stache.php
   - config/statamic/static_caching.php
   - config/thoughtco/client-dashboard.php
   - config/thoughtco/minify.php
@@ -28,7 +30,7 @@ export_paths:
   - resources/css/site.css
   - resources/fieldsets
   - resources/forms
-  - resources/js/site.js
+  - resources/js
   - resources/sites.yaml
   - resources/users
   - resources/views
@@ -36,14 +38,14 @@ export_paths:
   - users
 dependencies:
   aerni/social-links: ^3.0
+  aryehraber/statamic-captcha: ^1.1
   coconutcraig/laravel-postmark: ^3.2
   duncanmcclean/static-cache-manager: ^4.0
   marcorieser/statamic-livewire: ^4.0
   spatie/geocoder: ^3.15
   statamic/seo-pro: '*'
-  thoughtco/statamic-cache-tracker: ^0.8
-  thoughtco/statamic-cookiepanel: ^2.0
+  thoughtco/statamic-cache-tracker: '^0.9'
+  thoughtco/statamic-cookiepanel: ^2.3
   thoughtco/statamic-cp-resources: ^1.0
-  thoughtco/statamic-minify: ^2.0
   thoughtco/statamic-postmark-spamcheck: ^1.0
   thoughtco/statamic-redirects: ^1.3

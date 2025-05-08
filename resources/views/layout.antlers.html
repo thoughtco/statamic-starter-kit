@@ -4,18 +4,20 @@
 
 	<!-- seo -->
     {{ seo_pro:meta }}
-		
+
 	<!-- base settings -->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
     <base href="{{ site:url }}" />
-	
+
 	<!-- css -->
-	
-	{{# anything else that should only be in production #}}
+	<link rel="preload" as="style" href="{{ vite:asset src="resources/css/site.css" }}" />
+	<link href="{{ vite:asset src="resources/css/site.css" }}" rel="stylesheet" type="text/css" media="screen" />
+
+    {{# anything else that should only be in production #}}
 	{{ if environment == 'production' }}
 	{{ /if }}
-	
+
 </head>
 <body>
 
@@ -27,6 +29,7 @@
     {{ /if }}
 
 	<!-- footer scripts -->
-	
+	<script type="module" src="{{ vite:asset src="resources/js/site.js" }}"></script>
+
 </body>
 </html>

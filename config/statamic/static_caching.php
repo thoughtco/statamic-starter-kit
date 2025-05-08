@@ -111,7 +111,6 @@ return [
     'replacers' => [
         \Statamic\StaticCaching\Replacers\CsrfTokenReplacer::class,
         \Statamic\StaticCaching\Replacers\NoCacheReplacer::class,
-        \Thoughtco\Minify\Replacers\MinifyReplacer::class,
     ],
 
     /*
