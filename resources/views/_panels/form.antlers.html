@@ -12,17 +12,20 @@
 							beforeSubmit: (handler) => {
 							 	let widgetId;
 
-								if (widgetId = handler.$el.closest('form').querySelector('[data-hcaptcha-widget-id]').getAttribute('data-hcaptcha-widget-id')) {
-                    				hcaptcha.execute(widgetId, { async: true })
-										.then(({ response, key }) => {
-											handler.form['h-captcha-response'] = response;
-											handler.submitWithoutInterception();
-										})
-										.catch(err => {
-											handler.form.errors._unspecified = 'Captcha error';
-											hcaptcha.reset(widgetId);
-										});
-								}
+								if (! widgetId = handler.$el.closest('form')?.querySelector('[data-hcaptcha-widget-id]')?.getAttribute('data-hcaptcha-widget-id')) {
+									handler.submitWithoutInterception();
+                                    return;
+                                }
+                        
+                                hcaptcha.execute(widgetId, { async: true })
+                                    .then(({ response, key }) => {
+                                        handler.form['h-captcha-response'] = response;
+                                        handler.submitWithoutInterception();
+                                    })
+                                    .catch(err => {
+                                        handler.form.errors._unspecified = 'Captcha error';
+                                        hcaptcha.reset(widgetId);
+                                    });
 							}
 						})"
 						@hcaptcha-ready.window="
