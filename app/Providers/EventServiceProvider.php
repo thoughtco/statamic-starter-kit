@@ -40,6 +40,10 @@ class EventServiceProvider extends ServiceProvider
             [Listeners\EntryListener::class, 'saved'],
         ],
 
+        Events\EntryScheduleReached::class => [
+            [Listeners\EntryListener::class, 'scheduleReached'],
+        ],
+
         Events\FormSubmitted::class => [
             Listeners\FormListener::class,
         ],

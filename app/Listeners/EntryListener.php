@@ -53,6 +53,11 @@ class EntryListener
         //     }
         // }
     }
+
+    public function scheduleReached(Events\EntryScheduleReached $event)
+    {
+        $event->entry->save(); // we save the entry to kick the stache and run any invalidation
+    }
 }
 
 ?>
