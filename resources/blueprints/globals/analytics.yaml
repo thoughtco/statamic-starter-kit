@@ -1,0 +1,12 @@
+tabs:
+main:
+  display: Main
+  sections:
+    -
+      display: Google
+      fields:
+        -
+          handle: tag_manager_id
+          field:
+            type: text
+            display: 'Tag Manager ID'
