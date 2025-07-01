@@ -2,34 +2,93 @@
 <html prefix="og: http://ogp.me/ns#" lang="en">
 <head>
 
-	<!-- seo -->
+    <!-- seo -->
     {{ seo_pro:meta }}
 
-	<!-- base settings -->
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
+    <!-- base settings -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <base href="{{ site:url }}" />
 
-	<!-- css -->
-	<link rel="preload" as="style" href="{{ vite:asset src="resources/css/site.css" }}" />
-	<link href="{{ vite:asset src="resources/css/site.css" }}" rel="stylesheet" type="text/css" media="screen" />
+    <!-- css -->
+    <link rel="preload" as="style" href="{{ vite:asset src="resources/css/site.css" }}" />
+    <link href="{{ vite:asset src="resources/css/site.css" }}" rel="stylesheet" type="text/css" media="screen" />
+
+    <!-- cookie panel styles -->
+    {{ cookie_panel:styles }}
 
     {{# anything else that should only be in production #}}
-	{{ if environment == 'production' }}
-	{{ /if }}
+    {{ if environment == 'production' }}
+    {{ /if }}
+
+    {{# include any consentmode 2 code here #}}
+    {{ if analytics.tag_manager_id }}
+
+        <script>
+            // Define dataLayer and the gtag function.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+
+            gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied'
+            });
+
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','{{ analytics.tag_manager_id }}');
+        </script>
+
+    {{ /if }}
 
 </head>
 <body>
 
+    {{# {{ cookie_panel:panel }} #}}
+
     {{ template_content }}
 
-	{{# anything else that should only be on staging #}}
-	{{ if environment != 'production' }}
+    {{# include any consentmode 2 code here #}}
+    {{ if analytics.tag_manager_id }}
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id={{ analytics.tag_manager_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+    {{ /if }}
+
+    {{# anything else that should only be on staging #}}
+    {{ if environment != 'production' }}
 
     {{ /if }}
 
-	<!-- footer scripts -->
-	<script type="module" src="{{ vite:asset src="resources/js/site.js" }}"></script>
+    <!-- cookie panel scripts -->
+    {{ cookie_panel:scripts }}
+
+    {{# include any consentmode 2 code here #}}
+    {{ if analytics.tag_manager_id }}
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                window.addEventListener('statamic-consentpanel:consent-changed', (event) => {
+                    let categories = event.detail.categories;
+
+                    gtag('consent', 'update', {
+                        'ad_storage': categories.includes('third-party') ? 'granted' : 'denied',
+                        'ad_user_data': categories.includes('advertising') ? 'granted' : 'denied',
+                        'ad_personalization': categories.includes('advertising') ? 'granted' : 'denied',
+                        'analytics_storage': categories.includes('analytics') ? 'granted' : 'denied'
+                    });
+                });
+
+                window.dispatchEvent(new CustomEvent('statamic-consentpanel:consent-changed', {detail: {categories: ConsentPanel.getConsentSettings()}}));
+            });
+        </script>
+    {{ /if }}
+
+    <!-- footer scripts -->
+    <script type="module" src="{{ vite:asset src="resources/js/site.js" }}"></script>
 
 </body>
 </html>

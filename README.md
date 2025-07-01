@@ -96,6 +96,9 @@ If you don't need any classes, simply leave the attribute out. Any classes shoul
 
 ### Globals
 There are 4 globals setup
+- **Analytics:**
+  - By default, one field to contain the Google Tag Manager ID. Adding an ID here will output the relevant data layer code for Consent Mode 2.
+  - If anymore settings are needed in relation to any analytics functions, they should be added here through the blueprint.
 - **Contact:**
   - Basic fields for main points of contact
 - **Social Media:**
