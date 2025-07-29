@@ -38,7 +38,7 @@ By default the following packages are added:
 - If we're not using the assets container and are using a different container, this will need changed in the config file. 
 
 **Social Links:**
-- Some sites have articles (news / events .etc) which have sharing icons on them. This add-on generates the links for you so all you need to do is drop in the antlers tag. Documentation is a https://statamic.com/addons/aerni/social-links. 
+- Some sites have articles (news / events .etc) which have sharing icons on them. This add-on generates the links for you so all you need to do is drop in the antlers tag. Documentation is a https://statamic.com/addons/aerni/social-links.
 
 **Statamic CP Resources:**
 - Allows the inclusion of any videos generated on for clients. If you generate a video on Loom it should be added here and the client pointed to this page.
@@ -91,6 +91,47 @@ If you don't need any classes, simply leave the attribute out. Any classes shoul
 ```
   {{ partial:_partials/snippets/video video_type="{video_type}" }}
 ```
+
+- **Map:** A snippet which outputs a Google Map with the 3rd Party Consent for cookies included. 
+An API key is required which you can do via (here)[https://github.com/thoughtco/statamic-starter-kit?tab=readme-ov-file#env-variables]
+```
+  {{ 
+    partial:_partials/snippets/map 
+    :latitude="latitude"
+    :longitude="longitude"
+    :address="address"
+    mapTypeControl=false
+    panControl="true"
+    streetViewControl="false"
+    zoomControl="true"
+    draggable="true"
+  }}
+```
+
+**@param latitude:** 
+String: Latitude (required)
+
+**@param longitude:** 
+String: Longitude (required)
+
+**@param address:** 
+String: Address (required)
+
+**@param mapTypeControl:** 
+Boolean: Give user a choice of what type of map they view (Satelite / Traffic .etc)
+
+**@param panControl:** 
+Boolean: Can the user pan
+
+**@param streetViewControl:** 
+Boolean: Can the user access street view
+
+**@param zoomControl:** 
+Boolean: Can the user zoom
+
+**@param draggable:** 
+Boolean: Can the user drag the map
+
 
 - **Slider Settings:** Contains Slider Effect, Time Delay and pagination and should be used on sliders with the relevant data attribute for the slider. The data attributes are available in swiper-setup.js.
 
