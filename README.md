@@ -115,7 +115,17 @@ Admin role, need to add permissions to it if collections etc are added.
 ### Image Partial
 The generation of the picture element has now been moved into a partial.
 ```
-  {{ partial src="_partials/snippets/images" :image="image" cover="false" sizes="(min-width: 1280px) 960px, (min-width: 768px) 50vw, 20vw" lazy="true" }}
+  {{ partial
+          src="_partials/snippets/images"
+          :image="url"
+          imageAlt="{ alt ?? heading ?? page.title }"
+          srcset_from="_partials/snippets/srcset"
+          width="574"
+          height="250"
+          loading_eager="true"
+          sizes="(min-width:1024px) 1024px, (min-width:768px) 768px, (min-width:468px) 468px, 20vw"
+          class="absolute top-0 left-0 w-full h-full object-cover"
+      }}
 ```
 
 The following parameters can be passed:
@@ -175,6 +185,9 @@ Boolean. Whether the image should be natively lazy loaded.
 
 **@param quality:** 
 Integer. Set image quality. Defaults to 85.
+
+**@param imageAlt:** 
+String. Set the alt text you want to use on the image.
 
 **Additional Image Information**
 We use the BlurHash addon to create a blurred version of the image and then when the image has loaded the main image is brought in.
