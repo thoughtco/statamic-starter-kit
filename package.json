@@ -6,19 +6,24 @@
         "build": "vite build --watch"
     },
     "devDependencies": {
-        "@tailwindcss/typography": "^0.5.9",
-        "autoprefixer": "^10.4.14",
-        "laravel-vite-plugin": "^0.7.2",
-        "postcss": "^8.4.23",
-        "tailwindcss": "^3.4.1",
-        "vite": "^4.0.0"
+        "@tailwindcss/typography": "^0.5.16",
+        "@tailwindcss/vite": "^4.1.11",
+        "alpinejs-textarea-grow": "^1.0.5",
+        "axios": "^1.8.2",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^1.2.0",
+        "tailwindcss": "^4.1.11",
+        "vite": "^6.2.4"
     },
     "dependencies": {
         "@alpinejs/intersect": "^3.14.1",
         "@alpinejs/resize": "^3.14.1",
-        "alpinejs": "^3.14.1",
         "@googlemaps/markerclusterer": "^2.5.3",
+        "alpinejs": "^3.14.1",
+        "autoprefixer": "^10.4.21",
         "laravel-precognition-alpine": "^0.5.6",
-        "swiffy-slider": "^1.6.0"
+        "postcss": "^8.5.6",
+        "swiffy-slider": "^1.6.0",
+        "swiper": "^11.2.10"
     }
 }
