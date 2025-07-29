@@ -1,46 +1,45 @@
 {{ if video_type == '3rd-party' }}
 
-	{{ setting_autoplay = autoplay ? 1 : 0 }}
-	{{ setting_loop = loop ? 1 : 0 }}
-	{{ setting_mute = mute ? 1 : 0 }}
-	{{ setting_controls = show_controls ? 1 : 0 }}
+    {{ setting_autoplay = autoplay ? 1 : 0 }}
+    {{ setting_loop = loop ? 1 : 0 }}
+    {{ setting_mute = mute ? 1 : 0 }}
+    {{ setting_controls = show_controls ? 1 : 0 }}
 
-	{{# default url params to YouTube #}}
-	{{ urlParams = '?autoplay={setting_autoplay}&mute={setting_mute}&rel=0&playsinline=1&controls={setting_controls}&showinfo=0&loop={setting_loop}' }}
+    {{# default url params to YouTube #}}
+    {{ urlParams = '?autoplay={setting_autoplay}&mute={setting_mute}&rel=0&playsinline=1&controls={setting_controls}&showinfo=0&loop={setting_loop}' }}
 
-	{{# if we're vimeo, we need different params #}}
-	{{ if (video_url | embed_url | contains('vimeo')) }}
-		{{ urlParams = '&autoplay={setting_autoplay}&muted={setting_mute}&loop={setting_loop}&controls={setting_controls}&byline=0&title=0&quality=1080p' }}
-	{{ /if }}
+    {{# if we're vimeo, we need different params #}}
+    {{ if (video_url | embed_url | contains('vimeo')) }}
+        {{ urlParams = '&autoplay={setting_autoplay}&muted={setting_mute}&loop={setting_loop}&controls={setting_controls}&byline=0&title=0&quality=1080p' }}
+    {{ /if }}
 
-	<figure class="video">
-		<iframe src="{{ video_url | embed_url }}{{ urlParams }}" frameborder="0" allow="{{ if autoplay }}autoplay; {{ /if }}{{ if mute }}muted {{ /if }}fullscreen" allowfullscreen=""></iframe>
-	</figure>
+    <figure class="video">
+        <iframe src="{{ video_url | embed_url }}{{ urlParams }}" frameborder="0" allow="{{ if autoplay }}autoplay; {{ /if }}{{ if mute }}muted {{ /if }}fullscreen" allowfullscreen=""></iframe>
+    </figure>
 
 {{ /if }}
 
 {{ if video_type == 'local' }}
 
-	<figure style="{{ if poster_image }}aspect-ratio: {{ poster_image.ratio }}; {{ else }}aspect-ratio: 1.78; {{ /if }}">
-		<video
-			class="lazy"
-			preload="none"
-			playsinline
-			{{ if autoplay }}autoplay {{ /if }}
-			{{ if mute }}muted {{ /if }}
-			{{ if loop }}loop {{ /if }}
-			{{ if show_controls }}controls {{ /if }}
-			width="100%"
-			{{ if poster_image }}
-				poster="{{ glide:poster_image width='960' height='540' dpr='2' format='webp' }}"
-				style="aspect-ratio: {{ poster_image.ratio }}"
-			{{ /if }}
-		>
-			{{ if mp4 }}<source src="{{ mp4 }}" type="video/mp4">{{ /if }}
-			{{ if webm }}<source src="{{ webm }}" type="video/webm">{{ /if }}
+    <figure style="{{ if poster_image }}aspect-ratio: {{ poster_image.ratio }}; {{ else }}aspect-ratio: 1.78; {{ /if }}">
+        <video
+            class="lazy"
+            preload="none"
+            playsinline
+            {{ if autoplay }}autoplay {{ /if }}
+            {{ if mute }}muted {{ /if }}
+            {{ if loop }}loop {{ /if }}
+            {{ if show_controls }}controls {{ /if }}
+            width="100%"
+            {{ if poster_image }}
+                poster="{{ glide:poster_image width='960' height='540' dpr='2' format='webp' }}"
+                style="aspect-ratio: {{ poster_image.ratio }}"
+            {{ /if }}
+        >
+            {{ if mp4 }}<source src="{{ mp4 }}" type="video/mp4">{{ /if }}
 
-		</video>
+        </video>
 
-	</figure>
+    </figure>
 
 {{ /if }}
