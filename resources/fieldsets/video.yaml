@@ -9,83 +9,46 @@ fields:
       default: 3rd-party
       display: 'Video Type'
       type: button_group
-      icon: button_group
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
   -
     handle: settings
     field:
       display: Settings
       type: section
-      icon: section
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
-      hide_display: false
   -
     handle: show_controls
     field:
-      default: false
       display: 'Show Controls'
       type: toggle
-      icon: toggle
       width: 25
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
-      hide_display: false
   -
     handle: loop
     field:
-      default: false
       display: Loop
       type: toggle
-      icon: toggle
       width: 25
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
-      hide_display: false
   -
     handle: mute
     field:
-      default: false
       display: Mute
       type: toggle
-      icon: toggle
       width: 25
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
-      hide_display: false
   -
     handle: autoplay
     field:
-      default: false
       display: Autoplay
       type: toggle
-      icon: toggle
       width: 25
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
-      hide_display: false
   -
     handle: video_url
     field:
       display: 'Video URL'
       type: video
-      icon: video
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
       if:
         video_type: 'equals 3rd-party'
@@ -94,69 +57,28 @@ fields:
     field:
       display: Files
       type: section
-      icon: section
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
       if:
         video_type: 'equals local'
   -
     handle: mp4
     field:
-      mode: list
       container: assets
-      restrict: false
-      allow_uploads: true
-      show_filename: true
       max_files: 1
       display: MP4
       type: assets
-      icon: assets
       instructions: 'Upload an MP4 version of your video'
-      width: 50
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
       if:
         video_type: 'equals local'
-  -
-    handle: webm
-    field:
-      mode: list
-      container: assets
-      restrict: false
-      allow_uploads: true
-      show_filename: true
-      max_files: 1
-      display: WebM
-      type: assets
-      icon: assets
-      width: 50
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      always_save: false
-      if:
-        video_type: 'equals local'
-      instructions: 'Upload a Webm version of your video'
   -
     handle: poster_image
     field:
-      mode: list
       container: assets
-      restrict: false
-      allow_uploads: true
-      show_filename: true
       max_files: 1
       display: 'Poster Image'
       type: assets
-      icon: assets
       instructions: 'The image that shows on top of your uploaded image. Leave blank to not display.'
-      listable: hidden
-      instructions_position: above
-      visibility: visible
       always_save: false
       if:
         video_type: 'equals local'
