@@ -19,7 +19,40 @@
                     },
                 {{ /if }}
             {{ /locations }}
-        ])'>
+        ]
+        )'
+        @selected-sector-updated.window="
+            locations = $event.detail.locations.map((location) => {
+                return {
+                    lat: location.lat,
+                    lng: location.lng,
+                    markerHTML: `
+                        <div data-opportunity='${location.opp_id}'>
+
+                            <div class='relative'>
+
+                                <div class='absolute -top-[70px] left-1/2 -translate-x-1/2 bg-white w-[75px] h-[75px] p-[10px]'>
+
+                                    <a href='${location.url}' title='${location.company}' aria-label='${location.company}' class='block w-full h-full'><figure class='h-full'><img src='${location.logo}' alt='${location.company}' class='block !w-full !h-full object-contain'></figure></a>
+
+                                </div>
+
+                                <figure class='pointer-events-none'><img src='/assets/images/click-window-accent.svg' class='block w-5 h-5'></figure>
+
+                            </div>
+
+                        </div>
+                    `,
+                    scale: 1,
+                    onClick: function (marker) {
+                        location.href = $el.href;
+                    },
+                };
+            });
+
+            updateLocations(locations);
+        ">
+
 
             <template x-if="! consentGiven">
                 <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-full max-w-[80vw] text-center leading-[1.5625] pl-[10px] pr-[29px] lg:pl-[67px] lg:pr-[88px] xxl:pr-[11.667vw] xxl:pl-[4.653vw] lg:text-[1.375rem] lg:leading-1.3 lg:max-w-[800px]">

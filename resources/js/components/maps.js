@@ -144,6 +144,10 @@ const MapHandler = (settings, locations) => ({
         new MarkerClusterer({ renderer, markers, map });
     },
 
-});
+        updateLocations(locations) {
+            this.locations = locations;
+        },
 
-export default MapHandler;
+    });
+
+    export default MapHandler;
