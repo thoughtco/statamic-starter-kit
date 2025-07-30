@@ -95,14 +95,6 @@ If you don't need any classes, simply leave the attribute out. Any classes shoul
   {{ partial:_partials/snippets/video video_type="{video_type}" }}
 ```
 
-- **Map:** A snippet which outputs a Google Map with the 3rd Party Consent for cookies included. 
-An API key and a Map ID are required which you can do via (here)[https://github.com/thoughtco/statamic-starter-kit?tab=readme-ov-file#env-variables]
-
-Note: this is only a starting point and the snippet should be amended for your particular use case.
-```
-  {{ partial:_partials/snippets/map }}
-```
-
 
 - **Slider Settings:** Contains Slider Effect, Time Delay and pagination and should be used on sliders with the relevant data attribute for the slider. The data attributes are available in swiper-setup.js.
 
@@ -200,6 +192,15 @@ Integer. Set image quality. Defaults to 85.
 
 **@param imageAlt:** 
 String. Set the alt text you want to use on the image.
+
+### Map Partial
+A snippet which outputs a Google Map with the 3rd Party Consent for cookies included. 
+An API key and a Map ID are required which you can do via (here)[https://github.com/thoughtco/statamic-starter-kit?tab=readme-ov-file#env-variables]
+
+Note: this is only a starting point and the snippet should be amended for your particular use case.
+```
+  {{ partial:_partials/snippets/map }}
+```
 
 **Additional Image Information**
 We use the BlurHash addon to create a blurred version of the image and then when the image has loaded the main image is brought in.
