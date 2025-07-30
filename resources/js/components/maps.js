@@ -1,4 +1,4 @@
-import {MarkerClusterer} from "@googlemaps/markerclusterer";
+import { MarkerClusterer } from "@googlemaps/markerclusterer";
 
 const MapHandler = (settings, locations) => ({
     consentGiven: false,
@@ -7,7 +7,7 @@ const MapHandler = (settings, locations) => ({
     settings: settings,
 
     updateConsentGiven() {
-        this.consentGiven = true; //ConsentPanel.hasConsentedTo('third-party');
+        this.consentGiven = ConsentPanel.hasConsentedTo('third-party');
         this.$nextTick(() => this.initMap());
     },
 
@@ -43,7 +43,7 @@ const MapHandler = (settings, locations) => ({
         const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
 
         const map = new Map(el, Object.assign({}, {
-            zoom: 14,
+            zoom: 5,
             center: { lat: 0, lng: 0 },
             mapTypeControl: false,
             panControl: true,
@@ -51,6 +51,7 @@ const MapHandler = (settings, locations) => ({
             zoomControl: true,
             draggable: true,
             shouldCluster: true,
+
         }, this.settings));
 
         const bounds = new LatLngBounds();
@@ -64,6 +65,10 @@ const MapHandler = (settings, locations) => ({
 
             div.appendChild(img);
 
+            if (loc.markerHTML) {
+                div.insertAdjacentHTML('beforeend', loc.markerHTML);
+            }
+
             const marker = new AdvancedMarkerElement({
                 map,
                 position: { lat: loc.lat, lng: loc.lng },
@@ -73,17 +78,24 @@ const MapHandler = (settings, locations) => ({
             marker.addListener('click', ({ domEvent, latLng }) => {
                 const {target} = domEvent;
                 map.panTo(latLng);
-                map.setZoom(9);
+
+                console.log(loc)
 
                 if (loc.infoWindow) {
                     infoWindow.open({ anchor: marker, map });
                 }
+
+                if (loc.onClick) {
+                    loc.onClick(marker, map);
+                }
             });
 
-            const infoWindow = new InfoWindow({
-                content: loc.infoWindow ?? '',
-                disableAutoPan: false,
-            });
+            if (loc.infoWindow) {
+                const infoWindow = new InfoWindow({
+                    content: '',
+                    disableAutoPan: false,
+                });
+            }
 
             bounds.extend(new LatLng(loc.lat, loc.lng));
 
