@@ -199,8 +199,14 @@ An API key and a Map ID are required which you can do via (here)[https://github.
 
 Note: this is only a starting point and the snippet should be amended for your particular use case.
 ```
-  {{ partial:_partials/snippets/map }}
+  {{ 
+    partial:_partials/snippets/map
+    :locations="locations"
+  }}
 ```
+
+**@param locations:**
+Array. Send locations through to the map partial.
 
 **Additional Image Information**
 We use the BlurHash addon to create a blurred version of the image and then when the image has loaded the main image is brought in.

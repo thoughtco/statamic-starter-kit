@@ -9,7 +9,7 @@
             zoomControl: true,
         },
         [
-            {{ contact:addresses }}
+            {{ locations }}
                 {{ if latitude && longitude }}
                     {
                         lat: {{ latitude }},
@@ -18,7 +18,7 @@
                         scale: 1,
                     },
                 {{ /if }}
-            {{ /contact:addresses }}
+            {{ /locations }}
         ])'>
 
             <template x-if="! consentGiven">
