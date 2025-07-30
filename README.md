@@ -49,7 +49,7 @@ By default the following packages are added:
 
 
 ### Google Maps
-- ENV Variable:GOOGLE_MAP_API_KEY: the api key to be used across the site to display the map. 
+- ENV Variable:GOOGLE_MAPS_GEOCODING_API_KEY: the api key to be used across the site to display the map. 
 - ENV Variable:GOOGLE_MAP_ID: the id of the map from the Google Cloud Console.
 
 A video of how to obtain both the key and the id can be found at https://www.loom.com/share/5f027f88b67e4411bbce62c3ab934d15.
