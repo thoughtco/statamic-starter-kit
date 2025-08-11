@@ -17,7 +17,7 @@ class StarterKitPostInstall
 
         $appURL = $console->ask('What is the app url?');
 
-        $revisionPath = $console->ask('What path do you want to use for revisions?', '/content/revisions');
+        $revisionPath = $console->ask('What path do you want to use for revisions?', 'content/revisions');
 
         $env = app('files')->get(base_path('.env.thoughtco'));
         $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
