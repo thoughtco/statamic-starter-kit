@@ -13,9 +13,20 @@
         {{ urlParams = '&autoplay={setting_autoplay}&muted={setting_mute}&loop={setting_loop}&controls={setting_controls}&byline=0&title=0&quality=1080p' }}
     {{ /if }}
 
-    <figure class="video">
-        <iframe src="{{ video_url | embed_url }}{{ urlParams }}" frameborder="0" allow="{{ if autoplay }}autoplay; {{ /if }}{{ if mute }}muted {{ /if }}fullscreen" allowfullscreen=""></iframe>
-    </figure>
+    <div class="video-container">
+
+        <template x-if="! consentGiven">
+            <div class="">
+                <p>Please <a href="#" onclick="ConsentPanel.open(); return false;"> consent to third party cookies</a> in order to view map content.</p>
+            </div>
+        </template>
+        <template x-if="consentGiven">
+            <figure class="video">
+                <iframe src="{{ video_url | embed_url }}{{ urlParams }}" frameborder="0" allow="{{ if autoplay }}autoplay; {{ /if }}{{ if mute }}muted {{ /if }}fullscreen" allowfullscreen=""></iframe>
+            </figure>
+        </template>
+
+    </div>
 
 {{ /if }}
 
