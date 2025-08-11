@@ -15,12 +15,12 @@
 
     <div class="video-container">
 
-        <template x-if="! consentGiven">
+        <template x-if="! ConsentPanel.hasConsentedTo('third-party')">
             <div class="">
                 <p>Please <a href="#" onclick="ConsentPanel.open(); return false;"> consent to third party cookies</a> in order to view map content.</p>
             </div>
         </template>
-        <template x-if="consentGiven">
+        <template x-if="ConsentPanel.hasConsentedTo('third-party')">
             <figure class="video">
                 <iframe src="{{ video_url | embed_url }}{{ urlParams }}" frameborder="0" allow="{{ if autoplay }}autoplay; {{ /if }}{{ if mute }}muted {{ /if }}fullscreen" allowfullscreen=""></iframe>
             </figure>
