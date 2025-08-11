@@ -79,8 +79,6 @@ const MapHandler = (settings, locations) => ({
                 const {target} = domEvent;
                 map.panTo(latLng);
 
-                console.log(loc)
-
                 if (loc.infoWindow) {
                     infoWindow.open({ anchor: marker, map });
                 }
