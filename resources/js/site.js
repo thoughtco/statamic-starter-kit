@@ -1,15 +1,13 @@
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 import intersect from '@alpinejs/intersect';
 import Precognition from 'laravel-precognition-alpine';
-import { swiffyslider } from 'swiffy-slider';
-
-import "swiffy-slider/css";
+import Swiper from 'swiper/bundle';
 
 import FormHandler from './components/forms';
 import MapHandler from './components/maps';
 
 window.Alpine = Alpine;
-window.swiffyslider = swiffyslider;
+window.Swiper = Swiper;
 
 Alpine.plugin(Precognition);
 Alpine.plugin(intersect);
@@ -22,7 +20,3 @@ if (window.livewireScriptConfig?.csrf === 'STATAMIC_CSRF_TOKEN') {
 } else {
     Livewire.start();
 }
-
-window.addEventListener('load', () => {
-    window.swiffyslider.init();
-});
