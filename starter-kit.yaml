@@ -38,14 +38,14 @@ export_paths:
   - routes/web.php
   - users
 dependencies:
-  aerni/social-links: ^3.0
+  aerni/social-links: ^3.3
   aryehraber/statamic-captcha: ^1.1
-  coconutcraig/laravel-postmark: ^3.2
-  marcorieser/statamic-livewire: ^4.0
-  spatie/geocoder: ^3.15
-  statamic/seo-pro: '*'
-  thoughtco/statamic-cache-tracker: '^0.9'
+  coconutcraig/laravel-postmark: ^3.3
+  marcorieser/statamic-livewire: ^5.1
+  spatie/geocoder: ^3.16
+  statamic/seo-pro: ^2.0
+  thoughtco/statamic-cache-tracker: '^2.0@beta'
   thoughtco/statamic-cookiepanel: ^2.3
   thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-postmark-spamcheck: ^1.0
-  thoughtco/statamic-redirects: ^1.3
+  thoughtco/statamic-redirects: ^2.0
