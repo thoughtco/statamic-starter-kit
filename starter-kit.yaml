@@ -43,7 +43,7 @@ dependencies:
   coconutcraig/laravel-postmark: ^3.3
   marcorieser/statamic-livewire: ^5.1
   spatie/geocoder: ^3.16
-  statamic/seo-pro: ^2.0
+  statamic/seo-pro: ^6.11
   thoughtco/statamic-cache-tracker: '^2.0@beta'
   thoughtco/statamic-cookiepanel: ^2.3
   thoughtco/statamic-cp-resources: ^1.0
