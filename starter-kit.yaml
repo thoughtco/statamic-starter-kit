@@ -30,6 +30,7 @@ export_paths:
   - resources/fieldsets
   - resources/forms
   - resources/js
+  - resources/preferences.yaml
   - resources/sites.yaml
   - resources/users
   - resources/views
