@@ -24,7 +24,6 @@ export_paths:
   - config/statamic/stache.php
   - config/statamic/static_caching.php
   - config/thoughtco/client-dashboard.php
-  - config/thoughtco/minify.php
   - config/thoughtco/site.php
   - resources/blueprints
   - resources/css/site.css
