@@ -80,7 +80,11 @@ return [
         'class' => null,
 
         'rules' => [
-            //
+            'seo_pro_site_defaults' => [
+                'urls' => [
+                    '/*',
+                ],
+            ],
         ],
 
     ],
