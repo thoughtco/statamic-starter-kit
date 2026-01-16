@@ -11,7 +11,6 @@ export_paths:
   - app/Providers/EventServiceProvider.php
   - bootstrap/app.php
   - bootstrap/providers.php
-  - config/blurhash.php
   - config/cache.php
   - config/filesystems.php
   - config/geocoder.php
