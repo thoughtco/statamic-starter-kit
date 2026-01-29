@@ -40,10 +40,10 @@ dependencies:
   aerni/social-links: ^3.3
   aryehraber/statamic-captcha: ^1.1
   coconutcraig/laravel-postmark: ^3.3
-  marcorieser/statamic-livewire: ^5.1
+  marcorieser/statamic-livewire: ^5.2
   spatie/geocoder: ^3.16
-  statamic/seo-pro: '^7.0.0-beta'
-  thoughtco/statamic-cache-tracker: '^2.0@beta'
+  statamic/seo-pro: '^7.0'
+  thoughtco/statamic-cache-tracker: '^2.0'
   thoughtco/statamic-cookiepanel: ^2.3
   thoughtco/statamic-cp-resources: ^1.0
   thoughtco/statamic-postmark-spamcheck: ^1.0
