@@ -19,11 +19,15 @@ class StarterKitPostInstall
 
         $revisionPath = $console->ask('What path do you want to use for revisions?', 'content/revisions');
 
+        $connectionType = $console->ask('What queue connection do you want?', 'redis');
+
+
         $env = app('files')->get(base_path('.env.thoughtco'));
         $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
         $env = str_replace('APP_URL=', "APP_URL=\"{$appURL}\"", $env);
         $env = str_replace('APP_KEY=', "APP_KEY=\"{$originalAppKey}\"", $env);
         $env = str_replace('STATAMIC_REVISIONS_PATH=', "STATAMIC_REVISIONS_PATH=\"{$revisionPath}\"", $env);
+        $env = str_replace('QUEUE_CONNECTION=sync', "QUEUE_CONNECTION=\"{$connectionType}\"", $env);
 
         // output to console
         $console->info('<info>[✓]</info> generate env');
@@ -52,19 +56,6 @@ class StarterKitPostInstall
         app('files')->deleteDirectory(public_path('js'));
         $console->info('<info>[✓]</info> js folder deleted');
 
-        // install horizon
-        Artisan::call('horizon:install');
-        $console->info('<info>[✓]</info> install and publish horizon assets');
-
-        // install horizon
-        Artisan::call('horizon:install');
-        $console->info('<info>[✓]</info> install and publish horizon assets');
-
-        // install horizon
-        Artisan::call('queue:restart');
-        $console->info('<info>[✓]</info> restart queues');
-
-
         // to be super sure we're clear on everything
         // we don't need to do all of this stuff below,
         // but just trying to head off some issues
@@ -82,6 +73,14 @@ class StarterKitPostInstall
 
         Artisan::call('cache:clear');
         $console->info('<info>[✓]</info> laravel cache cleared');
+
+        // install horizon
+        Artisan::call('horizon:install');
+        $console->info('<info>[✓]</info> install and publish horizon assets');
+
+        // restart queue
+        Artisan::call('queue:restart');
+        $console->info('<info>[✓]</info> restart queues');
 
         (new Process(['npm', '-i --force']))->start();
         $console->info('<info>[✓]</info> running npm i --force');
