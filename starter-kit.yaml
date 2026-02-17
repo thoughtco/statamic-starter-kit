@@ -14,6 +14,7 @@ export_paths:
   - config/cache.php
   - config/filesystems.php
   - config/geocoder.php
+  - config/horizon.php
   - config/services.php
   - config/statamic-postmark-spamcheck.php
   - config/statamic/antlers.php
@@ -40,6 +41,7 @@ dependencies:
   aerni/social-links: ^3.3
   aryehraber/statamic-captcha: ^1.1
   coconutcraig/laravel-postmark: ^3.3
+  laravel/horizon: ^5.44
   marcorieser/statamic-livewire: ^5.2
   spatie/geocoder: ^3.16
   statamic/seo-pro: '^7.0'
