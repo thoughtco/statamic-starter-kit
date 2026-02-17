@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -8,19 +7,13 @@ class StarterKitPostInstall
 {
     public function handle($console)
     {
-        $originalAppName = env('APP_URL');
-        $originalAppUrl = env('APP_URL');
         $originalAppKey = env('APP_KEY');
 
         $appName = $console->ask('What should be your app name?');
         $appName = preg_replace('/([\'|\"|#])/m', '', $appName);
-
         $appURL = $console->ask('What is the app url?');
-
         $revisionPath = $console->ask('What path do you want to use for revisions?', 'content/revisions');
-
         $connectionType = $console->ask('What queue connection do you want?', 'redis');
-
 
         $env = app('files')->get(base_path('.env.thoughtco'));
         $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
@@ -29,70 +22,46 @@ class StarterKitPostInstall
         $env = str_replace('STATAMIC_REVISIONS_PATH=', "STATAMIC_REVISIONS_PATH=\"{$revisionPath}\"", $env);
         $env = str_replace('QUEUE_CONNECTION=sync', "QUEUE_CONNECTION=\"{$connectionType}\"", $env);
 
-        // output to console
-        $console->info('<info>[✓]</info> generate env');
         app('files')->put(base_path('.env'), $env);
+        $console->info('<info>[✓]</info> generate env');
 
-        // success of starter kit installed
-        $console->info('<info>[✓]</info> starter kit installed!');
-
-        // delete starter kit .env
         app('files')->delete(base_path('.env.thoughtco'));
         $console->info('<info>[✓]</info> .env.thoughtco deleted');
 
-        // delete composer.json.bak
         app('files')->delete(base_path('composer.json.bak'));
         $console->info('<info>[✓]</info> composer.json.bak deleted');
 
-        // delete public/css
         app('files')->deleteDirectory(public_path('css'));
         $console->info('<info>[✓]</info> css folder deleted');
 
-        // delete public/img
         app('files')->deleteDirectory(public_path('img'));
         $console->info('<info>[✓]</info> img folder deleted');
 
-        // delete public/js
         app('files')->deleteDirectory(public_path('js'));
         $console->info('<info>[✓]</info> js folder deleted');
 
-        // to be super sure we're clear on everything
-        // we don't need to do all of this stuff below,
-        // but just trying to head off some issues
-        Artisan::call('statamic:glide:clear');
-        $console->info('<info>[✓]</info> statamic glide cache cleared');
+        $this->runProcess(['php', 'artisan', 'statamic:glide:clear'], $console, 'statamic glide cache cleared');
+        $this->runProcess(['php', 'artisan', 'statamic:stache:clear'], $console, 'statamic stache cleared');
+        $this->runProcess(['php', 'artisan', 'route:clear'], $console, 'laravel routes cleared');
+        $this->runProcess(['php', 'artisan', 'config:clear'], $console, 'laravel config cleared');
+        $this->runProcess(['php', 'artisan', 'cache:clear'], $console, 'laravel cache cleared');
 
-        Artisan::call('statamic:stache:clear');
-        $console->info('<info>[✓]</info> statamic stache cleared');
+        $this->runProcess(['composer', 'require', 'laravel/horizon'], $console, 'laravel horizon installed');
+        $this->runProcess(['php', 'artisan', 'horizon:install'], $console, 'horizon assets published');
 
-        Artisan::call('route:clear');
-        $console->info('<info>[✓]</info> laravel routes cleared');
+        $this->runProcess(['php', 'artisan', 'queue:restart'], $console, 'queues restarted');
 
-        Artisan::call('config:clear');
-        $console->info('<info>[✓]</info> laravel config cleared');
+        $this->runProcess(['npm', 'install', '--force'], $console, 'npm packages installed');
 
-        Artisan::call('cache:clear');
-        $console->info('<info>[✓]</info> laravel cache cleared');
+        $console->info('<info>[✓]</info> starter kit installed!');
+    }
 
-        // install horizon
-        $console->info('<info>[✓]</info> Installing Laravel Horizon...');
-
-        $process = new Process(['composer', 'require', 'laravel/horizon']);
-        $process->setWorkingDirectory(base_path());
-        $process->mustRun();
-
-        // Reload the autoloader so PHP knows about newly installed classes
-        $autoloader = require base_path('vendor/autoload.php');
-        $autoloader->register(true);
-
-        app()->register(\Laravel\Horizon\HorizonServiceProvider::class);
-        Artisan::call('horizon:install');
-        $console->info('<info>[✓]</info> install and publish horizon assets');
-
-        $process = new Process(['npm', 'install', '--force']);
+    private function runProcess(array $command, $console, string $successMessage): void
+    {
+        $process = new Process($command);
         $process->setWorkingDirectory(base_path());
         $process->setTimeout(300);
         $process->mustRun();
-        $console->info('<info>[✓]</info> running npm i --force');
+        $console->info("<info>[✓]</info> {$successMessage}");
     }
 }
