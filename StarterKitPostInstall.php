@@ -46,11 +46,14 @@ class StarterKitPostInstall
         $this->runProcess(['php', 'artisan', 'config:clear'], $console, 'laravel config cleared');
         $this->runProcess(['php', 'artisan', 'cache:clear'], $console, 'laravel cache cleared');
 
+        $this->runProcess(['composer', 'require', 'laravel/horizon'], $console, 'laravel horizon installed');
+        $this->runProcess(['php', 'artisan', 'horizon:install'], $console, 'horizon assets published');
+
+        $this->runProcess(['php', 'artisan', 'queue:restart'], $console, 'queues restarted');
+
         $this->runProcess(['npm', 'install', '--force'], $console, 'npm packages installed');
 
         $console->info('<info>[✓]</info> starter kit installed!');
-        $console->info('<info>[✓]</info> Please remember to run php artisan horizon:install to add the Horizon assets. ');
-        $console->info('<info>[✓]</info> Run php artisan queue:restart to start the queue again. ');
     }
 
     private function runProcess(array $command, $console, string $successMessage): void
