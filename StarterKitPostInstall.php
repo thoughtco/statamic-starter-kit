@@ -75,17 +75,19 @@ class StarterKitPostInstall
         $console->info('<info>[✓]</info> laravel cache cleared');
 
         // install horizon
-        $console->info('Installing Laravel Horizon...');
+        $console->info('<info>[✓]</info> Installing Laravel Horizon...');
+
         $process = new Process(['composer', 'require', 'laravel/horizon']);
         $process->setWorkingDirectory(base_path());
         $process->mustRun();
+
+        // Reload the autoloader so PHP knows about newly installed classes
+        $autoloader = require base_path('vendor/autoload.php');
+        $autoloader->register(true);
+
         app()->register(\Laravel\Horizon\HorizonServiceProvider::class);
         Artisan::call('horizon:install');
         $console->info('<info>[✓]</info> install and publish horizon assets');
-
-        // restart queue
-        Artisan::call('queue:restart');
-        $console->info('<info>[✓]</info> restart queues');
 
         $process = new Process(['npm', 'install', '--force']);
         $process->setWorkingDirectory(base_path());
