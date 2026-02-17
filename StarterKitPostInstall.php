@@ -75,6 +75,10 @@ class StarterKitPostInstall
         $console->info('<info>[✓]</info> laravel cache cleared');
 
         // install horizon
+        $console->info('Installing Laravel Horizon...');
+        $process = new Process(['composer', 'require', 'laravel/horizon']);
+        $process->setWorkingDirectory(base_path());
+        $process->mustRun();
         app()->register(\Laravel\Horizon\HorizonServiceProvider::class);
         Artisan::call('horizon:install');
         $console->info('<info>[✓]</info> install and publish horizon assets');
@@ -83,7 +87,10 @@ class StarterKitPostInstall
         Artisan::call('queue:restart');
         $console->info('<info>[✓]</info> restart queues');
 
-        (new Process(['npm', '-i --force']))->start();
+        $process = new Process(['npm', 'install', '--force']);
+        $process->setWorkingDirectory(base_path());
+        $process->setTimeout(300);
+        $process->mustRun();
         $console->info('<info>[✓]</info> running npm i --force');
     }
 }
