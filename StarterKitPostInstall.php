@@ -52,6 +52,19 @@ class StarterKitPostInstall
         app('files')->deleteDirectory(public_path('js'));
         $console->info('<info>[✓]</info> js folder deleted');
 
+        // install horizon
+        Artisan::call('horizon:install');
+        $console->info('<info>[✓]</info> install and publish horizon assets');
+
+        // install horizon
+        Artisan::call('horizon:install');
+        $console->info('<info>[✓]</info> install and publish horizon assets');
+
+        // install horizon
+        Artisan::call('queue:restart');
+        $console->info('<info>[✓]</info> restart queues');
+
+
         // to be super sure we're clear on everything
         // we don't need to do all of this stuff below,
         // but just trying to head off some issues
