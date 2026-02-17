@@ -75,6 +75,7 @@ class StarterKitPostInstall
         $console->info('<info>[✓]</info> laravel cache cleared');
 
         // install horizon
+        app()->register(\Laravel\Horizon\HorizonServiceProvider::class);
         Artisan::call('horizon:install');
         $console->info('<info>[✓]</info> install and publish horizon assets');
 
