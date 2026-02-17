@@ -57,7 +57,7 @@ class StarterKitPostInstall
         $this->runProcess(['php', 'artisan', 'horizon:install'], $console, 'horizon assets published');
 
         $this->runProcess(['composer', 'require', 'thoughtco/statamic-eyris'], $console, 'eyris installed');
-        $this->runProcess(['php', 'artisan', 'vendor:publish --tag=statamic-eyris'], $console, 'eyris assets published');
+    $this->runProcess(['php', 'artisan', 'vendor:publish', '--tag=statamic-eyris'], $console, 'eyris assets published');
 
         $this->runProcess(['php', 'artisan', 'queue:restart'], $console, 'queues restarted');
 
