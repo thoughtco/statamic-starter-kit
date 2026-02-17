@@ -48,5 +48,6 @@ dependencies:
   thoughtco/statamic-cache-tracker: '^2.0'
   thoughtco/statamic-cookiepanel: ^2.3
   thoughtco/statamic-cp-resources: ^1.0
+  thoughtco/statamic-eyris: ^1.1
   thoughtco/statamic-postmark-spamcheck: ^1.0
   thoughtco/statamic-redirects: ^2.0

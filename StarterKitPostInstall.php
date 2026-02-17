@@ -14,6 +14,12 @@ class StarterKitPostInstall
         $appURL = $console->ask('What is the app url?');
         $revisionPath = $console->ask('What path do you want to use for revisions?', 'content/revisions');
         $connectionType = $console->ask('What queue connection do you want?', 'redis');
+        $eyrisToken = $console->ask('Enter the token for Eyris?', null, function ($value) {
+            if (empty($value)) {
+                throw new \RuntimeException('Eyris token is required.');
+            }
+            return $value;
+        });
 
         $env = app('files')->get(base_path('.env.thoughtco'));
         $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
@@ -21,6 +27,7 @@ class StarterKitPostInstall
         $env = str_replace('APP_KEY=', "APP_KEY=\"{$originalAppKey}\"", $env);
         $env = str_replace('STATAMIC_REVISIONS_PATH=', "STATAMIC_REVISIONS_PATH=\"{$revisionPath}\"", $env);
         $env = str_replace('QUEUE_CONNECTION=sync', "QUEUE_CONNECTION=\"{$connectionType}\"", $env);
+        $env = str_replace('EYRIS_TOKEN=', "EYRIS_TOKEN=\"{$eyrisToken}\"", $env);
 
         app('files')->put(base_path('.env'), $env);
         $console->info('<info>[✓]</info> generate env');
@@ -48,6 +55,9 @@ class StarterKitPostInstall
 
         $this->runProcess(['composer', 'require', 'laravel/horizon'], $console, 'laravel horizon installed');
         $this->runProcess(['php', 'artisan', 'horizon:install'], $console, 'horizon assets published');
+
+        $this->runProcess(['composer', 'require', 'thoughtco/statamic-eyris'], $console, 'eyris installed');
+        $this->runProcess(['php', 'artisan', 'vendor:publish --tag=statamic-eyris'], $console, 'eyris assets published');
 
         $this->runProcess(['php', 'artisan', 'queue:restart'], $console, 'queues restarted');
 
