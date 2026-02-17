@@ -46,7 +46,6 @@ class StarterKitPostInstall
         $this->runProcess(['php', 'artisan', 'config:clear'], $console, 'laravel config cleared');
         $this->runProcess(['php', 'artisan', 'cache:clear'], $console, 'laravel cache cleared');
 
-        $this->runProcess(['composer', 'require', 'laravel/horizon'], $console, 'laravel horizon installed');
         $this->runProcess(['php', 'artisan', 'horizon:install'], $console, 'horizon assets published');
 
         $this->runProcess(['php', 'artisan', 'queue:restart'], $console, 'queues restarted');
