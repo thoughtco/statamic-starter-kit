@@ -11,12 +11,6 @@ fields:
       type: button_group
       always_save: false
   -
-    handle: settings
-    field:
-      display: Settings
-      type: section
-      always_save: false
-  -
     handle: show_controls
     field:
       display: 'Show Controls'

@@ -1,17 +1,6 @@
 title: Button
 fields:
   -
-    handle: link
-    field:
-      type: section
-      display: Link
-      icon: section
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
-  -
     handle: link_type
     field:
       options:
@@ -27,10 +16,7 @@ fields:
       listable: false
       display: 'Link type'
       replicator_preview: false
-      instructions_position: above
-      visibility: visible
       always_save: false
-      hide_display: false
       instructions: 'Choose a link type.'
       default: none
   -
@@ -41,17 +27,12 @@ fields:
       listable: false
       display: 'Open in new window'
       replicator_preview: false
-      instructions_position: above
-      visibility: visible
-      default: false
-      hide_display: false
       if:
         link_type: '!== none'
   -
     handle: entry
     field:
       max_items: 1
-      mode: default
       type: entries
       localizable: true
       width: 50
@@ -60,12 +41,8 @@ fields:
       replicator_preview: false
       validate:
         - 'required_if:{this}.link_type,entry'
-      instructions_position: above
-      visibility: visible
-      create: true
       collections:
         - pages
-      hide_display: false
       if:
         link_type: 'equals entry'
   -
@@ -130,56 +107,37 @@ fields:
   -
     handle: asset
     field:
-      mode: list
       container: assets
-      restrict: false
-      allow_uploads: true
       max_files: 1
       type: assets
       localizable: true
-      listable: hidden
       display: File
-      instructions_position: above
-      visibility: visible
       always_save: false
-      show_filename: true
       validate:
         - 'required_if:{this}.link_type,asset'
-      show_set_alt: true
-      hide_display: false
       if:
         link_type: 'equals asset'
   -
     handle: link_text
     field:
       placeholder: 'Learn more'
-      input_type: text
       type: text
       localizable: true
       listable: false
       display: Text
       width: 50
       replicator_preview: false
-      instructions_position: above
-      visibility: visible
-      antlers: false
-      hide_display: false
       if:
         link_type: '!== none'
   -
     handle: attr_aria
     field:
       placeholder: 'Download the PDF'
-      input_type: text
       type: text
       localizable: true
       listable: false
       display: 'Aria Label'
       width: 50
       replicator_preview: false
-      instructions_position: above
-      visibility: visible
-      antlers: false
-      hide_display: false
       if:
         link_type: '!== none'
