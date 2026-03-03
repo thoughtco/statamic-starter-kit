@@ -15,6 +15,15 @@ class AppServiceProvider extends ServiceProvider
             return $next($urls->merge((new StaticWarmExtras)->handle()));
         });
 
+        // add horizon to the tools navigation
+        Nav::extend(function ($nav) {
+            $nav->create('Horizon')
+                ->section('Tools')
+                ->url('/horizon')
+                ->icon('chart-monitoring-indicator')
+                ->attributes(['target' => '_blank']);
+        });
+
         Fieldtypes\Bard::setDefaultButtons([
             'h2',
             'h3',
