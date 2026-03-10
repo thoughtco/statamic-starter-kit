@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Caching\StaticWarmExtras;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Console\Commands\StaticWarm;
-use Statamic\Facades\Nav;
+use Statamic\Facades\CP\Nav;
 use Statamic\Fieldtypes;
 
 class AppServiceProvider extends ServiceProvider
