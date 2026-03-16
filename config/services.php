@@ -18,10 +18,6 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
 
-    'resend' => [
-        'key' => env('RESEND_KEY'),
-    ],
-
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
@@ -34,10 +30,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
-    'google-maps' => [
-        'key' => env('GOOGLE_MAPS_GEOCODING_API_KEY'),
-        'map_id' => env('GOOGLE_MAP_ID'),
+    
+    'serpapi' => [
+        'api_key' => env('SERPAPI_API_KEY'),
     ],
 
 ];
