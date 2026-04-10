@@ -65,6 +65,23 @@ fields:
       always_save: false
       if:
         video_type: 'equals local'
+      width: 50
+      validate:
+        - required
+  -
+    handle: webm
+    field:
+      container: assets
+      max_files: 1
+      display: Webm
+      type: assets
+      instructions: 'Upload a Webm version of your video'
+      always_save: false
+      if:
+        video_type: 'equals local'
+      width: 50
+      validate:
+        - required
   -
     handle: poster_image
     field:
