@@ -6,6 +6,7 @@ export_paths:
   - content
   - app/Caching
   - app/Console
+  - app/Http/Controllers/PanelScreenshotController.php
   - app/Listeners
   - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
