@@ -9,7 +9,7 @@ class PanelScreenshotController extends Controller
 {
     public function show(string $handle)
     {
-        $fieldsetPath = resource_path("fieldsets/panel_{$handle}.yaml");
+        $fieldsetPath = resource_path("fieldsets/{$handle}.yaml");
 
         abort_if(! file_exists($fieldsetPath), 404, "No fieldset found for panel: {$handle}");
 
