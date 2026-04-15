@@ -1,3 +1,4 @@
+
 # Starter Kit
 The starter kit is an attempt give you the additional extras TC run on top of a Statamic install. If you feel something else which is used on a regular basis should be installed, let us know and we can have a look.
 
@@ -78,6 +79,16 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
 - Please try and get into the habit of this.
     - It allows you the ability to edit the panel once.
     - It allows the panel to be re-used in different areas of the website if necessary.
+
+#### Field previews
+Once all field sets have been added to the Pages blueprint it is possible to generate image previews of these fields automatically by running
+
+```
+node scripts/panel-screenshots.js
+```
+
+This should be done after all the fieldsets have been added.
+
 
 ### Fieldsets
 There are three fieldsets setup in the default build:
