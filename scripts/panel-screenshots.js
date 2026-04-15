@@ -42,10 +42,8 @@ const ONLY       = process.argv[3] ?? null;
 
 const PANELS_DIR    = path.join(ROOT, 'resources', 'views', '_panels');
 const BLUEPRINT_DIR = path.join(ROOT, 'resources', 'blueprints');
-const OUTPUT_DIR    = path.join(ROOT, 'public', 'assets', 'files', 'panel-screenshots');
+const OUTPUT_DIR    = path.join(ROOT, 'public', 'assets', 'files', 'set-previews');
 const META_DIR      = path.join(OUTPUT_DIR, '.meta');
-
-const YAML_PREVIEW_BASE = 'panel-screenshots';
 
 // ---------------------------------------------------------------------------
 // .env reader
@@ -254,7 +252,7 @@ async function run() {
             writeMetaFile(outputPath, box.width, box.height);
 
             // Update blueprint YAML preview: path
-            const previewPath  = `${YAML_PREVIEW_BASE}/${handle}.jpg`;
+            const previewPath  = `${handle}.jpg`;
             const patchedFiles = updateBlueprintPreview(handle, previewPath);
 
             console.log(`✓  ${handle}.jpg (${Math.round(box.width)}×${Math.round(box.height)})${patchedFiles ? ' · YAML updated' : ''}`);
