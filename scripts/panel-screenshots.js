@@ -272,6 +272,12 @@ async function run() {
         } catch {
             console.warn('  stache:clear failed — run it manually if needed.');
         }
+        console.log('\nClearing asset cache…');
+        try {
+            execSync('php please assets:clear-cache', { cwd: ROOT, stdio: 'inherit' });
+        } catch {
+            console.warn('  asset:clear-cache failed — run it manually if needed.');
+        }
     }
 
     console.log('\nDone!');
