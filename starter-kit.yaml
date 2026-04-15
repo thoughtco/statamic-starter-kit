@@ -6,6 +6,7 @@ export_paths:
   - content
   - app/Caching
   - app/Console
+  - app/Http/Controllers/PanelScreenshotController.php
   - app/Listeners
   - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
@@ -36,6 +37,7 @@ export_paths:
   - resources/users
   - resources/views
   - routes/web.php
+  - scripts/panel-screenshots.js
   - users
 dependencies:
   aerni/social-links: ^3.3

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en">
+<head>
+
+    <base href="{{ site:url }}" />
+
+    <!-- css -->
+    <link rel="preload" as="style" href="{{ vite:asset src="resources/css/site.css" }}" />
+    <link href="{{ vite:asset src="resources/css/site.css" }}" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+<body x-data="{ showSubmenu : false, showMobileSubmenu : false }" :class="{ 'overflow-hidden' : showSubmenu }">
+
+    <div id="screenshot-output">
+        {{ partial src="_panels/{_panel_handle}" }}
+    </div>
+
+</body>
+
+</html>
