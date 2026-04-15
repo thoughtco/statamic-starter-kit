@@ -36,6 +36,7 @@ export_paths:
   - resources/users
   - resources/views
   - routes/web.php
+  - scripts/panel-screenshots.js
   - users
 dependencies:
   aerni/social-links: ^3.3
