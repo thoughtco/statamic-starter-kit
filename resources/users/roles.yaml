@@ -2,15 +2,6 @@ admin:
   title: Admin
   permissions:
     - 'access cp'
-    - 'view redirects entries'
-    - 'edit redirects entries'
-    - 'create redirects entries'
-    - 'delete redirects entries'
-    - 'publish redirects entries'
-    - 'reorder redirects entries'
-    - 'edit other authors redirects entries'
-    - 'publish other authors redirects entries'
-    - 'delete other authors redirects entries'
     - 'view news entries'
     - 'edit news entries'
     - 'create news entries'
