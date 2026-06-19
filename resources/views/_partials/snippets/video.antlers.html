@@ -36,11 +36,11 @@
         <video
             class="lazy"
             preload="none"
-            playsinline
-            {{ if autoplay }}autoplay {{ /if }}
             {{ if mute }}muted {{ /if }}
+            {{ if autoplay }}autoplay {{ /if }}
             {{ if loop }}loop {{ /if }}
             {{ if show_controls }}controls {{ /if }}
+            playsinline
             width="100%"
             {{ if poster_image }}
                 poster="{{ glide:poster_image width='960' height='540' dpr='2' format='webp' }}"
