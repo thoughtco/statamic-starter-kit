@@ -100,6 +100,8 @@ If you don't need any classes, simply leave the attribute out. Any classes shoul
 
 - **Video:** A series of fields that will allow the output of a 3rd party or local video using the code below. This should be used for all video output.
 
+    Any videos **MUST** be compressed with MP4 (Encoded as H.264) and Webm types created.
+
 ```
   {{ partial:_partials/snippets/video video_type="{video_type}" }}
 ```
