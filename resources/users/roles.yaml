@@ -46,7 +46,6 @@ admin:
     - 'view newsletter form submissions'
     - 'delete newsletter form submissions'
     - 'access cache utility'
-    - 'access static-cache-manager utility'
     - 'view seo reports'
     - 'delete seo reports'
     - 'edit seo site defaults'
