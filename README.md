@@ -102,7 +102,7 @@ If you don't need any classes, simply leave the attribute out. Any classes shoul
 ```
 
 
-- **Slider Settings:** Contains Slider Effect, Time Delay and pagination and should be used on sliders with the relevant data attribute for the slider. The data attributes are available in swiper-setup.js.
+- **Slider Settings:** Contains Slider Effect, Time Delay and pagination and should be used on sliders with the relevant data attribute for the slider. The data-attributes are available via the API information at https://swiperjs.com.
 
 ### Globals
 There are 4 globals setup
