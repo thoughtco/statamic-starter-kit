@@ -48,11 +48,6 @@ By default the following packages are added:
 **Statamic CP Resources:**
 - Allows the inclusion of any videos generated on for clients. If you generate a video on Loom it should be added here and the client pointed to this page.
 
-**Static Cache Manager**
-- Clear specific paths in your static cache.
-- Full documentation is available [here](https://statamic.com/addons/duncanmcclean/static-cache-manager)
-
-
 ### Google Maps
 The following ENV Variables will need added.
 
