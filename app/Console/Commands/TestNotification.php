@@ -39,9 +39,15 @@ class TestNotification extends Command
     public function handle()
     {
         $klass = '\\App\\Notifications\\'.$this->option('class');
+
+        if (! class_exists($klass)) {
+            $this->error("Notification class not found: {$klass}");
+            return 1;
+        }
+
         Notification::route('mail', $this->option('recipient'))
             ->notify(new $klass());
-        
+
         return 0;
     }
 }

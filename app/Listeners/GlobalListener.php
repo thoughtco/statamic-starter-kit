@@ -2,8 +2,10 @@
 
 namespace App\Listeners;
 
+use Illuminate\Support\Facades\Log;
 use Spatie\Geocoder\Facades\Geocoder;
 use Statamic\Events;
+use Statamic\Facades\CP\Toast;
 
 class GlobalListener
 {
@@ -23,7 +25,13 @@ class GlobalListener
         // if we don't have latitude passed
         if (! $global->get('latitude')) {
 
-            $location = Geocoder::getCoordinatesForAddress($global->get('address'));
+            try {
+                $location = Geocoder::getCoordinatesForAddress($global->get('address'));
+            } catch (\Throwable $e) {
+                Log::warning('Failed to geocode contact address: '.$e->getMessage());
+                Toast::error('Could not look up co-ordinates for the address — check the address and the geocoding API key.');
+                return;
+            }
 
             // if we have results
             if ($location['accuracy'] != 'result_not_found'){
