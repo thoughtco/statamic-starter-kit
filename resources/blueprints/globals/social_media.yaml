@@ -113,7 +113,7 @@ tabs:
                           field:
                             type: hidden
                             default: 'https://www.linkedin.com/'
-                    Pinterest:
+                    pinterest:
                       display: Pinterest
                       instructions: null
                       icon: social-pinterest
