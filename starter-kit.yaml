@@ -10,12 +10,12 @@ export_paths:
   - app/Listeners
   - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
+  - app/Providers/HorizonServiceProvider.php
   - bootstrap/app.php
   - bootstrap/providers.php
   - config/cache.php
   - config/filesystems.php
   - config/geocoder.php
-  - config/horizon.php
   - config/services.php
   - config/statamic-postmark-spamcheck.php
   - config/statamic/antlers.php
