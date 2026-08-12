@@ -59,10 +59,6 @@ class EventServiceProvider extends ServiceProvider
         Events\NavTreeSaved::class => [
             [Listeners\TreeListener::class, 'saved'],
         ],
-
-        Events\UrlInvalidated::class => [
-            Listeners\RecacheUrl::class,
-        ],
     ];
 
     /**
