@@ -1,9 +1,20 @@
 {
     "name": "thoughtco/statamic-starter-kit",
+    "description": "Thought Collective's internal Statamic starter kit.",
+    "license": "proprietary",
     "extra": {
         "statamic": {
             "name": "TC Statamic Starter Kit",
             "description": "TC Statamic Starter Kit"
         }
-    }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.18"
+    },
+    "scripts": {
+        "lint": "pint --test",
+        "format": "pint"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

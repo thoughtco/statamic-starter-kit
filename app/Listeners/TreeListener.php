@@ -26,5 +26,3 @@ class TreeListener
         // InvalidateTags::dispatch(['partials:_partials/layout/nav']);
     }
 }
-
-?>

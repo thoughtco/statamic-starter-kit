@@ -1,5 +1,8 @@
 <?php
 
+use Statamic\StaticCaching\Replacers\CsrfTokenReplacer;
+use Statamic\StaticCaching\Replacers\NoCacheReplacer;
+
 return [
 
     /*
@@ -141,8 +144,8 @@ return [
     */
 
     'replacers' => [
-        \Statamic\StaticCaching\Replacers\CsrfTokenReplacer::class,
-        \Statamic\StaticCaching\Replacers\NoCacheReplacer::class,
+        CsrfTokenReplacer::class,
+        NoCacheReplacer::class,
     ],
     /*
         |--------------------------------------------------------------------------
@@ -155,13 +158,13 @@ return [
         |
         */
 
-        'warm_queue' => env('STATAMIC_STATIC_WARM_QUEUE'),
+    'warm_queue' => env('STATAMIC_STATIC_WARM_QUEUE'),
 
-        'warm_queue_connection' => env('STATAMIC_STATIC_WARM_QUEUE_CONNECTION'),
+    'warm_queue_connection' => env('STATAMIC_STATIC_WARM_QUEUE_CONNECTION'),
 
-        'warm_insecure' => env('STATAMIC_STATIC_WARM_INSECURE', false),
+    'warm_insecure' => env('STATAMIC_STATIC_WARM_INSECURE', false),
 
-        /*
+    /*
         |--------------------------------------------------------------------------
         | Background Re-cache
         |--------------------------------------------------------------------------
@@ -171,13 +174,13 @@ return [
         |
         */
 
-        'background_recache' => env('STATAMIC_BACKGROUND_RECACHE', false),
+    'background_recache' => env('STATAMIC_BACKGROUND_RECACHE', false),
 
-        'recache_token' => env('STATAMIC_RECACHE_TOKEN'),
+    'recache_token' => env('STATAMIC_RECACHE_TOKEN'),
 
-        'recache_token_parameter' => '__recache',
+    'recache_token_parameter' => '__recache',
 
-        /*
+    /*
         |--------------------------------------------------------------------------
         | Shared Error Pages
         |--------------------------------------------------------------------------
@@ -190,6 +193,6 @@ return [
         |
         */
 
-        'share_errors' => false,
+    'share_errors' => false,
 
-    ];
+];

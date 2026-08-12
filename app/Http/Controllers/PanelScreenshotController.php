@@ -14,7 +14,7 @@ class PanelScreenshotController extends Controller
         abort_if(! file_exists($fieldsetPath), 404, "No fieldset found for panel: {$handle}");
 
         $fieldset = YAML::parse(file_get_contents($fieldsetPath));
-        $dummy    = $this->buildDummyData($fieldset['fields'] ?? []);
+        $dummy = $this->buildDummyData($fieldset['fields'] ?? []);
         $dummy['type'] = $handle;
 
         return View::make('__panel-screenshot')
@@ -39,13 +39,16 @@ class PanelScreenshotController extends Controller
                     $imported = YAML::parse(file_get_contents($importPath));
                     $data = array_merge($data, $this->buildDummyData($imported['fields'] ?? []));
                 }
+
                 continue;
             }
 
             $handle = $field['handle'] ?? null;
-            if (! $handle) continue;
+            if (! $handle) {
+                continue;
+            }
 
-            $def  = $field['field'] ?? [];
+            $def = $field['field'] ?? [];
             $type = $def['type'] ?? null;
 
             // Field-level import — handle: foo, field.import: fieldset-name
@@ -58,31 +61,35 @@ class PanelScreenshotController extends Controller
                 } else {
                     $data[$handle] = [];
                 }
+
                 continue;
             }
 
             // UI-only field types — skip
-            if ($type === 'section') continue;
+            if ($type === 'section') {
+                continue;
+            }
 
             // Use the field's configured default value when available
             if (array_key_exists('default', $def)) {
                 $data[$handle] = $def['default'];
+
                 continue;
             }
 
             $data[$handle] = match ($type) {
-                'text'         => 'Lorem ipsum dolor sit amet',
-                'textarea'     => "Lorem ipsum dolor sit amet\nconsectetur adipiscing elit",
-                'bard'         => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',
+                'text' => 'Lorem ipsum dolor sit amet',
+                'textarea' => "Lorem ipsum dolor sit amet\nconsectetur adipiscing elit",
+                'bard' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',
                 'button_group' => array_key_first($def['options'] ?? []),
-                'select'       => array_key_first($def['options'] ?? []),
-                'toggle'       => false,
-                'integer'      => 1,
-                'assets'       => null,
-                'video'        => null,
-                'entries'      => null,
-                'replicator'   => [],
-                default        => null,
+                'select' => array_key_first($def['options'] ?? []),
+                'toggle' => false,
+                'integer' => 1,
+                'assets' => null,
+                'video' => null,
+                'entries' => null,
+                'replicator' => [],
+                default => null,
             };
         }
 

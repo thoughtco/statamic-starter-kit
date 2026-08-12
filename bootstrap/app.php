@@ -3,7 +3,10 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Statamic\View\View;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -15,11 +18,11 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->render(function (\Symfony\Component\HttpKernel\Exception\HttpException $e, \Illuminate\Http\Request $request) {
+        $exceptions->render(function (HttpException $e, Request $request) {
             if ($e->getStatusCode() != 403) {
                 return;
             }
-            
-            return new Response(\Statamic\View\View::make('errors.403')->layout(config('statamic.system.layout', 'layout')), 403, []);
+
+            return new Response(View::make('errors.403')->layout(config('statamic.system.layout', 'layout')), 403, []);
         });
     })->create();

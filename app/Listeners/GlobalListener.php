@@ -11,11 +11,10 @@ class GlobalListener
 {
     public function saved(Events\GlobalSetSaved $event)
     {
-        switch ($event->globals->handle())
-        {
+        switch ($event->globals->handle()) {
             case 'contact':
                 $this->processContact($event->globals->inDefaultSite());
-            break;
+                break;
         }
     }
 
@@ -30,21 +29,20 @@ class GlobalListener
             } catch (\Throwable $e) {
                 Log::warning('Failed to geocode contact address: '.$e->getMessage());
                 Toast::error('Could not look up co-ordinates for the address — check the address and the geocoding API key.');
+
                 return;
             }
 
             // if we have results
-            if ($location['accuracy'] != 'result_not_found'){
+            if ($location['accuracy'] != 'result_not_found') {
                 $global->merge([
-                  'latitude' => $location['lat'],
-                  'longitude' => $location['lng'],
+                    'latitude' => $location['lat'],
+                    'longitude' => $location['lng'],
                 ]);
-                  
+
                 $global->save();
             }
 
         }
     }
 }
-
-?>

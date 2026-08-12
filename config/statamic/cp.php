@@ -41,7 +41,7 @@ return [
         [
             'type' => 'collection',
             'collection' => 'pages',
-            'width' => 100
+            'width' => 100,
         ],
     ],
 

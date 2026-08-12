@@ -7,7 +7,7 @@ use Statamic\Facades\Entry;
 
 class PanelUsage extends Command
 {
-        /**
+    /**
      * The name and signature of the console command.
      *
      * @var string
@@ -38,18 +38,18 @@ class PanelUsage extends Command
      */
     public function handle()
     {
-        //get all panels
+        // get all panels
         $pages = Entry::query()
             ->where('collection', 'pages')
             ->where('published', true)
             ->get(['panels']);
-        
+
         $panels = [];
 
         $checkMode = $this->option('panel') ? 'panel' : 'count';
         $panelWeWant = $this->option('panel') ?? false;
 
-        foreach ($pages AS $page) {
+        foreach ($pages as $page) {
 
             if (empty($page->panels)) {
                 continue;
@@ -69,13 +69,13 @@ class PanelUsage extends Command
                     $panels[] = ['title' => $page->title, 'url' => url($page->url())];
                 }
 
-            // we are counting panels
+                // we are counting panels
             } else {
-                
+
                 foreach ($page->panels as $panel) {
                     $type = $panel['type'];
-                    
-                    if (!isset($panels[$type])) {
+
+                    if (! isset($panels[$type])) {
                         $panels[$type] = ['type' => $type, 'count' => 0];
                     }
 
@@ -83,7 +83,7 @@ class PanelUsage extends Command
                 }
 
             }
-            
+
         }
 
         if ($checkMode == 'count') {
@@ -91,6 +91,7 @@ class PanelUsage extends Command
             $panels = collect($panels)->sortByDesc('count')->values();
 
             $this->table(['Type', 'Count'], $panels);
+
             return;
         }
 
