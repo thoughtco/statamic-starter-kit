@@ -14,8 +14,17 @@ return [
     |
     */
 
+    'google-maps' => [
+        'key' => env('GOOGLE_MAPS_GEOCODING_API_KEY'),
+        'map_id' => env('GOOGLE_MAP_ID'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
+    ],
+
+    'serpapi' => [
+        'api_key' => env('SERPAPI_API_KEY'),
     ],
 
     'ses' => [
@@ -29,10 +38,6 @@ return [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
-    ],
-    
-    'serpapi' => [
-        'api_key' => env('SERPAPI_API_KEY'),
     ],
 
 ];

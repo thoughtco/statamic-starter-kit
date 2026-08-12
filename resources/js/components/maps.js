@@ -58,7 +58,7 @@ const MapHandler = (settings, locations) => ({
 
         const markers = Object.values(this.locations).map((loc, i) => {
             const div = document.createElement('div');
-            div.style.transform = 'scale(' + loc.scale ?? 1 + ')';
+            div.style.transform = 'scale(' + (loc.scale ?? 1) + ')';
 
             const img = document.createElement('img');
             img.src = loc.image;
@@ -75,6 +75,14 @@ const MapHandler = (settings, locations) => ({
                 content: div,
             });
 
+            let infoWindow;
+            if (loc.infoWindow) {
+                infoWindow = new InfoWindow({
+                    content: '',
+                    disableAutoPan: false,
+                });
+            }
+
             marker.addListener('click', ({ domEvent, latLng }) => {
                 const {target} = domEvent;
                 map.panTo(latLng);
@@ -87,13 +95,6 @@ const MapHandler = (settings, locations) => ({
                     loc.onClick(marker, map);
                 }
             });
-
-            if (loc.infoWindow) {
-                const infoWindow = new InfoWindow({
-                    content: '',
-                    disableAutoPan: false,
-                });
-            }
 
             bounds.extend(new LatLng(loc.lat, loc.lng));
 
