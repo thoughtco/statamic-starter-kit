@@ -5,9 +5,6 @@ namespace App\Listeners;
 // use \DrewM\MailChimp\MailChimp;
 
 use Statamic\Events\FormSubmitted;
-use Statamic\Facades\Entry;
-use Statamic\Facades\GlobalSet;
-use Statamic\Support\Str;
 
 /*
 
@@ -23,24 +20,18 @@ class FormListener
     public function handle(FormSubmitted $event)
     {
 
-        switch ($event->submission->form()->handle())
-        {
+        switch ($event->submission->form()->handle()) {
 
             default:
 
                 $this->processSomething();
 
-            break;
+                break;
 
         }
 
     }
 
     // process function
-    public function processSomething(){
-
-    }
-
+    public function processSomething() {}
 }
-
-?>

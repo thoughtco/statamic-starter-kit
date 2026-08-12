@@ -1,7 +1,6 @@
 <?php
-use Illuminate\Support\Facades\Artisan;
+
 use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class StarterKitPostInstall
 {
@@ -16,13 +15,14 @@ class StarterKitPostInstall
         $connectionType = $console->ask('What queue connection do you want?', 'redis');
         $eyrisToken = $console->ask('Enter the token for Eyris?', null, function ($value) {
             if (empty($value)) {
-                throw new \RuntimeException('Eyris token is required.');
+                throw new RuntimeException('Eyris token is required.');
             }
+
             return $value;
         });
 
         $env = app('files')->get(base_path('.env.thoughtco'));
-        $env = str_replace("APP_NAME=", "APP_NAME=\"{$appName}\"", $env);
+        $env = str_replace('APP_NAME=', "APP_NAME=\"{$appName}\"", $env);
         $env = str_replace('APP_URL=', "APP_URL=\"{$appURL}\"", $env);
         $env = str_replace('APP_KEY=', "APP_KEY=\"{$originalAppKey}\"", $env);
         $env = str_replace('STATAMIC_REVISIONS_PATH=', "STATAMIC_REVISIONS_PATH=\"{$revisionPath}\"", $env);
@@ -57,7 +57,7 @@ class StarterKitPostInstall
         $this->runProcess(['php', 'artisan', 'horizon:install'], $console, 'horizon assets published');
 
         $this->runProcess(['composer', 'require', 'thoughtco/statamic-eyris'], $console, 'eyris installed');
-    $this->runProcess(['php', 'artisan', 'vendor:publish', '--tag=statamic-eyris'], $console, 'eyris assets published');
+        $this->runProcess(['php', 'artisan', 'vendor:publish', '--tag=statamic-eyris'], $console, 'eyris assets published');
 
         $this->runProcess(['php', 'artisan', 'queue:restart'], $console, 'queues restarted');
 

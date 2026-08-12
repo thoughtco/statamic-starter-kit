@@ -59,5 +59,3 @@ class EntryListener
         $event->entry->save(); // we save the entry to kick the stache and run any invalidation
     }
 }
-
-?>

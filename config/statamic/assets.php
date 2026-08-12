@@ -71,7 +71,7 @@ return [
         ],
 
     ],
-    
+
     /*
     |--------------------------------------------------------------------------
     | Generate Image Manipulation Presets on Upload

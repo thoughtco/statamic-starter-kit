@@ -42,11 +42,12 @@ class TestNotification extends Command
 
         if (! class_exists($klass)) {
             $this->error("Notification class not found: {$klass}");
+
             return 1;
         }
 
         Notification::route('mail', $this->option('recipient'))
-            ->notify(new $klass());
+            ->notify(new $klass);
 
         return 0;
     }
