@@ -51,7 +51,7 @@ class PanelUsage extends Command
 
         foreach ($pages AS $page) {
 
-            if ($page->panels < 1){
+            if (empty($page->panels)) {
                 continue;
             }
 
