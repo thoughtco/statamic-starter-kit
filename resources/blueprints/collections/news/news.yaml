@@ -99,7 +99,7 @@ tabs:
               mode: single
               time_enabled: true
               time_required: true
-              earliest_date: '2021-09-01'
+              earliest_date: '2026-01-01'
               full_width: false
               inline: false
               columns: 1
