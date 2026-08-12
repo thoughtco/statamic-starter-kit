@@ -58,7 +58,7 @@ const MapHandler = (settings, locations) => ({
 
         const markers = Object.values(this.locations).map((loc, i) => {
             const div = document.createElement('div');
-            div.style.transform = 'scale(' + loc.scale ?? 1 + ')';
+            div.style.transform = 'scale(' + (loc.scale ?? 1) + ')';
 
             const img = document.createElement('img');
             img.src = loc.image;
