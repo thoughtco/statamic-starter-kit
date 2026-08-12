@@ -75,6 +75,14 @@ const MapHandler = (settings, locations) => ({
                 content: div,
             });
 
+            let infoWindow;
+            if (loc.infoWindow) {
+                infoWindow = new InfoWindow({
+                    content: '',
+                    disableAutoPan: false,
+                });
+            }
+
             marker.addListener('click', ({ domEvent, latLng }) => {
                 const {target} = domEvent;
                 map.panTo(latLng);
@@ -87,13 +95,6 @@ const MapHandler = (settings, locations) => ({
                     loc.onClick(marker, map);
                 }
             });
-
-            if (loc.infoWindow) {
-                const infoWindow = new InfoWindow({
-                    content: '',
-                    disableAutoPan: false,
-                });
-            }
 
             bounds.extend(new LatLng(loc.lat, loc.lng));
 
