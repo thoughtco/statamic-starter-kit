@@ -1,47 +1,39 @@
 {{#
 
     FORM EXAMPLE
-        + REFERENCES HCAPTCHA SO REMOVE IF NOT NEEDED
+        + REFERENCES TURNSTILE SO REMOVE IF NOT NEEDED OR USING SOMETHING ELSE
 
 #}}
-				{{ form:create in="{choose_form|raw}" js="alpine:form" attr:x-ref="form" \x-data='{"h-captcha-response": ""}' }}
+				{{ form:create in="{choose_form|raw}" js="alpine:form" attr:x-ref="form" \x-data='{"cf-turnstile-response": ""}'}}
 
 					<div
-						x-cloak
-						x-data="formHandler({
-							beforeSubmit: (handler) => {
-							 	let widgetId;
+                        x-data="formHandler({
+                            onSuccess: (handler) => {
+                                handler.$refs.form.classList.add('success');
+                                handler.form.success = true;
+                                setTimeout(() => { handler.$refs.form.classList.remove('success'); handler.form.success = false; }, 8000);
+                            },
+                            onError: (handler) => {
+                                turnstile.reset()
+                            }
+                        })"
+                        x-cloak
+                        x-init="cfWidgetId = null;"
+                        @turnstile-ready.window="
+                            if (this.cfWidgetId) {
+                                turnstile.remove(this.cfWidgetId);
+                            }
 
-								if (! widgetId = handler.$el.closest('form')?.querySelector('[data-hcaptcha-widget-id]')?.getAttribute('data-hcaptcha-widget-id')) {
-									handler.submitWithoutInterception();
-                                    return;
+                            let cfEl = $el.querySelector('.cf-turnstile');
+
+                            this.cfWidgetId = turnstile.render(cfEl, {
+                                sitekey: cfEl.getAttribute('data-sitekey'),
+                                callback: function (token) {
+                                    form['cf-turnstile-response'] = token;
                                 }
-                        
-                                hcaptcha.execute(widgetId, { async: true })
-                                    .then(({ response, key }) => {
-                                        handler.form['h-captcha-response'] = response;
-                                        handler.submitWithoutInterception();
-                                    })
-                                    .catch(err => {
-                                        handler.form.errors._unspecified = 'Captcha error';
-                                        hcaptcha.reset(widgetId);
-                                    });
-							}
-						})"
-						@hcaptcha-ready.window="
-							let el;
-							if (el = $el.querySelector('.h-captcha')) {
-								let functionId = $id('hcaptchaCallBack');
-								el.setAttribute('data-callback', functionId);
-
-								window[functionId] = () => {
-									// empty function to prevent captcha doing anything
-								}
-
-								hcaptcha.render(el);
-							}
-						"
-					>
+                            });
+                        "
+                    >
 
 						<p class="message" x-show="success">One of our team will be in touch as soon as possible.</p>
 
