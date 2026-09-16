@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Removed
 
+- The `statamic:scheduled-cache-invalidator:run` schedule (it relied on the Mity scheduled-cache-invalidator addon, which we no longer use), the unused `app/Console/Kernel.php` that was silently failing to schedule it, and the orphaned `config/statamic-scheduled-cache-invalidator.php`.
 - `app/Console/Commands/ImportRedirects.php` and its references (superseded / unused).
 - `app/Listeners/RecacheUrl.php` and its `UrlInvalidated` event mapping in `EventServiceProvider.php` (unused).
 - Static Cache Manager references (`duncanmcclean/static-cache-manager`) from the README and the `access static-cache-manager utility` permission in `resources/users/roles.yaml` (package not used by this kit).
