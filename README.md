@@ -104,6 +104,8 @@ If you don't need any classes, simply leave the attribute out. Any classes shoul
 
 - **Slider Settings:** Contains Slider Effect, Time Delay and pagination and should be used on sliders with the relevant data attribute for the slider. The data-attributes are available via the API information at https://swiperjs.com.
 
+- **Form Settings:** Contains two text inputs to allow specification of button wording pre and post submission. Also contains a textarea to allow input of a success message to display on successful form submission.
+
 ### Globals
 There are 4 globals setup
 - **Analytics:**
