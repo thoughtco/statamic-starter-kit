@@ -1,0 +1,40 @@
+title: 'Form Settings'
+sections:
+  -
+    display: 'Form Settings'
+    fields:
+      -
+        handle: button_text
+        field:
+          default: Submit
+          type: text
+          display: 'Button Text'
+          instructions: 'What text do you want to show on the button before submission.'
+          width: 50
+          listable: false
+          sortable: false
+          validate:
+            - required
+      -
+        handle: on_submission_text
+        field:
+          default: 'Processing ...'
+          type: text
+          display: 'On Submission Text'
+          instructions: 'What text do you want to show on the button after it is clicked.'
+          width: 50
+          listable: false
+          sortable: false
+          validate:
+            - required
+      -
+        handle: success_message
+        field:
+          default: 'Thank you. A member of the team will be in touch as soon as possible.'
+          type: textarea
+          display: 'Success Message'
+          instructions: 'What message would you like to display on successful submission of the form.'
+          listable: false
+          sortable: false
+          validate:
+            - required
