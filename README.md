@@ -25,6 +25,7 @@ By default the following packages are added:
 - A Laravel Livewire integration for Statamics Antlers engine.
 - Full information for this integration is available [here](https://packagist.org/packages/marcorieser/statamic-livewire)
 - Full documentation on Livewire is available [here](https://livewire.laravel.com)
+- Used by the News Listing component (see [News Listing](#news-listing-livewire) below).
 
 **Redirects:**
 - The thoughtco/statamic-redirects package has been retired in favour of the SEO Pro Redirects released in V7.70
@@ -120,6 +121,43 @@ There are 4 globals setup
 
 ### Collections
 May need mounted to relevant page entry if a new one is added. The news collection needs to mounted to the relevant news page.
+
+### News Listing (Livewire)
+The news collection comes with a Livewire-powered listing that handles category filtering, sorting and pagination without full page reloads.
+
+**Files:**
+- `app/Livewire/NewsListing.php`: the component class.
+- `resources/views/livewire/news_listing.antlers.html`: the listing markup (category buttons, sort select, entry cards and pagination links).
+- `resources/views/livewire/pagination.blade.php`: the pagination template used by the component.
+- `resources/views/_panels/news_listing.antlers.html`: a basic panel that drops the component onto a page.
+- `content/taxonomies/news_categories.yaml` and `resources/blueprints/taxonomies/news_categories/news_category.yaml`: the News Categories taxonomy used for filtering.
+
+**Usage:**
+Add the component anywhere in Antlers with:
+
+```
+{{ livewire:news-listing }}
+```
+
+or use the `_panels/news_listing` partial. There's no `news_listing` fieldset yet, so if you want it available in the page replicator, add one as per [Panels in fieldsets](#panels-in-fieldsets).
+
+**What it does:**
+- Pulls published entries from the `news` collection for the current site only.
+- Shows 9 entries per page (`$pageLimit`), with pagination handled by `MarcoRieser\Livewire\WithPagination`.
+- Filters by News Category: clicking a category button calls `setCategory('{slug}')`, and `setCategory('')` shows all entries. Filtering uses the `news_categories` taxonomy, so the news blueprint needs a `news_categories` taxonomy field for entries to be filterable.
+- Sorts by `recent` (date, newest first — the default) or `alphabetical` (title A–Z) via `wire:model.live="sort"`.
+- Changing the category or the sort order resets back to page 1.
+- The chosen category and sort are kept in the query string (`?category=...&sort=...`), so filtered views can be linked to and survive a refresh. Default values are left out of the URL.
+- Each card expects a `listing_image` field on the news entry and uses the [Image Partial](#image-partial) for output.
+
+**Customising:**
+- The markup is deliberately bare. Style `news_listing.antlers.html` and `pagination.blade.php` for the site you're working on.
+- To change the number of entries per page, update `$pageLimit` in `NewsListing.php`.
+- To add another sort option, add a case to the `match ($this->sort)` block in `entries()` and a matching `<option>` in the view.
+- If the site uses a different collection or taxonomy handle, update `whereCollection('news')` and `news_categories::` in `entries()`.
+
+**Static caching:**
+The listing updates via Livewire requests, but the initial page render is still statically cached. `ignore_query_strings` is `false` in `config/statamic/static_caching.php`, so each `?category=` / `?sort=` combination is cached as its own page. Don't switch that on (or add these params to `disallowed_query_strings`), or linked filtered views will all serve the unfiltered page.
 
 ### Users
 Admin role, need to add permissions to it if collections etc are added.
