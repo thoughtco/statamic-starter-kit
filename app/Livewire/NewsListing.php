@@ -51,7 +51,7 @@ class NewsListing extends Component
 
         match ($this->sort) {
             'alphabetical' => $query->orderBy('title', 'asc'),
-            default        => $query->orderBy('date', 'desc'),
+            default => $query->orderBy('date', 'desc'),
         };
 
         $entries = $query->paginate($this->pageLimit)->onEachSide(1);
