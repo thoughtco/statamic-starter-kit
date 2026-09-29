@@ -6,6 +6,8 @@ revisions: false
 route: '{mount}/{year}/{month}/{slug}'
 date: true
 sort_dir: desc
+taxonomies:
+  - news_categories
 date_behavior:
   past: public
   future: private
