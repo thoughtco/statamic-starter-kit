@@ -1,0 +1,38 @@
+<div>
+    <p><button wire:click="setCategory('')">All</button></p>
+    {{ taxonomy:category }}
+        <p><button wire:click="setCategory('{{ slug }}')">{{ title }}</button></p>
+    {{ /taxonomy:category }}
+    <h5>Sort By</h5>
+    <select aria-label="Select order" wire:model.live="sort">
+        <option selected value="recent">Most Recent</option>
+        <option value="alphabetical">Alphabetical</option>
+    </select>
+    {{ results:entries }}
+        <div>
+            <a href="{{ url }}" class="group">
+                <div>
+                    <picture>
+                        {{ listing_image }}
+                            {{ partial
+                                src="_partials/snippets/images"
+                                :image="url"
+                                imageAlt="{ alt ?? page.title }"
+                                srcset_from="_partials/snippets/srcset"
+                                width="461"
+                                height="300"
+                                sizes="(min-width:1024px) 322px, (min-width:768px) 739px, (min-width:468px) 440px, 95vw"
+                                class="block w-full h-full object-cover object-center absolute top-0 inset-s-0 transition-all duration-1000 group-hover:scale-[1.05]"
+                            }}
+                        {{ /listing_image }}
+                    </picture>
+                </div>
+                <div>
+                    <time datetime="{{ date format="j F Y" }}">{{ date format="j F Y" }}</time>
+                    <p>{{ title }}</p>
+                </div>
+            </a>
+        </div>
+    {{ /results:entries }}
+    {{ results:links }}
+</div>
