@@ -1,8 +1,8 @@
 <div>
     <p><button wire:click="setCategory('')">All</button></p>
-    {{ taxonomy:category }}
+    {{ taxonomy:news_categories }}
         <p><button wire:click="setCategory('{{ slug }}')">{{ title }}</button></p>
-    {{ /taxonomy:category }}
+    {{ /taxonomy:news_categories }}
     <h5>Sort By</h5>
     <select aria-label="Select order" wire:model.live="sort">
         <option selected value="recent">Most Recent</option>
