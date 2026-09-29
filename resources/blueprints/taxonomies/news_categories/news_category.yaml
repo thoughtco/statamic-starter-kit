@@ -1,0 +1,53 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Content
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              required: true
+              validate:
+                - required
+                - 'max:200'
+  'SEO Meta':
+    display: 'SEO Meta'
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+  'SEO Previews':
+    display: 'SEO Previews'
+    sections:
+      -
+        fields:
+          -
+            handle: seo_previews
+            field:
+              type: seo_pro_previews
+              listable: false
+              display: 'SEO Previews'
+              localizable: false
+              hide_display: true
+              if: 'custom showSeoProPreviews'
+title: 'News Category'

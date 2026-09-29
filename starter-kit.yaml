@@ -8,6 +8,7 @@ export_paths:
   - app/Console
   - app/Http/Controllers/PanelScreenshotController.php
   - app/Listeners
+  - app/Livewire
   - app/Providers/AppServiceProvider.php
   - app/Providers/EventServiceProvider.php
   - app/Providers/HorizonServiceProvider.php
