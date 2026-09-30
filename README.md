@@ -46,6 +46,9 @@ By default the following packages are added:
 **Social Links:**
 - Some sites have articles (news / events .etc) which have sharing icons on them. This add-on generates the links for you so all you need to do is drop in the antlers tag. Documentation is available [here](https://statamic.com/addons/aerni/social-links).
 
+**Horizon:**
+- Laravel Horizon runs the queue workers and gives a dashboard for monitoring jobs. See [Queues & Horizon](#queues--horizon) below.
+
 **Statamic CP Resources:**
 - Allows the inclusion of any videos generated on for clients. If you generate a video on Loom it should be added here and the client pointed to this page.
 
@@ -67,6 +70,40 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
         - [Setup Video](https://loom.com/share/f11fb8314ba74f66be033b049e433fa3)
         - Add the API Key to `POSTMARK_TOKEN` env variable
         
+### Queues & Horizon
+Queued jobs (including static cache warming) run on Redis and are managed by [Laravel Horizon](https://laravel.com/docs/horizon). The `.env.thoughtco` defaults are:
+
+- `QUEUE_CONNECTION=redis`
+- `REDIS_DB=2`: use `2` on staging and change it to `1` on production, so the two environments don't share queue or Horizon data if they're on the same Redis server.
+- `STATAMIC_STATIC_WARM_QUEUE=recache`: static cache warming jobs are pushed onto their own `recache` queue so they don't hold up everything else.
+
+`config/horizon.php` is exported with the starter kit. A single supervisor (`supervisor-1`) works both the `default` and `recache` queues with auto balancing:
+
+| Environment | Max processes |
+| --- | --- |
+| `production` | 10 |
+| `staging` | 3 |
+| `local` | 3 |
+
+Jobs get 1 try and a 60 second timeout. Horizon's Redis keys are prefixed with a slug of `APP_NAME` (override with `HORIZON_PREFIX`), so multiple sites can share a Redis server as long as `APP_NAME` is set.
+
+**On the server:**
+- Make sure Redis is installed and running.
+- Add a daemon for `php artisan horizon` (in Ploi, add it under the site's Queue/Daemons, not as a standard queue worker).
+- Add `php artisan horizon:terminate` to the deploy script so Horizon picks up new code after each deploy.
+
+**Dashboard access:**
+Horizon is linked from the CP under **Tools → Horizon** (`/horizon`). Outside the `local` environment access is restricted by the `viewHorizon` gate in `app/Providers/HorizonServiceProvider.php` to logged in users with an `@thoughtcollective.com` email address (case-insensitive). Anyone else, including guests, is denied.
+
+### Static Caching
+`config/statamic/static_caching.php` has been slimmed down to the settings we actually change, with Statamic's own defaults used for everything else.
+
+- `STATAMIC_STATIC_CACHING_STRATEGY` is `null` in `.env.thoughtco`. Change it to `half` on live.
+- Background re-caching is now on by default (`STATAMIC_BACKGROUND_RECACHE=true`), so URLs are re-cached in the background and overwrite the existing cache instead of being cleared first. Visitors keep getting a cached page while it rebuilds.
+- Warming runs on the `recache` queue via Horizon (see [Queues & Horizon](#queues--horizon)). The queue connection and the `--insecure` flag can be set with `STATAMIC_STATIC_WARM_QUEUE_CONNECTION` and `STATAMIC_STATIC_WARM_INSECURE`.
+- The `CsrfTokenReplacer` and `NoCacheReplacer` replacers are enabled.
+- No invalidation rules ship by default (the old `seo_pro_site_defaults` rule has been removed). Add rules per site as needed.
+
 ### Blueprints
 
 #### Panels in fieldsets
