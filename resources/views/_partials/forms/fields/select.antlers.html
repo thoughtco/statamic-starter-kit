@@ -5,6 +5,7 @@
     <select
         id="fld-{{ handle | replace('.', '-') }}"
         name="{{ handle }}{{ multiple ?= "[]" }}"
+        {{ if autocomplete }} autocomplete="{{ autocomplete }}"{{ /if }}
         {{ if instructions }} aria-describedBy="fld-{{ handle }}-instructions" {{ /if }}
         {{ multiple ?= " multiple" }}
         {{ if driver == 'precognition' }}

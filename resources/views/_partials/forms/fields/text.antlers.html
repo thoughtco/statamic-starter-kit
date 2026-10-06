@@ -6,6 +6,7 @@
         type="{{ input_type ?? 'text' }}"
         id="fld-{{ handle | replace('.', '-') }}"
         name="{{ handle }}"
+        {{ if autocomplete }} autocomplete="{{ autocomplete }}"{{ /if }}
         {{ if placeholder }} placeholder="{{ placeholder }}{{ if validate | contains('required') }} *{{ /if }}"{{ /if }}
         {{ if instructions }}aria-describedBy="fld-{{ handle }}-instructions"{{ /if }}
         {{ if driver == 'precognition' }}
