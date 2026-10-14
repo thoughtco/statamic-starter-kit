@@ -50,7 +50,7 @@ By default the following packages are added:
 - Laravel Horizon runs the queue workers and gives a dashboard for monitoring jobs. See [Queues & Horizon](#queues--horizon) below.
 
 **Statamic CP Resources:**
-- Allows the inclusion of any videos generated on for clients. If you generate a video on Loom it should be added here and the client pointed to this page.
+- Allows the inclusion of any videos generated on for clients. If you generate a video on from a screen record on your own computer, it should be added here and the client pointed to this page.
 
 ### Google Maps
 The following ENV Variables will need added.
@@ -58,7 +58,9 @@ The following ENV Variables will need added.
 - `GOOGLE_MAPS_GEOCODING_API_KEY`: the api key to be used across the site to display the map. 
 - `GOOGLE_MAP_ID`: the id of the map from the Google Cloud Console.
 
-A video of how to obtain both the key and the id can be found [here](https://www.loom.com/share/5f027f88b67e4411bbce62c3ab934d15).
+Please make sure you set up a new billing project in the client name.
+
+A video of how to obtain both the key and the id can be found [here](https://tc-cms-training.nbg1.your-objectstorage.com/thought_collective/google_cloud_credentials.mp4).
 
 ### Postmark
 We don’t use our own servers to send emails from, we rely on Postmark for delivery with the added bonus of we get visibility on deliverability .etc.
@@ -67,7 +69,7 @@ We don’t use our own servers to send emails from, we rely on Postmark for deli
     - This is a two step process
         - Create the server within Postmark
         - Create the sender signature.
-        - [Setup Video](https://loom.com/share/f11fb8314ba74f66be033b049e433fa3)
+        - [Setup Video](https://tc-cms-training.nbg1.your-objectstorage.com/thought_collective/setup_of_postmark_server.mp4)
         - Add the API Key to `POSTMARK_TOKEN` env variable
         
 ### Queues & Horizon
