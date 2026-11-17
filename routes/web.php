@@ -6,7 +6,7 @@ use Statamic\View\View;
 
 // if we're in staging
 // we can access the cutup
-if (app()->environment() == 'staging') {
+if (app()->environment() != 'production') {
     Route::get('cutup/{page}', function ($page) {
         return View::make("cutup.{$page}")
             ->layout('layout');
